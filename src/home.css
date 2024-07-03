@@ -1,0 +1,40 @@
+#sidebar {
+  width: 50px; /* Initial width */
+  height: 100%;
+  background-color: none;
+  transition: width 0.5s;
+}
+
+#sidebar:hover {
+  width: 200px; /* Width after hover */
+}
+
+#sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+#sidebar ul li {
+  display: flex; /* Use Flexbox for alignment */
+  align-items: center;
+  margin-top: 20px; /* Center items vertically */
+}
+
+#sidebar ul li img {
+  vertical-align: middle;
+  margin-right: 10px;
+  width: 30px;
+  height: 30px;
+}
+
+#sidebar ul li span {
+  display: none; /* Hide text initially */
+  vertical-align: middle;
+  transition: opacity 0.5s ease-in-out 0.5s; /* Adjusted transition */
+}
+
+#sidebar:hover ul li span {
+  display: inline; 
+   /* Make text fully opaque */
+  /* Removed align-items: start; as it's not applicable to inline elements */
+}
