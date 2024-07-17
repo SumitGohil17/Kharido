@@ -2,9 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import "./home.css";
 import Store from "./Store";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 function Home() {
-  let Api = "https://practice2-rho.vercel.app/api/gender?genderData=Men";
+  let Api = "https://practice2-rho.vercel.app/api/name?nameType=Men";
   const navigate = useNavigate();
 
   const [products, setProducts] = useState([]);
@@ -23,6 +26,18 @@ function Home() {
   useEffect(() => {
     fetchApiData(Api);
   }, []);
+
+  const sliderSettings = {
+    dots: true,
+    infinite: true,
+    fade: true,
+    arrows: false,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    pauseOnHover: false,
+    autoplay: true,
+    autoplaySpeed: 1000,
+  };
 
   return (
     <div id="container" className="flex bg-[#dcdcdc] h-[100vh] ">
@@ -80,7 +95,7 @@ function Home() {
                   alt="Home"
                 />
                 <span className="ml-[10px] font-Podkova font-semibold">
-                  Home
+                  Home & Living
                 </span>
               </li>
               <li className="flex place-items-center mt-[10px] ">
@@ -177,497 +192,65 @@ function Home() {
             {products.map((product, index) => (
               <div
                 key={index}
-                className=" relative h-[241px] bg-gray-50 rounded-[20px] hover:shadow-2xl"
-                onMouseEnter={() => setIsHovered(product.id)}
+                className=" relative h-[241px] bg-gray-50 rounded-[20px] hover:shadow-2xl cursor-pointer"
+                onMouseEnter={() => setIsHovered(product.product_id)}
                 onMouseLeave={() => setIsHovered(null)}
               >
-                <div className="flex justify-center ">
-                  <img
-                    src={product.link}
-                    className="object-fill h-[160px] overflow-hidden"
-                  />
-                </div>
                 <div class=" absolute inset-x-0 bottom-0 flex justify-between items-end content-end">
                   <div>
                     <h3 class="text-sm text-gray-700">
                       <a href="#">
                         <span class="absolute inset-0"></span>
-                        {product.articleType}
+                        {product.breadcrumbs[2].name}
                       </a>
                     </h3>
                     <p class="mt-1 text-sm text-gray-500">
-                      {product.gender}
+                      {product.breadcrumbs[0].name}
                     </p>
                   </div>
                   <p class="text-sm font-medium text-gray-900">
-                    {/* ${product.price} */}
+                    {product.final_price}
                   </p>
                 </div>
-                {isHovered === product.id && (
-                  <div className="absolute bottom-0 left-0 right-0 bg-white overflow-x-auto">
-                    {/* Scroll list content */}
-                    <div className="flex">
-                      <img
-                        src={product.link}
-                        alt="Image 1"
-                        className="h-[160px]"
-                      />
-                      {/* Add more images or content as needed */}
-                    </div>
+                {isHovered === product.product_id ? (
+                  <div className="absolute top-0 left-0 right-0 bg-white">
+                    <style>
+                      {`
+                         .slick-dots li {
+                            margin-right: -5px; 
+                            margin-left: -5px;
+                         }
+                      `}
+                    </style>
+                    <Slider {...sliderSettings}>
+                      {product.images.map((image, index) => (
+                        <div key={index}>
+                          <img
+                            src={image}
+                            alt={`Image ${index + 1}`}
+                            className="object-fill h-[160px] w-full"
+                          />
+                        </div>
+                      ))}
+                    </Slider>
                   </div>
+                ) : (
+                  <>
+                    <div className="flex justify-center ">
+                      <img
+                        src={product.images[0]}
+                        className="object-fill h-[160px] w-full"
+                      />
+                    </div>
+                  </>
                 )}
               </div>
             ))}
           </div>
         </div>
-        {/* <div class="mx-auto max-w-2xl mb-[10px] px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-          <h2 class="text-2xl font-bold tracking-tight text-gray-900">
-            Customers also purchased
-          </h2>
-          <div class="mt-6 grid grid-cols-1 h-[100vh] gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-            <div class="group relative shadow-2xl rounded-[15px] h-[220px]">
-              <div class="h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-white lg:aspect-none group-hover:opacity-75 lg:h-[150px]">
-                <img
-                  src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg"
-                  alt="Front of men&#039;s Basic Tee in black."
-                  class=" object-contain"
-                />
-              </div>
-              <div class="mt-4 flex justify-between">
-                <div>
-                  <h3 class="text-sm text-gray-700">
-                    <a href="#">
-                      <span aria-hidden="true" class="absolute inset-0"></span>
-                      Basic Tee
-                    </a>
-                  </h3>
-                  <p class="mt-1 text-sm text-gray-500">Black</p>
-                </div>
-                <p class="text-sm font-medium text-gray-900">$35</p>
-              </div>
-            </div>
-            <div class="group relative shadow-2xl rounded-[15px] h-[220px]">
-              <div class="h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-white lg:aspect-none group-hover:opacity-75 lg:h-[150px]">
-                <img
-                  src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg"
-                  alt="Front of men&#039;s Basic Tee in black."
-                  class=" object-contain"
-                />
-              </div>
-              <div class="mt-4 flex justify-between">
-                <div>
-                  <h3 class="text-sm text-gray-700">
-                    <a href="#">
-                      <span aria-hidden="true" class="absolute inset-0"></span>
-                      Basic Tee
-                    </a>
-                  </h3>
-                  <p class="mt-1 text-sm text-gray-500">Black</p>
-                </div>
-                <p class="text-sm font-medium text-gray-900">$35</p>
-              </div>
-            </div>
-            <div class="group relative shadow-2xl rounded-[15px] h-[220px]">
-              <div class="h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-white lg:aspect-none group-hover:opacity-75 lg:h-[150px]">
-                <img
-                  src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg"
-                  alt="Front of men&#039;s Basic Tee in black."
-                  class=" object-contain"
-                />
-              </div>
-              <div class="mt-4 flex justify-between">
-                <div>
-                  <h3 class="text-sm text-gray-700">
-                    <a href="#">
-                      <span aria-hidden="true" class="absolute inset-0"></span>
-                      Basic Tee
-                    </a>
-                  </h3>
-                  <p class="mt-1 text-sm text-gray-500">Black</p>
-                </div>
-                <p class="text-sm font-medium text-gray-900">$35</p>
-              </div>
-            </div>
-            <div class="group relative shadow-2xl rounded-[15px] h-[241px]">
-              <div class="h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-white lg:aspect-none group-hover:opacity-75 lg:h-[150px]">
-                <img
-                  src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg"
-                  alt="Front of men&#039;s Basic Tee in black."
-                  class=" object-contain"
-                />
-              </div>
-              <div class="mt-4 flex justify-between">
-                <div>
-                  <h3 class="text-sm text-gray-700">
-                    <a href="#">
-                      <span aria-hidden="true" class="absolute inset-0"></span>
-                      Basic Tee
-                    </a>
-                  </h3>
-                  <p class="mt-1 text-sm text-gray-500">Black</p>
-                </div>
-                <p class="text-sm font-medium text-gray-900">$35</p>
-              </div>
-            </div>
-            <div class="group relative shadow-2xl rounded-[15px] h-[220px]">
-              <div class="h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-white lg:aspect-none group-hover:opacity-75 lg:h-[150px]">
-                <img
-                  src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg"
-                  alt="Front of men&#039;s Basic Tee in black."
-                  class=" object-contain"
-                />
-              </div>
-              <div class="mt-4 flex justify-between">
-                <div>
-                  <h3 class="text-sm text-gray-700">
-                    <a href="#">
-                      <span aria-hidden="true" class="absolute inset-0"></span>
-                      Basic Tee
-                    </a>
-                  </h3>
-                  <p class="mt-1 text-sm text-gray-500">Black</p>
-                </div>
-                <p class="text-sm font-medium text-gray-900">$35</p>
-              </div>
-            </div>
-            <div class="group relative shadow-2xl rounded-[15px]">
-              <div class="aspect-w-1 w-full h-[80px] overflow-hidden rounded-md bg-white lg:aspect-none group-hover:opacity-75 lg:h-[150px]">
-                <img
-                  src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg"
-                  alt="Front of men&#039;s Basic Tee in black."
-                  className="object-cover"
-                />
-              </div>
-              <div class="mt-4 flex justify-between items-end">
-                <div>
-                  <h3 class="text-sm text-gray-700">
-                    <a href="#">
-                      <span aria-hidden="true" class="absolute inset-0"></span>
-                      Basic Tee
-                    </a>
-                  </h3>
-                  <p class="mt-1 text-sm text-gray-500">Black</p>
-                </div>
-                <p class="text-sm font-medium text-gray-900">$35</p>
-              </div>
-            </div>
-          </div>
-        </div> */}
-        {/* <img
-          className="w-[30px] h-[100vh]"
-          src="/images/homeIcon.png"
-          alt="Home"
-        />
-        <img
-          className="w-[30px] h-[100vh]"
-          src="/images/homeIcon.png"
-          alt="Home"
-        /> */}
       </div>
     </div>
   );
 }
 
 export default Home;
-{
-  /* <div className=" relative h-[241px] w-[150px] bg-gray-50 rounded-[20px] hover:shadow-2xl">
-              <div className="flex justify-center  ">
-                <img
-                  src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg"
-                  className="object-fill    h-[160px] overflow-hidden"
-                />
-              </div>
-              <div class=" absolute inset-x-0 bottom-0 flex justify-between items-end content-end">
-                <div>
-                  <h3 class="text-sm text-gray-700">
-                    <a href="#">
-                      <span class="absolute inset-0"></span>
-                      Basic Tee
-                    </a>
-                  </h3>
-                  <p class="mt-1 text-sm text-gray-500">Black</p>
-                </div>
-                <p class="text-sm font-medium text-gray-900">$35</p>
-              </div>
-            </div>
-            <div className=" relative h-[241px] w-[150px] bg-gray-50 rounded-[20px] hover:shadow-2xl">
-              <div className="flex justify-center  ">
-                <img
-                  src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg"
-                  className="object-fill    h-[160px] overflow-hidden"
-                />
-              </div>
-              <div class=" absolute inset-x-0 bottom-0 flex justify-between items-end content-end">
-                <div>
-                  <h3 class="text-sm text-gray-700">
-                    <a href="#">
-                      <span class="absolute inset-0"></span>
-                      Basic Tee
-                    </a>
-                  </h3>
-                  <p class="mt-1 text-sm text-gray-500">Black</p>
-                </div>
-                <p class="text-sm font-medium text-gray-900">$35</p>
-              </div>
-            </div>
-            <div className=" relative h-[241px] w-[150px] bg-gray-50 rounded-[20px] hover:shadow-2xl">
-              <div className=" flex justify-center ">
-                <img
-                  src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg"
-                  className="object-fill    h-[160px] overflow-hidden"
-                />
-              </div>
-              <div class=" absolute inset-x-0 bottom-0 flex justify-between items-end content-end">
-                <div>
-                  <h3 class="text-sm text-gray-700">
-                    <a href="#">
-                      <span class="absolute inset-0"></span>
-                      Basic Tee
-                    </a>
-                  </h3>
-                  <p class="mt-1 text-sm text-gray-500">Black</p>
-                </div>
-                <p class="text-sm font-medium text-gray-900">$35</p>
-              </div>
-            </div>
-            <div className=" relative h-[241px] w-[150px] bg-gray-50 rounded-[20px] hover:shadow-2xl">
-              <div className="flex justify-center  ">
-                <img
-                  src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg"
-                  className="object-fill    h-[160px] overflow-hidden"
-                />
-              </div>
-              <div class=" absolute inset-x-0 bottom-0 flex justify-between items-end content-end">
-                <div>
-                  <h3 class="text-sm text-gray-700">
-                    <a href="#">
-                      <span class="absolute inset-0"></span>
-                      Basic Tee
-                    </a>
-                  </h3>
-                  <p class="mt-1 text-sm text-gray-500">Black</p>
-                </div>
-                <p class="text-sm font-medium text-gray-900">$35</p>
-              </div>
-            </div>
-            <div className=" relative h-[241px] w-[150px] bg-gray-50 rounded-[20px] hover:shadow-2xl">
-              <div className=" flex justify-center ">
-                <img
-                  src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg"
-                  className="object-fill  h-[160px] overflow-hidden justify-center "
-                />
-              </div>
-              <div class=" absolute inset-x-0 bottom-0 flex justify-between items-end content-end">
-                <div>
-                  <h3 class="text-sm text-gray-700">
-                    <a href="#">
-                      <span class="absolute inset-0"></span>
-                      Basic Tee
-                    </a>
-                  </h3>
-                  <p class="mt-1 text-sm text-gray-500">Black</p>
-                </div>
-                <p class="text-sm font-medium text-gray-900">$35</p>
-              </div>
-            </div>
-            <div className=" relative h-[241px] w-[150px] bg-gray-50 rounded-[20px] hover:shadow-2xl">
-              <div className=" flex justify-center ">
-                <img
-                  src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg"
-                  className="object-fill    h-[160px] overflow-hidden"
-                />
-              </div>
-              <div class=" absolute inset-x-0 bottom-0 flex justify-between items-end content-end">
-                <div>
-                  <h3 class="text-sm text-gray-700">
-                    <a href="#">
-                      <span class="absolute inset-0"></span>
-                      Basic Tee
-                    </a>
-                  </h3>
-                  <p class="mt-1 text-sm text-gray-500">Black</p>
-                </div>
-                <p class="text-sm font-medium text-gray-900">$35</p>
-              </div>
-            </div>
-            <div className=" relative h-[241px] w-[150px] bg-gray-50 rounded-[20px] hover:shadow-2xl">
-              <div className="flex justify-center ">
-                <img
-                  src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg"
-                  className="object-fill h-[160px] overflow-hidden"
-                />
-              </div>
-              <div class=" absolute inset-x-0 bottom-0 flex justify-between items-end content-end">
-                <div>
-                  <h3 class="text-sm text-gray-700">
-                    <a href="#">
-                      <span class="absolute inset-0"></span>
-                      Basic Tee
-                    </a>
-                  </h3>
-                  <p class="mt-1 text-sm text-gray-500">Black</p>
-                </div>
-                <p class="text-sm font-medium text-gray-900">$35</p>
-              </div>
-            </div>
-            <div className=" relative h-[241px] w-[150px] bg-gray-50 rounded-[20px] hover:shadow-2xl">
-              <div className="flex justify-center ">
-                <img
-                  src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg"
-                  className="object-fill h-[160px] overflow-hidden"
-                />
-              </div>
-              <div class=" absolute inset-x-0 bottom-0 flex justify-between items-end content-end">
-                <div>
-                  <h3 class="text-sm text-gray-700">
-                    <a href="#">
-                      <span class="absolute inset-0"></span>
-                      Basic Tee
-                    </a>
-                  </h3>
-                  <p class="mt-1 text-sm text-gray-500">Black</p>
-                </div>
-                <p class="text-sm font-medium text-gray-900">$35</p>
-              </div>
-            </div>
-            <div className=" relative h-[241px] w-[150px] bg-gray-50 rounded-[20px] hover:shadow-2xl">
-              <div className="flex justify-center ">
-                <img
-                  src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg"
-                  className="object-fill h-[160px] overflow-hidden"
-                />
-              </div>
-              <div class=" absolute inset-x-0 bottom-0 flex justify-between items-end content-end">
-                <div>
-                  <h3 class="text-sm text-gray-700">
-                    <a href="#">
-                      <span class="absolute inset-0"></span>
-                      Basic Tee
-                    </a>
-                  </h3>
-                  <p class="mt-1 text-sm text-gray-500">Black</p>
-                </div>
-                <p class="text-sm font-medium text-gray-900">$35</p>
-              </div>
-            </div>
-            <div className=" relative h-[241px] w-[150px] bg-gray-50 rounded-[20px] hover:shadow-2xl">
-              <div className="flex justify-center ">
-                <img
-                  src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg"
-                  className="object-fill h-[160px] overflow-hidden"
-                />
-              </div>
-              <div class=" absolute inset-x-0 bottom-0 flex justify-between items-end content-end">
-                <div>
-                  <h3 class="text-sm text-gray-700">
-                    <a href="#">
-                      <span class="absolute inset-0"></span>
-                      Basic Tee
-                    </a>
-                  </h3>
-                  <p class="mt-1 text-sm text-gray-500">Black</p>
-                </div>
-                <p class="text-sm font-medium text-gray-900">$35</p>
-              </div>
-            </div>
-            <div className=" relative h-[241px] w-[150px] bg-gray-50 rounded-[20px] hover:shadow-2xl">
-              <div className="flex justify-center ">
-                <img
-                  src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg"
-                  className="object-fill h-[160px] overflow-hidden"
-                />
-              </div>
-              <div class=" absolute inset-x-0 bottom-0 flex justify-between items-end content-end">
-                <div>
-                  <h3 class="text-sm text-gray-700">
-                    <a href="#">
-                      <span class="absolute inset-0"></span>
-                      Basic Tee
-                    </a>
-                  </h3>
-                  <p class="mt-1 text-sm text-gray-500">Black</p>
-                </div>
-                <p class="text-sm font-medium text-gray-900">$35</p>
-              </div>
-            </div>
-            <div className=" relative h-[241px] w-[150px] bg-gray-50 rounded-[20px] hover:shadow-2xl">
-              <div className="flex justify-center ">
-                <img
-                  src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg"
-                  className="object-fill h-[160px] overflow-hidden"
-                />
-              </div>
-              <div class=" absolute inset-x-0 bottom-0 flex justify-between items-end content-end">
-                <div>
-                  <h3 class="text-sm text-gray-700">
-                    <a href="#">
-                      <span class="absolute inset-0"></span>
-                      Basic Tee
-                    </a>
-                  </h3>
-                  <p class="mt-1 text-sm text-gray-500">Black</p>
-                </div>
-                <p class="text-sm font-medium text-gray-900">$35</p>
-              </div>
-            </div>
-            <div className=" relative h-[241px] w-[150px] bg-gray-50 rounded-[20px] hover:shadow-2xl">
-              <div className="flex justify-center ">
-                <img
-                  src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg"
-                  className="object-fill h-[160px] overflow-hidden"
-                />
-              </div>
-              <div class=" absolute inset-x-0 bottom-0 flex justify-between items-end content-end">
-                <div>
-                  <h3 class="text-sm text-gray-700">
-                    <a href="#">
-                      <span class="absolute inset-0"></span>
-                      Basic Tee
-                    </a>
-                  </h3>
-                  <p class="mt-1 text-sm text-gray-500">Black</p>
-                </div>
-                <p class="text-sm font-medium text-gray-900">$35</p>
-              </div>
-            </div>
-            <div className=" relative h-[241px] w-[150px] bg-gray-50 rounded-[20px] hover:shadow-2xl">
-              <div className="flex justify-center ">
-                <img
-                  src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg"
-                  className="object-fill h-[160px] overflow-hidden"
-                />
-              </div>
-              <div class=" absolute inset-x-0 bottom-0 flex justify-between items-end content-end">
-                <div>
-                  <h3 class="text-sm text-gray-700">
-                    <a href="#">
-                      <span class="absolute inset-0"></span>
-                      Basic Tee
-                    </a>
-                  </h3>
-                  <p class="mt-1 text-sm text-gray-500">Black</p>
-                </div>
-                <p class="text-sm font-medium text-gray-900">$35</p>
-              </div>
-            </div>
-            <div className=" relative h-[241px] w-[150px] bg-gray-50 rounded-[20px] hover:shadow-2xl">
-              <div className="flex justify-center ">
-                <img
-                  src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg"
-                  className="object-fill h-[160px] overflow-hidden"
-                />
-              </div>
-              <div class=" absolute inset-x-0 bottom-0 flex justify-between items-end content-end">
-                <div>
-                  <h3 class="text-sm text-gray-700">
-                    <a href="#">
-                      <span class="absolute inset-0"></span>
-                      Basic Tee
-                    </a>
-                  </h3>
-                  <p class="mt-1 text-sm text-gray-500">Black</p>
-                </div>
-                <p class="text-sm font-medium text-gray-900">$35</p>
-              </div>
-            </div> */
-}

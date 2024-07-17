@@ -14,8 +14,7 @@ export const theme = {
   extend: {
     zIndex: {
       '1': '1',
-    }
-
+    },
   },
 };
 export const plugins = [];
