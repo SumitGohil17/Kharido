@@ -26,3 +26,9 @@ code {
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Podkova:wght@400..800&display=swap');
+
+@media (max-width: 425px) {
+  .custom-grid-cols {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
