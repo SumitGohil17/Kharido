@@ -15,7 +15,7 @@ function Login() {
         e.preventDefault();
 
         try {
-            const response = await fetch('http://localhost:5000/login', {
+            const response = await fetch('https://kharidoo-backend.vercel.app/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -43,7 +43,7 @@ function Login() {
 
         try {
             
-            const response = await fetch('http://localhost:5000/register', {
+            const response = await fetch('https://kharidoo-backend.vercel.app/register', {
                 method: 'POST',
                 Credentials:"include",
                 headers: {
