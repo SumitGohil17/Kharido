@@ -18,7 +18,7 @@ app.use(cors({
     secure: true
 }
 ));
-app.use(require('./router/auth'));
+app.use('/register',require('./router/auth'));
 const port = process.env.PORT;
 
 const User =  require('./model/userSchema');

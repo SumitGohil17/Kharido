@@ -9,7 +9,7 @@
     "routes": [
         {
             "src": "/(.*)",
-            "dest": "auth.js"
+            "dest": "script.js"
         }
     ]
 }
