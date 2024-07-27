@@ -1,0 +1,70 @@
+/* #sidebar {
+  width: 30px;
+  height: 100%;
+  background-color: none;
+  transition: width 0.5s;
+  margin-top: 150px;
+}
+
+#sidebar:hover {
+  width: 200px;
+}
+
+#sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+#sidebar ul li {
+  display: flex; 
+  align-items: center;
+  margin-top: 20px; 
+}
+
+#sidebar ul li img {
+
+  vertical-align: middle;
+  position: relative;
+  width: 30px;
+  height: 30px;
+}
+
+#sidebar ul li span {
+  position: fixed;
+  left: -40px;
+  transition: all ease-in-out 0.5s;
+}
+
+#sidebar:hover ul li span {
+  display: inline; 
+  position: absolute;
+  left: 40px;
+
+}
+
+#container{
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  width: 100%;
+}
+hr{
+  position: relative;
+  margin-left: 10px;
+  height: 100vh;
+}
+#NavBar{
+  position: relative;
+} */
+
+
+/* styles.css */
+.hide-scrollbar {
+  /* Hide scrollbar for Chrome, Safari, and Opera */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  /* Hide scrollbar for IE, Edge, and Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
