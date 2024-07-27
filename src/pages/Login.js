@@ -23,9 +23,11 @@ function Login() {
                 },
                 body: JSON.stringify({ username, password })
             });
-            const data = await response.json();
+            
             if (response.ok) {
+                const data = await response.json();
                 alert('Login ho successfully');
+                localStorage.setItem("token", data.token);
                 setShowLogin(false);
                 setIsLoggedIn(true);
                 
