@@ -77,32 +77,33 @@ function NavSideMenu() {
               </div>
             </li>
             {isLoggedIn ? (<>
-      
-      <li
-      className="w-max top-0 mb-1 font1 font-semibold capitalize no-underline text-sm border-4 border-transparent cborder1 block md:hidden "
-    >
-      <div className="md:hidden block">
-        <span className='text-lg block '><img src="./icons8-search.svg" alt="" className="w-[30px] h-[30px]" /></span>
 
-      </div>
-    </li>
-    <li className='w-max flex justify-center items-center font1 font-semibold capitalize no-underline text-sm border-4 border-transparent cborder1'
+              <li
+                className="w-max top-0 mb-1 font1 font-semibold capitalize no-underline text-sm border-4 border-transparent cborder1 block md:hidden "
+              >
+                <div className="md:hidden block">
+                  <span className='text-lg block '><img src="./icons8-search.svg" alt="" className="w-[30px] h-[30px]" /></span>
 
-    >
-      <h1 className=' text-center pr-[4px] text-xs relative'> <span className='text-lg flex justify-center'><img src="./images/profile.png" alt="" className="w-[30px] h-[30px] justify-center" /></span> <span className='flex justify-center'>{username}</span> </h1>
-    </li>
-    <li className='w-max flex justify-center items-center font1 font-semibold capitalize no-underline text-sm border-4 border-transparent ' >
+                </div>
+              </li>
+              <li className='w-max flex justify-center items-center font1 font-semibold capitalize no-underline text-sm border-4 border-transparent cborder1'
 
-      <h1 className='text-xs pr-[4px] text-center relative'> <span className='text-lg flex justify-center'><img src="./images/heart.png" alt="" className="w-[30px] h-[30px] justify-center" /></span > <span className='flex justify-center'>Wishlist</span></h1>
-    </li>
-    <li className='w-max flex justify-center items-center font1 font-semibold capitalize no-underline text-sm border-4 border-transparent ' >
+              >
+                <h1 className=' text-center pr-[4px] text-xs relative'> <span className='text-lg flex justify-center'><img src="./images/profile.png" alt="" className="w-[30px] h-[30px] justify-center" /></span> <span className='flex justify-center'>{username}</span> </h1>
+              </li>
+              <li className='w-max flex justify-center items-center font1 font-semibold capitalize no-underline text-sm border-4 border-transparent ' >
 
-      <h1 className='pr-[4px] text-xs text-center relative'><span className='text-lg flex justify-center'><img src="./images/shopping-bag.png" alt="" className="w-[30px] h-[30px] justify-center" /></span> <span className='flex justify-center'>Bag</span></h1>
-    </li>
-    </>) : (
-             <button className="bg-slate-300 rounded-[5px] w-[40px] h-[30px] mr-4" onClick={()=> setShowLogin(true)}>Login</button>
-              )
+                <h1 className='text-xs pr-[4px] text-center relative'> <span className='text-lg flex justify-center'><img src="./images/heart.png" alt="" className="w-[30px] h-[30px] justify-center" /></span > <span className='flex justify-center'>Wishlist</span></h1>
+              </li>
+              <li className='w-max flex justify-center items-center font1 font-semibold capitalize no-underline text-sm border-4 border-transparent ' >
 
+                <h1 className='pr-[4px] text-xs text-center relative'><span className='text-lg flex justify-center'><img src="./images/shopping-bag.png" alt="" className="w-[30px] h-[30px] justify-center" /></span> <span className='flex justify-center'>Bag</span></h1>
+              </li>
+            </>) : (
+              <>
+                <button className="bg-slate-300 rounded-[5px] w-[40px] h-[30px] mr-4" onClick={() => setShowLogin(true)}>Login</button>
+              </>
+            )
 
             }
             {setShowLogin && <Login />}
