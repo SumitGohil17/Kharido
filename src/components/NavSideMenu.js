@@ -77,13 +77,7 @@ function NavSideMenu() {
                 />
               </div>
             </li>
-            {isLoggedIn ? (
-             <>
-             <button className="bg-slate-300 rounded-[5px] w-[40px] h-[30px] mr-4" onClick={() => setShowLogin(true)}>Login</button>
-             <NavLink to="/logout">LOgout</NavLink>
-           </> 
-            ) : (
-              <>
+            {isLoggedIn ? (<>
 
               <li
                 className="w-max top-0 mb-1 font1 font-semibold capitalize no-underline text-sm border-4 border-transparent cborder1 block md:hidden "
@@ -111,6 +105,10 @@ function NavSideMenu() {
               </li>
               
             </>
+            ) : (
+              <li>
+                <button className="bg-slate-300 rounded-[5px] w-[40px] h-[30px] mr-4" onClick={() => setShowLogin(true)}>Login</button>
+              </li>
             )
 
             }
