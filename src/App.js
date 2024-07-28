@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import NavSideMenu from './components/NavSideMenu';
 import { LoginProvider } from './context/LoginContext';
+import { Logout } from './pages/Logout';
 
 
 
@@ -22,6 +23,7 @@ function App() {
             <Routes>
               <Route path='/' element={<Home />} />
               <Route path='/Men' element={<Men />} />
+              <Route path='/logout' element={<Logout/>}/>
             </Routes>
           </div>
 

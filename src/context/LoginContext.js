@@ -12,8 +12,13 @@ export const LoginProvider = ({ children }) => {
 
   let isLoggedIn = !!token;
 
+  const LogoutUser = () => {
+    setToken(" ");
+    localStorage.removeItem("token");
+  }
+
   return (
-    <LoginContext.Provider value={{isLoggedIn, showLogin, setShowLogin , username, setUsername }}>
+    <LoginContext.Provider value={{isLoggedIn, showLogin, setShowLogin , username, setUsername , LogoutUser }}>
       {children}
     </LoginContext.Provider>
   );
