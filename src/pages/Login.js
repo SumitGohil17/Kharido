@@ -26,8 +26,9 @@ function Login() {
             
             if (response.ok) {
                 const data = await response.json();
-                alert('Login ho successfully');
+                alert('Login successfully');
                 localStorage.setItem("token", data.token);
+                console.log(localStorage.getItem("token", data.token));
                 setShowLogin(false);
                 setIsLoggedIn(true);
                 
@@ -96,7 +97,7 @@ function Login() {
                             </button>
                         </div>
                         </form>
-                    </div>) : (<form method='POST' className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" >
+                    </div>) : (<form method='POST' className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit} >
                         <div className=" absolute flex w-3 h-3 mr-[10px] right-0" onClick={() => setShowLogin(false)}>
                             {/* Close Icon SVG or an image */}
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -116,7 +117,7 @@ function Login() {
                             <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="******************" value={password} onChange={(e) => setPassword(e.target.value)} required />
                         </div>
                         <div className="flex items-center justify-between">
-                            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onClick={handleSubmit}>
+                            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type='submit'>
                                 Sign In
                             </button>
                             <a className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#">
