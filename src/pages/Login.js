@@ -70,6 +70,13 @@ function Login() {
             alert('Failed to fetch');
         }
     }
+    useEffect(() => {
+        if (isLoggedIn) {
+            // show user profile, watchlist, bag list
+            setShowLogin(false);   // hide login button
+            // ... other logic ...
+        }
+    }, [isLoggedIn]);
     return (
         <div>
             <div className="absolute  flex justify-center items-center bg-opacity-50 z-1">
