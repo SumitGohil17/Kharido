@@ -32,8 +32,8 @@ function Login() {
                 setShowLogin(false);
                 setIsLoggedIn(true);
                 
-            } else if (data.password !== password) {
-                alert(data.message);
+            } else {
+                alert("login fails");
             }
         } catch (error) {
             console.error('Error:', error);
