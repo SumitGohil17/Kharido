@@ -80,6 +80,7 @@ function NavSideMenu() {
             {isLoggedIn ? (
              <>
              <button className="bg-slate-300 rounded-[5px] w-[40px] h-[30px] mr-4" onClick={() => setShowLogin(true)}>Login</button>
+             <NavLink to="/logout">LOgout</NavLink>
            </> 
             ) : (
               <>
