@@ -6,11 +6,14 @@ export const useLogin = () => useContext(LoginContext);
 
 export const LoginProvider = ({ children }) => {
   const [showLogin, setShowLogin] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [username, setUsername] = useState('');
+  const [token , setToken] = useState(localStorage.getItem("token"))
+  // const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("token"));
+  const [username, setUsername] = useState('');
+
+  let isLoggedIn = !!token;
 
   return (
-    <LoginContext.Provider value={{ showLogin, setShowLogin , isLoggedIn, setIsLoggedIn, username, setUsername }}>
+    <LoginContext.Provider value={{isLoggedIn, showLogin, setShowLogin , username, setUsername }}>
       {children}
     </LoginContext.Provider>
   );
