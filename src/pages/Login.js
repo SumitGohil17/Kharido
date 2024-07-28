@@ -30,7 +30,6 @@ function Login() {
                 localStorage.setItem("token", data.token);
                 console.log(localStorage.getItem("token", data.token));
                 setShowLogin(false);
-                setIsLoggedIn(true);
                 
             } else {
                 alert("login fails");
