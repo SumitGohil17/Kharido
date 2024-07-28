@@ -3,9 +3,9 @@ import React, { useState } from 'react'
 import { useLogin } from '../context/LoginContext'
 
 function Login() {
-    const { setShowLogin } = useLogin();
+    const { setShowLogin, isLoggedIn , setIsLoggedIn } = useLogin();
 
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    // const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [profile, setProfile] = useState(null);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -30,6 +30,7 @@ function Login() {
                 localStorage.setItem("token", data.token);
                 console.log(localStorage.getItem("token", data.token));
                 setShowLogin(false);
+                setIsLoggedIn(true);
                 
             } else {
                 alert("login fails");
