@@ -1,17 +1,22 @@
 import React, { useState } from 'react'
 import Login from '../pages/Login';
+import Cookies from 'js-cookie';
 import { useLogin } from '../context/LoginContext';
 import { NavLink } from 'react-router-dom';
 
 function NavSideMenu() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showLoginPage, setLoginPage] = useState(false);
-  const { isLoggedIn, username, setShowLogin } = useLogin();
+  const { islog, setIslog, setLogin, isLoggedIn, username, setShowLogin } = useLogin();
 
   const toggleLoginPage = () => {
     setLoginPage(!showLoginPage);
   }
 
+  const handleLogout = () => {
+    Cookies.remove('token');
+    setIslog(false);
+  };
 
 
   const toggleMenu = () => {
@@ -77,9 +82,11 @@ function NavSideMenu() {
                 />
               </div>
             </li>
-            {isLoggedIn ? (<>
+            <li>
 
-              <li
+              {islog ? (
+                <>
+                <li
                 className="w-max top-0 mb-1 font1 font-semibold capitalize no-underline text-sm border-4 border-transparent cborder1 block md:hidden "
               >
                 <div className="md:hidden block">
@@ -103,16 +110,15 @@ function NavSideMenu() {
               <li className='w-max flex justify-center items-center font1 font-semibold capitalize no-underline text-sm border-4 border-transparent ' >
                   <NavLink to="/logout">Logout</NavLink>
               </li>
-              
-            </>
-            ) : (
-              <li>
-                <button className="bg-slate-300 rounded-[5px] w-[40px] h-[30px] mr-4" onClick={() => setShowLogin(true)}>Login</button>
-              </li>
-            )
+                  <span className="text-blue-500">Hello, {username}</span>
+                  <button onClick={handleLogout} className="text-red-500 hover:underline">Logout</button>
+                </>
+              ) : (
+                <button onClick={() => setLogin(true)} className="text-blue-500 hover:underline">Login</button>
+              )}
 
-            }
-            {setShowLogin && <Login />}
+            </li>
+            {setLogin && <Login />}
             {/* <li
               className="w-max top-0 mb-1 font1 font-semibold capitalize no-underline text-sm border-4 border-transparent cborder1 block md:hidden "
             >

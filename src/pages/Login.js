@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
-
+import Cookies from 'js-cookie';
 import { useLogin } from '../context/LoginContext'
 
 function Login() {
-    const { setShowLogin, isLoggedIn , setIsLoggedIn } = useLogin();
+    const { islog , setIslog, setLogin, setShowLogin, isLoggedIn , setIsLoggedIn } = useLogin();
 
     // const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [profile, setProfile] = useState(null);
@@ -28,11 +28,12 @@ function Login() {
             if (response.ok) {
                 const data = await response.json();
                 alert('Login successfully');
+                Cookies.set('token', data.token , {expires: 1});
                 localStorage.setItem("token", data.token);
                 sessionStorage.setItem("token", data.token);
                 console.log(localStorage.getItem("token", data.token));
-                setShowLogin(false);
-                setIsLoggedIn(true);
+                setLogin(false);
+                setIslog(true);
                 
             } else {
                 alert("login fails");
@@ -61,7 +62,7 @@ function Login() {
             
             if (response.ok) {
                 alert('register successfully');
-                setShowLogin(true);
+                setLogin(true);
                 setRegister(false);
                
             } else {
@@ -73,12 +74,12 @@ function Login() {
         }
     }
     useEffect(() => {
-        if (isLoggedIn) {
+        if (islog) {
             // show user profile, watchlist, bag list
-            setShowLogin(false);   // hide login button
+            setLogin(false);   // hide login button
             // ... other logic ...
         }
-    }, [isLoggedIn]);
+    }, [isLoggedIn , setLogin]);
     return (
         <div>
             <div className="absolute  flex justify-center items-center bg-opacity-50 z-1">
@@ -107,7 +108,7 @@ function Login() {
                         </div>
                         </form>
                     </div>) : (<form method='POST' className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit} >
-                        <div className=" absolute flex w-3 h-3 mr-[10px] right-0" onClick={() => setShowLogin(false)}>
+                        <div className=" absolute flex w-3 h-3 mr-[10px] right-0" onClick={() => setLogin(false)}>
                             {/* Close Icon SVG or an image */}
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
