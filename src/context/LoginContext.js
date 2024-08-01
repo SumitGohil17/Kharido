@@ -16,16 +16,16 @@ export const LoginProvider = ({ children }) => {
 
   let isLog = !!isLogged;
 
-  useEffect(() => {
-    const token = Cookies.get('token');
-    if (token) {
-      setIslog(true);
-    }
-  },[])
+  // useEffect(() => {
+  //   const token = Cookies.get('token');
+  //   if (token) {
+  //     setIslog(true);
+  //   }
+  // },[])
 
-  const setLogin = (show) => {
-    setIslog(show);
-};
+//   const setLogin = (show) => {
+//     setIslog(show);
+// };
 
   const LogoutUser = () => {
     setIsLoggedIn(" ");
@@ -33,7 +33,7 @@ export const LoginProvider = ({ children }) => {
   }
 
   return (
-    <LoginContext.Provider value={{isLog , setIslog, setLogin, isLoggedIn, showLogin, setShowLogin , username, setUsername , LogoutUser }}>
+    <LoginContext.Provider value={{isLog ,   isLoggedIn, showLogin, setShowLogin , username, setUsername , LogoutUser }}>
       {children}
     </LoginContext.Provider>
   );
