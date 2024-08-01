@@ -3,7 +3,7 @@ import Cookies from 'js-cookie';
 import { useLogin } from '../context/LoginContext'
 
 function Login() {
-    const { isLog , setIslog, setLogin, setShowLogin, isLoggedIn , setIsLoggedIn } = useLogin();
+    const { isLog , setIslog,showLogin, setLogin, setShowLogin, isLoggedIn , setIsLoggedIn } = useLogin();
 
     // const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [profile, setProfile] = useState(null);
@@ -60,8 +60,7 @@ function Login() {
                     email : "",
                     password : ""
                 })
-                setLogin(false);
-                setIslog(true);
+                setShowLogin(false);
                 
             } else {
                 alert("login fails");
@@ -96,7 +95,7 @@ function Login() {
                     phone : "",
                     password: ""
                 })
-                setLogin(true);
+                setShowLogin(true);
                 setRegister(false);
                
             } else {
@@ -147,7 +146,7 @@ function Login() {
                         </div>
                         </form>
                     </div>) : (<form method='POST' className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit} >
-                        <div className=" absolute flex w-3 h-3 mr-[10px] right-0" onClick={() => setLogin(false)}>
+                        <div className=" absolute flex w-3 h-3 mr-[10px] right-0" onClick={() => setShowLogin(false)}>
                             {/* Close Icon SVG or an image */}
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />

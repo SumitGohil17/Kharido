@@ -7,7 +7,7 @@ import { NavLink } from 'react-router-dom';
 function NavSideMenu() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showLoginPage, setLoginPage] = useState(false);
-  const { isLog, setIslog, setLogin, isLoggedIn, username, setShowLogin } = useLogin();
+  const { isLog, setIslog, setLogin,showLogin, isLoggedIn, username, setShowLogin } = useLogin();
 
   const toggleLoginPage = () => {
     setLoginPage(!showLoginPage);
@@ -115,7 +115,7 @@ function NavSideMenu() {
               )}
 
             </li>
-            {setLogin && <Login />}
+            {showLogin && <Login />}
             {/* <li
               className="w-max top-0 mb-1 font1 font-semibold capitalize no-underline text-sm border-4 border-transparent cborder1 block md:hidden "
             >
