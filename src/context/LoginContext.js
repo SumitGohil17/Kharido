@@ -9,10 +9,12 @@ export const LoginProvider = ({ children }) => {
   const [showLogin, setShowLogin] = useState(false);
   const [token , setToken] = useState(localStorage.getItem("token"))
   const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem('token'));
-  const [islog , setIslog] = useState( !!Cookies.get('token'))
+  // const [islog , setIslog] = useState( !!Cookies.get('token'))
   const [username, setUsername] = useState('');
 
-  // let isLoggedIn = !!token;
+  const [isLogged , setisLogged] = useState(Cookies.get("token"))
+
+  let isLog = !!isLogged;
 
   useEffect(() => {
     const token = Cookies.get('token');
@@ -31,7 +33,7 @@ export const LoginProvider = ({ children }) => {
   }
 
   return (
-    <LoginContext.Provider value={{islog , setIslog, setLogin, isLoggedIn, showLogin, setShowLogin , username, setUsername , LogoutUser }}>
+    <LoginContext.Provider value={{isLog , setIslog, setLogin, isLoggedIn, showLogin, setShowLogin , username, setUsername , LogoutUser }}>
       {children}
     </LoginContext.Provider>
   );

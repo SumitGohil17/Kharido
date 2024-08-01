@@ -3,13 +3,40 @@ import Cookies from 'js-cookie';
 import { useLogin } from '../context/LoginContext'
 
 function Login() {
-    const { islog , setIslog, setLogin, setShowLogin, isLoggedIn , setIsLoggedIn } = useLogin();
+    const { isLog , setIslog, setLogin, setShowLogin, isLoggedIn , setIsLoggedIn } = useLogin();
 
     // const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [profile, setProfile] = useState(null);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [register, setRegister] = useState(false);
+
+    const [userLogin , setUserLogin] = useState({
+        email : "",
+        password : ""
+    })
+
+    const [userRegister , setUserRegister] = useState({
+        username : "",
+        email : "",
+        phone : "",
+        password: ""
+    })
+
+    const handleChange = (e) => {
+        let name = e.target.name;
+        let value = e.target.value;
+
+        setUserLogin({...userLogin , [name] : value})
+    
+    }
+
+    const handleChangeRegister = (e) => {
+        let name = e.target.name;
+        let value = e.target.value;
+
+        setUserRegister({...userRegister , [name] : value})
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -22,16 +49,17 @@ function Login() {
                     
                 },
                 credentials: 'include',
-                body: JSON.stringify({ username, password })
+                body: JSON.stringify(userLogin)
             });
             
             if (response.ok) {
                 const data = await response.json();
+                Cookies.set('token', data.token , {expires: 1/1440});
                 alert('Login successfully');
-                Cookies.set('token', data.token , {expires: 1});
-                localStorage.setItem("token", data.token);
-                sessionStorage.setItem("token", data.token);
-                console.log(localStorage.getItem("token", data.token));
+                setUserLogin({
+                    email : "",
+                    password : ""
+                })
                 setLogin(false);
                 setIslog(true);
                 
@@ -56,12 +84,18 @@ function Login() {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ username, password })
+                body: JSON.stringify(userRegister)
             });
             const data = await response.json();
             
             if (response.ok) {
                 alert('register successfully');
+                setUserRegister({
+                    username : "",
+                    email : "",
+                    phone : "",
+                    password: ""
+                })
                 setLogin(true);
                 setRegister(false);
                
@@ -92,14 +126,26 @@ function Login() {
                                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
                                     Username
                                 </label>
-                                <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="text" placeholder="username" value={username} onChange={(e) => setUsername(e.target.value)} required />
+                                <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" name="username" type="text" placeholder="username" value={userRegister.username} onChange={handleChangeRegister} required />
+                            </div>
+                            <div className="mb-4">
+                                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
+                                    Email
+                                </label>
+                                <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" name="email" type="email" placeholder="email" value={userRegister.email} onChange={handleChangeRegister} required />
+                            </div>
+                            <div className="mb-4">
+                                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
+                                    Phone No
+                                </label>
+                                <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="Phone" name="Phone" type="number" placeholder="Phone No" value={userRegister.phone} onChange={handleChangeRegister} required />
                             </div>
 
                             <div className="mb-6">
                             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
                                 Password
-                            </label>
-                            <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="******************" value={password} onChange={(e) => setPassword(e.target.value)} required />
+                            </label> 
+                            <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" name="password" type="password" placeholder="******************" value={userRegister.password} onChange={handleChangeRegister} required />
                         </div>
                         <div className="flex items-center justify-between">
                             <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onClick={handleRegister} >
@@ -116,15 +162,15 @@ function Login() {
                         </div>
                         <div className="mb-4">
                             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
-                                Username
+                                Email
                             </label>
-                            <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="text" placeholder="username" value={username} onChange={(e) => setUsername(e.target.value)} required />
+                            <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" name="email" placeholder="email" value={userLogin.email} onChange={handleChange} required />
                         </div>
                         <div className="mb-6">
                             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
                                 Password
                             </label>
-                            <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="******************" value={password} onChange={(e) => setPassword(e.target.value)} required />
+                            <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" name="password" type="password" placeholder="******************" value={userLogin.password} onChange={handleChange} required />
                         </div>
                         <div className="flex items-center justify-between">
                             <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type='submit'>

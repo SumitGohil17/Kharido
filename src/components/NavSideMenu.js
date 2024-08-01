@@ -7,7 +7,7 @@ import { NavLink } from 'react-router-dom';
 function NavSideMenu() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showLoginPage, setLoginPage] = useState(false);
-  const { islog, setIslog, setLogin, isLoggedIn, username, setShowLogin } = useLogin();
+  const { isLog, setIslog, setLogin, isLoggedIn, username, setShowLogin } = useLogin();
 
   const toggleLoginPage = () => {
     setLoginPage(!showLoginPage);
@@ -84,7 +84,7 @@ function NavSideMenu() {
             </li>
             <li>
 
-              {islog ? (
+              {isLog ? (
                 <>
                 <li
                 className="w-max top-0 mb-1 font1 font-semibold capitalize no-underline text-sm border-4 border-transparent cborder1 block md:hidden "
@@ -106,9 +106,6 @@ function NavSideMenu() {
               <li className='w-max flex justify-center items-center font1 font-semibold capitalize no-underline text-sm border-4 border-transparent ' >
 
                 <h1 className='pr-[4px] text-xs text-center relative'><span className='text-lg flex justify-center'><img src="./images/shopping-bag.png" alt="" className="w-[30px] h-[30px] justify-center" /></span> <span className='flex justify-center'>Bag</span></h1>
-              </li>
-              <li className='w-max flex justify-center items-center font1 font-semibold capitalize no-underline text-sm border-4 border-transparent ' >
-                  <NavLink to="/logout">Logout</NavLink>
               </li>
                   <span className="text-blue-500">Hello, {username}</span>
                   <button onClick={handleLogout} className="text-red-500 hover:underline">Logout</button>
