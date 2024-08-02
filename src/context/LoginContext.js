@@ -12,7 +12,7 @@ export const LoginProvider = ({ children }) => {
   // const [islog , setIslog] = useState( !!Cookies.get('token'))
   const [username, setUsername] = useState('');
 
-  const [isLogged , setisLogged] = useState(Cookies.get("token"))
+  const [isLogged , setisLogged] = useState(Cookies.get('token'));
 
   const Storetoken = (serverToken) => {
     return Cookies.set("token", serverToken , {expires: 2/1440})
