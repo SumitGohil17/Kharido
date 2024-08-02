@@ -1,30 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import Slider from "react-slick";
+import { useLogin } from "../context/LoginContext";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 function Men() {
-
-  let Api = "https://practice2-rho.vercel.app/api/name?nameType=Men";
-  const navigate = useNavigate();
-
-  const [products, setProducts] = useState([]);
   const [isHovered, setIsHovered] = useState(false);
-  const fetchApiData = async (url) => {
-    try {
-      let res = await fetch(url);
-      let data = await res.json();
-      setProducts(data);
-      console.log(data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  useEffect(() => {
-    fetchApiData(Api);
-  }, []);
+  const {products} = useLogin();
+  
 
   const sliderSettings = {
     dots: true,
