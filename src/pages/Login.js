@@ -42,7 +42,7 @@ function Login() {
         e.preventDefault();
 
         try {
-            const response = await fetch('https://kharidoo-backend.vercel.app/login', {
+            const response = await fetch('https://kharidoo-backend.vercel.app/api/auth/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -77,7 +77,7 @@ function Login() {
 
         try {
             
-            const response = await fetch('https://kharidoo-backend.vercel.app/register', {
+            const response = await fetch('https://kharidoo-backend.vercel.app/api/auth/register', {
                 method: 'POST',
                 Credentials:"include",
                 headers: {
