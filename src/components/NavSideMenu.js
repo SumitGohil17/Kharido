@@ -7,7 +7,7 @@ import { NavLink } from 'react-router-dom';
 function NavSideMenu() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showLoginPage, setLoginPage] = useState(false);
-  const { isLog, setIslog, setLogin, showLogin, isLoggedIn, username, setShowLogin } = useLogin();
+  const { isLog, user,  setIslog, setLogin, showLogin, isLoggedIn, username, setShowLogin } = useLogin();
 
   const toggleLoginPage = () => {
     setLoginPage(!showLoginPage);
@@ -97,7 +97,7 @@ function NavSideMenu() {
                   <li className='w-max flex justify-center items-center font1 font-semibold capitalize no-underline text-sm border-4 border-transparent cborder1'
 
                   >
-                    <h1 className=' text-center pr-[4px] text-xs relative'> <span className='text-lg flex justify-center'><img src="./images/profile.png" alt="" className="w-[30px] h-[30px] justify-center" /></span> <span className='flex justify-center'>{username}</span> </h1>
+                    <h1 className=' text-center pr-[4px] text-xs relative'> <span className='text-lg flex justify-center'><img src="./images/profile.png" alt="" className="w-[30px] h-[30px] justify-center" /></span> <span className='flex justify-center'>{user.username}</span> </h1>
                   </li>
                   <li className='w-max flex justify-center items-center font1 font-semibold capitalize no-underline text-sm border-4 border-transparent ' >
 

@@ -13,6 +13,7 @@ export const LoginProvider = ({ children }) => {
   const [username, setUsername] = useState('');
 
   const [isLogged , setisLogged] = useState(Cookies.get('token'));
+  const [user , setUser] = useState('')
 
   const Storetoken = (serverToken) => {
     return Cookies.set("token", serverToken , {expires: 2/1440})
@@ -37,8 +38,29 @@ export const LoginProvider = ({ children }) => {
     localStorage.removeItem("token");
   }
 
+  const userAuthentication = async ()=> {
+    try{
+    const response = await fetch('https://kharidoo-backend.vercel.app/api/auth/getUser' , {
+      method : 'GET',
+      headers : {
+        Authorization : `Bearer ${isLogged}`
+      }
+    });
+    if (response.ok) {
+      const data = await response.json();
+      setUser(data.userData)
+    }
+  }catch(error) {
+    console.log(error)
+  }
+  }
+
+  useEffect(() => {
+    userAuthentication()
+  }, []);
+
   return (
-    <LoginContext.Provider value={{isLog , Storetoken,   isLoggedIn, showLogin,showLogin, setShowLogin , username, setUsername , LogoutUser }}>
+    <LoginContext.Provider value={{isLog , user,  Storetoken,   isLoggedIn, showLogin,showLogin, setShowLogin , username, setUsername , LogoutUser }}>
       {children}
     </LoginContext.Provider>
   );
