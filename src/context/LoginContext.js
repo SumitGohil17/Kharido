@@ -14,6 +14,11 @@ export const LoginProvider = ({ children }) => {
 
   const [isLogged , setisLogged] = useState(Cookies.get("token"))
 
+  const Storetoken = (serverToken) => {
+    return Cookies.set("token", serverToken , {expires: 2/1440})
+}
+
+
   let isLog = !!isLogged;
 
   // useEffect(() => {
@@ -33,7 +38,7 @@ export const LoginProvider = ({ children }) => {
   }
 
   return (
-    <LoginContext.Provider value={{isLog ,   isLoggedIn, showLogin,showLogin, setShowLogin , username, setUsername , LogoutUser }}>
+    <LoginContext.Provider value={{isLog , Storetoken,   isLoggedIn, showLogin,showLogin, setShowLogin , username, setUsername , LogoutUser }}>
       {children}
     </LoginContext.Provider>
   );

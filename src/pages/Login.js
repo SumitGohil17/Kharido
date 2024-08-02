@@ -3,7 +3,7 @@ import Cookies from 'js-cookie';
 import { useLogin } from '../context/LoginContext'
 
 function Login() {
-    const { isLog , setIslog,showLogin, setLogin, setShowLogin, isLoggedIn , setIsLoggedIn } = useLogin();
+    const { isLog , Storetoken, setIslog,showLogin, setLogin, setShowLogin, isLoggedIn , setIsLoggedIn } = useLogin();
 
     // const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [profile, setProfile] = useState(null);
@@ -46,7 +46,6 @@ function Login() {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    
                 },
                 credentials: 'include',
                 body: JSON.stringify(userLogin)
@@ -54,7 +53,7 @@ function Login() {
             
             if (response.ok) {
                 const data = await response.json();
-                Cookies.set('token', data.token , {expires: 1/1440});
+                Storetoken(data.token);
                 alert('Login successfully');
                 setUserLogin({
                     email : "",
