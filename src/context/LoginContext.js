@@ -14,6 +14,7 @@ export const LoginProvider = ({ children }) => {
 
   const [isLogged , setisLogged] = useState(Cookies.get('token'));
   const [user , setUser] = useState('')
+  const [products, setProducts] = useState([]);
 
   const Storetoken = (serverToken) => {
     return Cookies.set("token", serverToken , {expires: 2/1440})
@@ -55,12 +56,26 @@ export const LoginProvider = ({ children }) => {
   }
   }
 
+  let Api = "https://practice2-rho.vercel.app/api/name?nameType=Men";
+
+  const fetchApiData = async (url) => {
+    try {
+      let res = await fetch(url);
+      let data = await res.json();
+      setProducts(data);
+      console.log(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   useEffect(() => {
     userAuthentication()
+    fetchApiData(Api);
   }, []);
 
   return (
-    <LoginContext.Provider value={{isLog , user,  Storetoken,   isLoggedIn, showLogin,showLogin, setShowLogin , username, setUsername , LogoutUser }}>
+    <LoginContext.Provider value={{isLog , products, user,  Storetoken,   isLoggedIn, showLogin,showLogin, setShowLogin , username, setUsername , LogoutUser }}>
       {children}
     </LoginContext.Provider>
   );
