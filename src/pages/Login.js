@@ -128,7 +128,7 @@ function Login() {
                             </div>
                             <div className="mb-4">
                                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
-                                    Phone
+                                    Phone No
                                 </label>
                                 <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="phone" type="text" name="phone" placeholder="Phone No" value={userRegister.phone} onChange={handleChangeRegister} required />
                             </div>
