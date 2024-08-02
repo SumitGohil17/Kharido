@@ -111,7 +111,7 @@ function NavSideMenu() {
                   <button onClick={handleLogout} className="text-red-500 hover:underline">Logout</button>
                 </>
               ) : (
-                <button onClick={() => setLogin(true)} className="text-blue-500 hover:underline">Login</button>
+                <button onClick={() => setShowLogin(true)} className="text-blue-500 hover:underline">Login</button>
               )}
 
             </li>
