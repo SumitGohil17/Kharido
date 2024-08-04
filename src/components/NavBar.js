@@ -46,7 +46,7 @@ function NavBar() {
             <li className="flex place-items-center mt-[10px] cursor-pointer">
               <img
                 className="w-[30px] h-[30px]"
-                src="images/icons8-t-shirt-64.png"
+                src="../images/shirt.png"
                 alt="Clothes"
               />
               <span className="ml-[10px] font-Podkova font-semibold">

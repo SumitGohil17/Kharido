@@ -7,6 +7,8 @@ import NavBar from './components/NavBar';
 import NavSideMenu from './components/NavSideMenu';
 import { LoginProvider } from './context/LoginContext';
 import { Logout } from './pages/Logout';
+import ProductDetails from './pages/ProductDetails';
+
 
 
 
@@ -24,6 +26,8 @@ function App() {
               <Route path='/' element={<Home />} />
               <Route path='/Men' element={<Men />} />
               <Route path='/logout' element={<Logout/>}/>
+              <Route path='/product/:productId' element={<ProductDetails/>} />
+              {/* <Route path='/product/:productId' element={<ProductDetails/>} /> */}
             </Routes>
           </div>
 

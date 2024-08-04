@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
+import { NavLink } from "react-router-dom";
 import Slider from "react-slick";
 import { useLogin } from "../context/LoginContext";
 import "slick-carousel/slick/slick.css";
@@ -7,8 +8,8 @@ import "slick-carousel/slick/slick-theme.css";
 
 function Men() {
   const [isHovered, setIsHovered] = useState(false);
-  const {products} = useLogin();
-  
+  const { products } = useLogin();
+
 
   const sliderSettings = {
     dots: true,
@@ -116,50 +117,52 @@ function Men() {
             {products.map((product, index) => (
               <div
                 key={index}
-                className=" relative h-[241px] bg-gray-50 rounded-[20px] hover:shadow-2xl cursor-pointer"
+                className=" relative h-[241px]  bg-gray-50 rounded-[20px] hover:shadow-2xl cursor-pointer"
                 onMouseEnter={() => setIsHovered(product.product_id)}
                 onMouseLeave={() => setIsHovered(null)}
               >
-                <div class=" absolute inset-x-0 bottom-0 flex justify-between items-end content-end">
-                  <div>
-                    <h3 class="text-sm text-gray-700">
-                      <a href="#">
-                        <span class="absolute inset-0"></span>
-                        {product.breadcrumbs[2].name}
-                      </a>
-                    </h3>
-                    <p class="mt-1 text-sm text-gray-500">
-                      {product.breadcrumbs[0].name}
+                <NavLink to={`/product/${product.product_id}`}>
+                  <div class=" absolute inset-x-0 p-[10px] bottom-0 flex justify-between items-end content-end">
+                    <div>
+                      <h3 class="text-sm text-gray-700">
+                        <a href="#">
+                          <span class="absolute inset-0"></span>
+                          {product.breadcrumbs[2].name}
+                        </a>
+                      </h3>
+                      <p class="mt-1 text-sm text-gray-500">
+                        {product.breadcrumbs[0].name}
+                      </p>
+                    </div>
+                    <p class="text-sm font-medium text-gray-900">
+                      {product.final_price}
                     </p>
                   </div>
-                  <p class="text-sm font-medium text-gray-900">
-                    {product.final_price}
-                  </p>
-                </div>
-                {isHovered === product.product_id ? (
-                  <div className="absolute top-0 left-0 right-0 bg-white">
-                    <Slider {...sliderSettings}>
-                      {product.images.map((image, index) => (
-                        <div key={index}>
-                          <img
-                            src={image}
-                            alt={`Image ${index + 1}`}
-                            className="object-fill h-[160px] w-full"
-                          />
-                        </div>
-                      ))}
-                    </Slider>
-                  </div>
-                ) : (
-                  <>
-                    <div className="flex justify-center ">
-                      <img loading="lazy"
-                        src={product.images[0]}
-                        className="object-fill h-[160px] w-full"
-                      />
+                  {isHovered === product.product_id ? (
+                    <div className="absolute top-0 left-0 right-0 bg-white">
+                      <Slider {...sliderSettings}>
+                        {product.images.map((image, index) => (
+                          <div key={index}>
+                            <img
+                              src={image}
+                              alt={`Image ${index + 1}`}
+                              className="object-fill h-[160px] w-full"
+                            />
+                          </div>
+                        ))}
+                      </Slider>
                     </div>
-                  </>
-                )}
+                  ) : (
+                    <>
+                      <div className="flex justify-center h-[160px] ">
+                        <img loading="lazy"
+                          src={product.images[0]}
+                          className=" object-fit  w-full"
+                        />
+                      </div>
+                    </>
+                  )}
+                </NavLink>
               </div>
             ))}
           </div>
