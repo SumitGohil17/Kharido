@@ -23,7 +23,7 @@ function ProductDetails() {
   const { product_id, title, product_description, final_price, product_details, images ,product_specifications,  initial_price } = singleProduct[0];
 
   return (
-    <div className='flex ml-[5px] bg-white'>
+    <div className=' block sm:flex sm:ml-[5px] bg-white'>
 
       {/* <h1>Hello {final_price}</h1>
       {product_details && product_details.description && (
@@ -88,7 +88,7 @@ function ProductDetails() {
         <div>Loading...</div>
       ) : (
         <>
-          <div className="masonry-grid mx-[30px] w-[50%]">
+          <div className="masonry-grid px-[10px] sm:px-0 sm:mx-[30px] justify-center w-full sm:w-[50%]">
             {images && images.map((image, index) => (
               <div key={index} className="masonry-item">
                 <img className="h-auto max-w-full rounded-lg" src={image} alt={`Product image ${index + 1}`} />
@@ -102,7 +102,7 @@ function ProductDetails() {
           </div> */}
 
           {/* <!-- Options --> */}
-          <div class="mt-4 w-[50%]  lg:mt-0">
+          <div class="mt-4 px-[10px] sm:p-0 w-full sm:w-[50%]  lg:mt-0">
             <h2 class="sr-only">Product information</h2>
             <p class="text-3xl tracking-tight text-gray-900 "><span><s className='decoration-slate-400 mr-[4px]'>{initial_price }</s></span>{final_price}</p>
 

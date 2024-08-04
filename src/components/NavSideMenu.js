@@ -51,6 +51,7 @@ function NavSideMenu() {
           <div className='absolute top-[50px] left-0 bg-white shadow-md w-full transition-all duration-[2s] ease-in-out sm:w-auto'>
             <ul className='flex flex-col items-start p-4'>
               <li className='my-2'>Home</li>
+              <NavLink to='/Men'> <li className='my-2'>Men</li></NavLink>
               <li className='my-2'>About</li>
               <li className='my-2'>Services</li>
               <li className='my-2'>Contact</li>
