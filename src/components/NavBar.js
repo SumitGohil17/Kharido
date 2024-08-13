@@ -8,18 +8,19 @@ function NavBar() {
   const navigate = useNavigate();
   return (
 
-    <div id="NavBar" className="w-[180px]  bg-white hidden sm:block ">
+    <div id="NavBar" className="!w-[210px] bg-white hidden sm:flex sm:w-[20%] pr-[80px]">
       <div className="flex flex-wrap flex-col ml-5 place-items-start content-between w-[90px] ">
-        <div class="header" className="m-2 w-[65px]">
+        <div class="header" className="  m-2 w-[65px]">
           <img
             class="logo"
-            src="./shopping-bags-svgrepo-com.svg"
+            src="/images/shopping-bags-svgrepo-com.svg"
             width="65px"
             alt=""
           />
         </div>
         <div id="sidebar" className="mt-[45px]">
           <ul className="list-none">
+            <NavLink to='/'>
             <li className="flex place-items-center mt-[10px] ">
               <img
                 className="w-[30px] h-[30px]"
@@ -30,6 +31,7 @@ function NavBar() {
                 Home
               </span>
             </li>
+            </NavLink>
             <NavLink to="/Men"><li
               className="flex place-items-center mt-[10px] cursor-pointer"
             >
@@ -43,16 +45,18 @@ function NavBar() {
               </span>
             </li>
             </NavLink>
+            <NavLink to='/Women'>
             <li className="flex place-items-center mt-[10px] cursor-pointer">
               <img
                 className="w-[30px] h-[30px]"
-                src="../images/shirt.png"
+                src="/images/shirt.png"
                 alt="Clothes"
               />
               <span className="ml-[10px] font-Podkova font-semibold">
                 Women
               </span>
             </li>
+            </NavLink>
             <li className="flex place-items-center mt-[10px] cursor-pointer">
               <img
                 className="w-[30px] h-[30px]"

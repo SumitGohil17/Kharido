@@ -23,7 +23,7 @@ function ProductDetails() {
   const { product_id, title, product_description, final_price, product_details, images ,product_specifications,  initial_price } = singleProduct[0];
 
   return (
-    <div className=' block sm:flex sm:ml-[5px] bg-white'>
+    <div className='block sm:flex sm:ml-[5px] bg-white h-full w-full'>
 
       {/* <h1>Hello {final_price}</h1>
       {product_details && product_details.description && (
@@ -88,7 +88,7 @@ function ProductDetails() {
         <div>Loading...</div>
       ) : (
         <>
-          <div className="masonry-grid px-[10px] sm:px-0 sm:mx-[30px] justify-center w-full sm:w-[50%]">
+          <div className="masonry-grid px-[10px] sm:px-0 sm:mx-[30px] justify-center h-[100vh] w-full sm:w-[50%] ">
             {images && images.map((image, index) => (
               <div key={index} className="masonry-item">
                 <img className="h-auto max-w-full rounded-lg" src={image} alt={`Product image ${index + 1}`} />

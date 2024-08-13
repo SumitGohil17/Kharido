@@ -318,547 +318,540 @@ const Home = () => {
     document.documentElement.scrollTo = 0;
   }, []);
   return (
-    <div className={`bg-white w-[100%] h-[100vh] sm:ml-[5px] ${showLogin ? 'overflow-hidden': 'overflow-y-scroll'}`}>
+    <div className={`bg-white w-[100%] h-[100vh] sm:ml-[5px] ${showLogin ? 'overflow-hidden' : 'overflow-y-scroll'}`}>
       {showLogin && (
-          <div className='flex z-1 justify-center items-center'>
-            <Login />
-          </div>
-        )}
-        <div className={` ${showLogin ? 'filter blur-sm pointer-events-none ' : ''}`}>
-      <Fragment>
-        
-        {
-          window.screen.width > 1024 ?
+        <div className='flex z-1 justify-center items-center'>
+          <Login />
+        </div>
+      )}
+      <div className={` ${showLogin ? 'filter blur-sm pointer-events-none ' : ''}`}>
+        <Fragment>
 
-            <Fragment >
+          {
+            window.screen.width > 1024 ?
+
+              <Fragment >
 
 
-              <div>
-                {/* {showLogin && (
-                  <div className=' flex justify-center items-center '>
-                    <Login />
+                <div>
+                  <h1 className='text-3xl px-8 font-bold font1 tracking-widest text-slate-800 mb-8'>DEAL OF THE DAY</h1>
+                  <div className='grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 xl:gap-x-3 xs:grid-cols-2 md:grid-cols-3 sl:grid-cols-2'>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={d1} alt="" className="min-h-[200px]" /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={d2} alt="" className="min-h-[200px]" /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={d3} alt="" className="min-h-[200px]" /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={d4} alt="" className="min-h-[200px]" /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={d5} alt="" className="min-h-[200px]" /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={d6} alt="" className="min-h-[200px]" /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={d7} alt="" className="min-h-[200px]" /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={d8} alt="" className="min-h-[200px]" /></Link>
                   </div>
-                )} */}
-
-
-                <h1 className='text-3xl px-8 font-bold font1 tracking-widest text-slate-800 mb-8'>DEAL OF THE DAY</h1>
-                <div className='grid grid-cols-8 sm:grid-cols-3 lg:grid-cols-8 xl:gap-x-3 xs:grid-cols-2 md:grid-cols-3 sl:grid-cols-2'>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={d1} alt="" className="min-h-[200px]" /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={d2} alt="" className="min-h-[200px]" /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={d3} alt="" className="min-h-[200px]" /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={d4} alt="" className="min-h-[200px]" /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={d5} alt="" className="min-h-[200px]" /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={d6} alt="" className="min-h-[200px]" /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={d7} alt="" className="min-h-[200px]" /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={d8} alt="" className="min-h-[200px]" /></Link>
                 </div>
-              </div>
-              <div>
-                <h1 className='text-3xl px-8 font-bold font1 tracking-widest text-slate-800 mb-8 mt-8'>BEST OF MYNTRA EXCLUSIVE BRANDS</h1>
-                <div className='grid grid-cols-8 gap-1 sm:grid-cols-3 lg:grid-cols-8 xl:gap-x-3 xs:grid-cols-2 md:grid-cols-3 sl:grid-cols-2'>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={a1} alt="" className="min-h-[200px]" /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={a2} alt="" className="min-h-[200px]" /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={a3} alt="" className="min-h-[200px]" /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={a4} alt="" className="min-h-[200px]" /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={a5} alt="" className="min-h-[200px]" /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={a6} alt="" className="min-h-[200px]" /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={a7} alt="" className="min-h-[200px]" /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={a8} alt="" className="min-h-[200px]" /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={a9} alt="" className="min-h-[200px]" /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={a10} alt="" className="min-h-[200px]" /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={a11} alt="" className="min-h-[200px]" /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={a12} alt="" className="min-h-[200px]" /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={a13} alt="" className="min-h-[200px]" /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={a14} alt="" className="min-h-[200px]" /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={a15} alt="" className="min-h-[200px]" /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={a16} alt="" className="min-h-[200px]" /></Link>
+                <div>
+                  <h1 className='text-3xl px-8 font-bold font1 tracking-widest text-slate-800 mb-8 mt-8'>BEST OF MYNTRA EXCLUSIVE BRANDS</h1>
+                  <div className='grid grid-cols-2 gap-1 sm:grid-cols-3 lg:grid-cols-5 xl:gap-x-3 xs:grid-cols-2 md:grid-cols-3 sl:grid-cols-2'>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={a1} alt="" className="min-h-[200px]" /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={a2} alt="" className="min-h-[200px]" /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={a3} alt="" className="min-h-[200px]" /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={a4} alt="" className="min-h-[200px]" /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={a5} alt="" className="min-h-[200px]" /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={a6} alt="" className="min-h-[200px]" /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={a7} alt="" className="min-h-[200px]" /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={a8} alt="" className="min-h-[200px]" /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={a9} alt="" className="min-h-[200px]" /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={a10} alt="" className="min-h-[200px]" /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={a11} alt="" className="min-h-[200px]" /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={a12} alt="" className="min-h-[200px]" /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={a13} alt="" className="min-h-[200px]" /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={a14} alt="" className="min-h-[200px]" /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={a15} alt="" className="min-h-[200px]" /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={a16} alt="" className="min-h-[200px]" /></Link>
+                  </div>
                 </div>
-              </div>
 
-              <div>
-                <h1 className='text-3xl px-8 font-bold font1 tracking-widest text-slate-800 mb-8 mt-8'>TOP PICKS</h1>
-                <div className='grid grid-cols-7 gap-2 sm:grid-cols-3 lg:grid-cols-8 xl:gap-x-3 xs:grid-cols-2 md:grid-cols-3 sl:grid-cols-2'>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={bb1} alt="" className="min-h-[200px]" /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={bb2} alt="" className="min-h-[200px]" /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={bb3} alt="" className="min-h-[200px]" /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={bb4} alt="" className="min-h-[200px]" /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={bb5} alt="" className="min-h-[200px]" /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={bb6} alt="" className="min-h-[200px]" /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={bb7} alt="" className="min-h-[200px]" /></Link>
+                <div>
+                  <h1 className='text-3xl px-8 font-bold font1 tracking-widest text-slate-800 mb-8 mt-8'>TOP PICKS</h1>
+                  <div className='grid grid-cols-7 gap-2 sm:grid-cols-3 lg:grid-cols-5 xl:gap-x-3 xs:grid-cols-2 md:grid-cols-3 sl:grid-cols-2'>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={bb1} alt="" className="min-h-[200px]" /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={bb2} alt="" className="min-h-[200px]" /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={bb3} alt="" className="min-h-[200px]" /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={bb4} alt="" className="min-h-[200px]" /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={bb5} alt="" className="min-h-[200px]" /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={bb6} alt="" className="min-h-[200px]" /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={bb7} alt="" className="min-h-[200px]" /></Link>
 
+                  </div>
                 </div>
-              </div>
 
-              <div>
-                <h1 className='text-3xl px-8 font-bold font1 tracking-widest text-slate-800 mb-8 mt-8'>CATEGORIES TO BAG</h1>
-                <div className='grid grid-cols-8 gap-1 sm:grid-cols-3 lg:grid-cols-8 xl:gap-x-3 xs:grid-cols-2 md:grid-cols-3 sl:grid-cols-2'>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={c1} alt="" className="min-h-[200px]" /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={c2} alt="" className="min-h-[200px]" /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={c3} alt="" className="min-h-[200px]" /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={c4} alt="" className="min-h-[200px]" /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={c5} alt="" className="min-h-[200px]" /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={c6} alt="" className="min-h-[200px]" /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={c7} alt="" className="min-h-[200px]" /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={c8} alt="" className="min-h-[200px]" /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={c9} alt="" className="min-h-[200px]" /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={c10} alt="" className="min-h-[200px]" /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={c11} alt="" className="min-h-[200px]" /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={c12} alt="" className="min-h-[200px]" /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={c13} alt="" className="min-h-[200px]" /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={c14} alt="" className="min-h-[200px]" /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={c15} alt="" className="min-h-[200px]" /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={c16} alt="" className="min-h-[200px]" /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={c17} alt="" className="min-h-[200px]" /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={c18} alt="" className="min-h-[200px]" /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={c19} alt="" className="min-h-[200px]" /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={c20} alt="" className="min-h-[200px]" /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={c21} alt="" className="min-h-[200px]" /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={c22} alt="" className="min-h-[200px]" /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={c23} alt="" className="min-h-[200px]" /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={c24} alt="" className="min-h-[200px]" /></Link>
+                <div>
+                  <h1 className='text-3xl px-8 font-bold font1 tracking-widest text-slate-800 mb-8 mt-8'>CATEGORIES TO BAG</h1>
+                  <div className='grid grid-cols-5 gap-1 sm:grid-cols-3 lg:grid-cols-5 xl:gap-x-3 xs:grid-cols-2 md:grid-cols-3 sl:grid-cols-2'>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={c1} alt="" className="min-h-[200px]" /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={c2} alt="" className="min-h-[200px]" /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={c3} alt="" className="min-h-[200px]" /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={c4} alt="" className="min-h-[200px]" /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={c5} alt="" className="min-h-[200px]" /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={c6} alt="" className="min-h-[200px]" /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={c7} alt="" className="min-h-[200px]" /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={c8} alt="" className="min-h-[200px]" /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={c9} alt="" className="min-h-[200px]" /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={c10} alt="" className="min-h-[200px]" /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={c11} alt="" className="min-h-[200px]" /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={c12} alt="" className="min-h-[200px]" /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={c13} alt="" className="min-h-[200px]" /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={c14} alt="" className="min-h-[200px]" /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={c15} alt="" className="min-h-[200px]" /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={c16} alt="" className="min-h-[200px]" /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={c17} alt="" className="min-h-[200px]" /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={c18} alt="" className="min-h-[200px]" /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={c19} alt="" className="min-h-[200px]" /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={c20} alt="" className="min-h-[200px]" /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={c21} alt="" className="min-h-[200px]" /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={c22} alt="" className="min-h-[200px]" /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={c23} alt="" className="min-h-[200px]" /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={c24} alt="" className="min-h-[200px]" /></Link>
 
+                  </div>
                 </div>
-              </div>
 
-              <div>
-                <h1 className='text-3xl px-8 font-bold font1 tracking-widest text-slate-800 mb-8 mt-8'>DEALS ON TOP BRANDS</h1>
-                <div className='grid grid-cols-8 gap-1 sm:grid-cols-3 lg:grid-cols-8 xl:gap-x-3 xs:grid-cols-2 md:grid-cols-3 sl:grid-cols-2'>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={e1} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={e2} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={e3} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={e4} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={e5} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={e6} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={e7} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={e8} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={e9} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={e10} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={e11} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={e12} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={e13} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={e14} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={e15} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={e16} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={e17} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={e18} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={e19} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={e20} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={e21} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={e22} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={e23} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={e24} alt="" className='min-h-[200px]' /></Link>
+                <div>
+                  <h1 className='text-3xl px-8 font-bold font1 tracking-widest text-slate-800 mb-8 mt-8'>DEALS ON TOP BRANDS</h1>
+                  <div className='grid grid-cols-5 gap-1 sm:grid-cols-3 lg:grid-cols-5 xl:gap-x-3 xs:grid-cols-2 md:grid-cols-3 sl:grid-cols-2'>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={e1} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={e2} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={e3} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={e4} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={e5} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={e6} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={e7} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={e8} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={e9} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={e10} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={e11} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={e12} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={e13} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={e14} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={e15} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={e16} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={e17} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={e18} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={e19} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={e20} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={e21} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={e22} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={e23} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={e24} alt="" className='min-h-[200px]' /></Link>
+                  </div>
                 </div>
-              </div>
 
-              <div>
-                <h1 className='text-3xl px-8 font-bold font1 tracking-widest text-slate-800 mb-8 mt-8'>BRANDS AT SLASHED PRICES</h1>
-                <div className='grid grid-cols-7 gap-1 sm:grid-cols-3 lg:grid-cols-8 xl:gap-x-3 xs:grid-cols-2 md:grid-cols-3 sl:grid-cols-2'>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={f1} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={f2} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={f3} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={f4} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={f5} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={f6} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={f7} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={f8} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={f9} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={f10} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={f11} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={f12} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={f13} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={f14} alt="" className='min-h-[200px]' /></Link>
+                <div>
+                  <h1 className='text-3xl px-8 font-bold font1 tracking-widest text-slate-800 mb-8 mt-8'>BRANDS AT SLASHED PRICES</h1>
+                  <div className='grid grid-cols-7 gap-1 sm:grid-cols-3 lg:grid-cols-5 xl:gap-x-3 xs:grid-cols-2 md:grid-cols-3 sl:grid-cols-2'>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={f1} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={f2} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={f3} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={f4} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={f5} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={f6} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={f7} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={f8} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={f9} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={f10} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={f11} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={f12} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={f13} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={f14} alt="" className='min-h-[200px]' /></Link>
 
+                  </div>
                 </div>
-              </div>
 
-              <div>
-                <h1 className='text-3xl px-8 font-bold font1 tracking-widest text-slate-800 mb-8 mt-8'>BEST BUYS</h1>
-                <div className='grid grid-cols-8 gap-1'>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={g1} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={g2} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={g3} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={g4} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={g5} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={g6} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={g7} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={g8} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={g9} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={g10} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={g11} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={g12} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={g13} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={g14} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={g15} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={g16} alt="" className='min-h-[200px]' /></Link>
+                <div>
+                  <h1 className='text-3xl px-8 font-bold font1 tracking-widest text-slate-800 mb-8 mt-8'>BEST BUYS</h1>
+                  <div className='grid grid-cols-5 gap-1'>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={g1} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={g2} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={g3} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={g4} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={g5} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={g6} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={g7} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={g8} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={g9} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={g10} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={g11} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={g12} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={g13} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={g14} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={g15} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={g16} alt="" className='min-h-[200px]' /></Link>
 
+                  </div>
                 </div>
-              </div>
 
-              <div>
-                <h1 className='text-3xl px-8 font-bold font1 tracking-widest text-slate-800 mb-8 mt-8'>MYNTRA LUXE</h1>
-                <div className='grid grid-cols-8 gap-1'>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={h1} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={h2} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={h3} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={h4} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={h5} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={h6} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={h7} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={h8} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={h9} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={h10} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={h11} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={h12} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={h13} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={h14} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={h15} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={h16} alt="" className='min-h-[200px]' /></Link>
+                <div>
+                  <h1 className='text-3xl px-8 font-bold font1 tracking-widest text-slate-800 mb-8 mt-8'>MYNTRA LUXE</h1>
+                  <div className='grid grid-cols-5 gap-1'>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={h1} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={h2} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={h3} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={h4} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={h5} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={h6} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={h7} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={h8} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={h9} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={h10} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={h11} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={h12} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={h13} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={h14} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={h15} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={h16} alt="" className='min-h-[200px]' /></Link>
 
+                  </div>
                 </div>
-              </div>
 
-              <div>
-                <h1 className='text-3xl px-8 font-bold font1 tracking-widest text-slate-800 mb-8 mt-8'>GIFTING CARDS</h1>
-                <div className='grid grid-cols-5 '>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={i1} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={i2} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={i3} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={i4} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={i5} alt="" className='min-h-[200px]' /></Link>
+                <div>
+                  <h1 className='text-3xl px-8 font-bold font1 tracking-widest text-slate-800 mb-8 mt-8'>GIFTING CARDS</h1>
+                  <div className='grid grid-cols-5 '>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={i1} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={i2} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={i3} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={i4} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={i5} alt="" className='min-h-[200px]' /></Link>
 
+                  </div>
                 </div>
-              </div>
 
-              <div>
-                <h1 className='text-3xl px-8 font-bold font1 tracking-widest text-slate-800 mb-8 mt-8'>DEALS ON LATEST ARRIVALS</h1>
-                <div className='grid grid-cols-2 '>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={j1} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={j2} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={j3} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={j4} alt="" className='min-h-[200px]' /></Link>
+                <div>
+                  <h1 className='text-3xl px-8 font-bold font1 tracking-widest text-slate-800 mb-8 mt-8'>DEALS ON LATEST ARRIVALS</h1>
+                  <div className='grid grid-cols-2 '>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={j1} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={j2} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={j3} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={j4} alt="" className='min-h-[200px]' /></Link>
 
 
+                  </div>
                 </div>
-              </div>
 
-              <div>
-                <h1 className='text-3xl px-8 font-bold font1 tracking-widest text-slate-800 mb-8 mt-8'>SPRING SUMMER 2022- FIRST ON MYNTRA</h1>
-                <div className='grid grid-cols-8 '>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={k1} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={k2} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={k3} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={k4} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={k5} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={k6} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={k7} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={k8} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={k9} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={k10} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={k11} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={k12} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={k13} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={k14} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={k15} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={k16} alt="" className='min-h-[200px]' /></Link>
+                <div>
+                  <h1 className='text-3xl px-8 font-bold font1 tracking-widest text-slate-800 mb-8 mt-8'>SPRING SUMMER 2022- FIRST ON MYNTRA</h1>
+                  <div className='grid grid-cols-5 '>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={k1} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={k2} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={k3} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={k4} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={k5} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={k6} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={k7} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={k8} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={k9} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={k10} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={k11} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={k12} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={k13} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={k14} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={k15} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={k16} alt="" className='min-h-[200px]' /></Link>
 
+                  </div>
                 </div>
-              </div>
 
-              <div>
-                <h1 className='text-3xl px-8 font-bold font1 tracking-widest text-slate-800 mb-8 mt-8'>STYLECAST HOTTEST FINDS</h1>
-                <div className='grid grid-cols-7 '>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={l1} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={l2} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={l3} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={l4} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={l5} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={l6} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={l7} alt="" className='min-h-[200px]' /></Link>
+                <div>
+                  <h1 className='text-3xl px-8 font-bold font1 tracking-widest text-slate-800 mb-8 mt-8'>STYLECAST HOTTEST FINDS</h1>
+                  <div className='grid grid-cols-7 '>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={l1} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={l2} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={l3} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={l4} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={l5} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={l6} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={l7} alt="" className='min-h-[200px]' /></Link>
 
 
+                  </div>
                 </div>
-              </div>
 
-              <div>
-                <h1 className='text-3xl px-8 font-bold font1 tracking-widest text-slate-800 mb-8 mt-8'>TRENDS FOR HER</h1>
-                <div className='grid grid-cols-8 '>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={m1} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={m2} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={m3} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={m4} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={m5} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={m6} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={m7} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={m8} alt="" className='min-h-[200px]' /></Link>
+                <div>
+                  <h1 className='text-3xl px-8 font-bold font1 tracking-widest text-slate-800 mb-8 mt-8'>TRENDS FOR HER</h1>
+                  <div className='grid grid-cols-5 '>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={m1} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={m2} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={m3} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={m4} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={m5} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={m6} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={m7} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={m8} alt="" className='min-h-[200px]' /></Link>
 
+                  </div>
                 </div>
-              </div>
 
-              <div>
-                <h1 className='text-3xl px-8 font-bold font1 tracking-widest text-slate-800 mb-8 mt-8'>TRENDS FOR HIM</h1>
-                <div className='grid grid-cols-8 '>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={n1} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={n2} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={n3} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={n4} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={n5} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={n6} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={n7} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={n8} alt="" className='min-h-[200px]' /></Link>
+                <div>
+                  <h1 className='text-3xl px-8 font-bold font1 tracking-widest text-slate-800 mb-8 mt-8'>TRENDS FOR HIM</h1>
+                  <div className='grid grid-cols-5 '>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={n1} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={n2} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={n3} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={n4} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={n5} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={n6} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={n7} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={n8} alt="" className='min-h-[200px]' /></Link>
 
+                  </div>
                 </div>
-              </div>
 
-              <div>
-                <h1 className='text-3xl px-8 font-bold font1 tracking-widest text-slate-800 mb-8 mt-8'>BEST OF KIDSWEAR</h1>
-                <div className='grid grid-cols-7 '>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={o1} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={o2} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={o3} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={o4} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={o5} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={o6} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={o7} alt="" className='min-h-[200px]' /></Link>
+                <div>
+                  <h1 className='text-3xl px-8 font-bold font1 tracking-widest text-slate-800 mb-8 mt-8'>BEST OF KIDSWEAR</h1>
+                  <div className='grid grid-cols-7 '>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={o1} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={o2} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={o3} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={o4} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={o5} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={o6} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={o7} alt="" className='min-h-[200px]' /></Link>
 
 
+                  </div>
                 </div>
-              </div>
 
-              <div>
-                <h1 className='text-3xl px-8 font-bold font1 tracking-widest text-slate-800 mb-8 mt-8'>NEW IN TOP BRANDS</h1>
-                <div className='grid grid-cols-8 '>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={p1} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={p2} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={p3} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={p4} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={p5} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={p6} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={p7} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={p8} alt="" className='min-h-[200px]' /></Link>
+                <div>
+                  <h1 className='text-3xl px-8 font-bold font1 tracking-widest text-slate-800 mb-8 mt-8'>NEW IN TOP BRANDS</h1>
+                  <div className='grid grid-cols-5 '>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={p1} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={p2} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={p3} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={p4} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={p5} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={p6} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={p7} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={p8} alt="" className='min-h-[200px]' /></Link>
 
+                  </div>
                 </div>
-              </div>
 
-              <div>
-                <h1 className='text-3xl px-8 font-bold font1 tracking-widest text-slate-800 mb-8 mt-8'>SPRING SUMMER SEASON CHECKLIST</h1>
-                <div className='grid grid-cols-8 '>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={q1} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={q2} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={q3} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={q4} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={q5} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={q6} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={q7} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={q8} alt="" className='min-h-[200px]' /></Link>
+                <div>
+                  <h1 className='text-3xl px-8 font-bold font1 tracking-widest text-slate-800 mb-8 mt-8'>SPRING SUMMER SEASON CHECKLIST</h1>
+                  <div className='grid grid-cols-5 '>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={q1} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={q2} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={q3} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={q4} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={q5} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={q6} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={q7} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={q8} alt="" className='min-h-[200px]' /></Link>
 
+                  </div>
                 </div>
-              </div>
 
-              <div>
-                <h1 className='text-3xl px-8 font-bold font1 tracking-widest text-slate-800 mb-8 mt-8'>NEWNESS FOR EVERY OCCASION</h1>
-                <div className='grid grid-cols-4 '>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={r1} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={r2} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={r3} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={r4} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={r5} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={r6} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={r7} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={r8} alt="" className='min-h-[200px]' /></Link>
+                <div>
+                  <h1 className='text-3xl px-8 font-bold font1 tracking-widest text-slate-800 mb-8 mt-8'>NEWNESS FOR EVERY OCCASION</h1>
+                  <div className='grid grid-cols-4 '>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={r1} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={r2} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={r3} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={r4} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={r5} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={r6} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={r7} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={r8} alt="" className='min-h-[200px]' /></Link>
 
+                  </div>
                 </div>
-              </div>
 
-              <div>
-                <h1 className='text-3xl px-8 font-bold font1 tracking-widest text-slate-800 mb-8 mt-8'>LATEST IN BEAUTY & GROOMING</h1>
-                <div className='grid grid-cols-4 '>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={s1} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={s2} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={s3} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={s4} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={s5} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={s6} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={s7} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={s8} alt="" className='min-h-[200px]' /></Link>
+                <div>
+                  <h1 className='text-3xl px-8 font-bold font1 tracking-widest text-slate-800 mb-8 mt-8'>LATEST IN BEAUTY & GROOMING</h1>
+                  <div className='grid grid-cols-4 '>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={s1} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={s2} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={s3} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={s4} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={s5} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={s6} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={s7} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={s8} alt="" className='min-h-[200px]' /></Link>
 
+                  </div>
                 </div>
-              </div>
 
 
-              <div>
-                <h1 className='text-3xl px-8 font-bold font1 tracking-widest text-slate-800 mb-8 mt-8'>UNMISSABLE THIS SEASON</h1>
-                <div className='grid grid-cols-8 '>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={t1} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={t2} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={t3} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={t4} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={t5} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={t6} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={t7} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={t8} alt="" className='min-h-[200px]' /></Link>
+                <div>
+                  <h1 className='text-3xl px-8 font-bold font1 tracking-widest text-slate-800 mb-8 mt-8'>UNMISSABLE THIS SEASON</h1>
+                  <div className='grid grid-cols-5 '>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={t1} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={t2} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={t3} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={t4} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={t5} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={t6} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={t7} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={t8} alt="" className='min-h-[200px]' /></Link>
 
+                  </div>
                 </div>
-              </div>
 
-              <div>
-                <h1 className='text-3xl px-8 font-bold font1 tracking-widest text-slate-800 mb-8 mt-8'>COLOURS OF THE SEASON</h1>
-                <div className='grid grid-cols-4 '>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={u1} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={u2} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={u3} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={u4} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={u5} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={u6} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={u7} alt="" className='min-h-[200px]' /></Link>
-                  <Link to='/products'><LazyLoadImage effect=' ' src={u8} alt="" className='min-h-[200px]' /></Link>
+                <div>
+                  <h1 className='text-3xl px-8 font-bold font1 tracking-widest text-slate-800 mb-8 mt-8'>COLOURS OF THE SEASON</h1>
+                  <div className='grid grid-cols-4 '>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={u1} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={u2} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={u3} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={u4} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={u5} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={u6} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={u7} alt="" className='min-h-[200px]' /></Link>
+                    <Link to='/products'><LazyLoadImage effect=' ' src={u8} alt="" className='min-h-[200px]' /></Link>
 
+                  </div>
                 </div>
-              </div>
 
 
 
-            </Fragment>
+              </Fragment>
 
-            :
+              :
 
-            <Fragment>
+              <Fragment>
 
-              <div className='bg-white '>
-                <ul className='flex overflow-x-scroll '>
-                  <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={ma1} alt="" className="w-[18vw] min-h-[70px]" /></li></Link>
-                  <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={ma2} alt="" className="w-[18vw] min-h-[70px]" /></li></Link>
-                  <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={ma3} alt="" className="w-[18vw] min-h-[70px]" /></li></Link>
-                  <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={ma4} alt="" className="w-[18vw] min-h-[70px]" /></li></Link>
-                  <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={ma5} alt="" className="w-[18vw] min-h-[70px]" /></li></Link>
-                  <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={ma6} alt="" className="w-[18vw] min-h-[70px]" /></li></Link>
-                  <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={ma7} alt="" className="w-[18vw] min-h-[70px]" /></li></Link>
-                  <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={ma8} alt="" className="w-[18vw] min-h-[70px]" /></li></Link>
-                  <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={ma9} alt="" className="w-[18vw] min-h-[70px]" /></li></Link>
-                  <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={ma10} alt="" className="w-[18vw] min-h-[70px]" /></li></Link>
-                  <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={ma11} alt="" className="w-[18vw] min-h-[70px]" /></li></Link>
-                </ul>
-              </div>
+                <div className='bg-white '>
+                  <ul className='flex overflow-x-scroll '>
+                    <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={ma1} alt="" className="w-[18vw] min-h-[70px]" /></li></Link>
+                    <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={ma2} alt="" className="w-[18vw] min-h-[70px]" /></li></Link>
+                    <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={ma3} alt="" className="w-[18vw] min-h-[70px]" /></li></Link>
+                    <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={ma4} alt="" className="w-[18vw] min-h-[70px]" /></li></Link>
+                    <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={ma5} alt="" className="w-[18vw] min-h-[70px]" /></li></Link>
+                    <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={ma6} alt="" className="w-[18vw] min-h-[70px]" /></li></Link>
+                    <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={ma7} alt="" className="w-[18vw] min-h-[70px]" /></li></Link>
+                    <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={ma8} alt="" className="w-[18vw] min-h-[70px]" /></li></Link>
+                    <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={ma9} alt="" className="w-[18vw] min-h-[70px]" /></li></Link>
+                    <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={ma10} alt="" className="w-[18vw] min-h-[70px]" /></li></Link>
+                    <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={ma11} alt="" className="w-[18vw] min-h-[70px]" /></li></Link>
+                  </ul>
+                </div>
 
-              <div>
-                <LazyLoadImage effect=' ' src={mm3} alt="" className='mt-2 min-h-[100px]' />
-              </div>
-
-
-
-              <div>
-                <h1 className='text-xl px-8 font-bold font1 text-center text-slate-800 mb-6 mt-6'>DEAL OF THE DAY</h1>
-                <ul className='flex overflow-x-scroll '>
-                  <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={d1} alt="" className="w-[50vw] min-h-[200px]" /></li></Link>
-                  <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={d2} alt="" className="w-[50vw] min-h-[200px]" /></li></Link>
-                  <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={d3} alt="" className="w-[50vw] min-h-[200px]" /></li></Link>
-                  <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={d4} alt="" className="w-[50vw] min-h-[200px]" /></li></Link>
-                  <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={d5} alt="" className="w-[50vw] min-h-[200px]" /></li></Link>
-                  <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={d6} alt="" className="w-[50vw] min-h-[200px]" /></li></Link>
-                  <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={d7} alt="" className="w-[50vw] min-h-[200px]" /></li></Link>
-                  <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={d8} alt="" className="w-[50vw] min-h-[200px]" /></li></Link>
-                </ul>
-              </div>
-
-              <div>
-                <h1 className='text-xl px-8 font-bold font1 text-center text-slate-800 mb-6 mt-6'>BEST OF MYNTRA EXCLUSIVE BRANDS</h1>
-                <ul className='flex overflow-x-scroll '>
-                  <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={a1} alt="" className="w-[50vw] min-h-[200px]" /></li></Link>
-                  <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={a2} alt="" className="w-[50vw] min-h-[200px]" /></li></Link>
-                  <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={a3} alt="" className="w-[50vw] min-h-[200px]" /></li></Link>
-                  <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={a4} alt="" className="w-[50vw] min-h-[200px]" /></li></Link>
-                  <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={a5} alt="" className="w-[50vw] min-h-[200px]" /></li></Link>
-                  <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={a6} alt="" className="w-[50vw] min-h-[200px]" /></li></Link>
-                  <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={a7} alt="" className="w-[50vw] min-h-[200px]" /></li></Link>
-                  <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={a8} alt="" className="w-[50vw] min-h-[200px]" /></li></Link>
-                  <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={a9} alt="" className="w-[50vw] min-h-[200px]" /></li></Link>
-                  <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={a10} alt="" className="w-[50vw] min-h-[200px]" /></li></Link>
-                  <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={a11} alt="" className="w-[50vw] min-h-[200px]" /></li></Link>
-                  <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={a12} alt="" className="w-[50vw] min-h-[200px]" /></li></Link>
-                  <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={a13} alt="" className="w-[50vw] min-h-[200px]" /></li></Link>
-                  <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={a14} alt="" className="w-[50vw] min-h-[200px]" /></li></Link>
-                  <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={a15} alt="" className="w-[50vw] min-h-[200px]" /></li></Link>
-                  <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={a16} alt="" className="w-[50vw] min-h-[200px]" /></li></Link>
-
-                </ul>
-              </div>
+                <div>
+                  <LazyLoadImage effect=' ' src={mm3} alt="" className='mt-2 min-h-[100px]' />
+                </div>
 
 
-              <div>
-                <h1 className='text-xl px-8 font-bold font1 text-center text-slate-800 mb-6 mt-6'>TOP PICKS</h1>
-                <ul className='flex overflow-x-scroll '>
-                  <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={bb1} alt="" className="w-[50vw] min-h-[200px]" /></li></Link>
-                  <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={bb2} alt="" className="w-[50vw] min-h-[200px]" /></li></Link>
-                  <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={bb3} alt="" className="w-[50vw] min-h-[200px]" /></li></Link>
-                  <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={bb4} alt="" className="w-[50vw] min-h-[200px]" /></li></Link>
-                  <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={bb5} alt="" className="w-[50vw] min-h-[200px]" /></li></Link>
-                  <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={bb6} alt="" className="w-[50vw] min-h-[200px]" /></li></Link>
-                  <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={bb7} alt="" className="w-[50vw] min-h-[200px]" /></li></Link>
 
-                </ul>
-              </div>
+                <div>
+                  <h1 className='text-xl px-8 font-bold font1 text-center text-slate-800 mb-6 mt-6'>DEAL OF THE DAY</h1>
+                  <ul className='flex overflow-x-scroll '>
+                    <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={d1} alt="" className="w-[50vw] min-h-[200px]" /></li></Link>
+                    <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={d2} alt="" className="w-[50vw] min-h-[200px]" /></li></Link>
+                    <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={d3} alt="" className="w-[50vw] min-h-[200px]" /></li></Link>
+                    <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={d4} alt="" className="w-[50vw] min-h-[200px]" /></li></Link>
+                    <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={d5} alt="" className="w-[50vw] min-h-[200px]" /></li></Link>
+                    <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={d6} alt="" className="w-[50vw] min-h-[200px]" /></li></Link>
+                    <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={d7} alt="" className="w-[50vw] min-h-[200px]" /></li></Link>
+                    <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={d8} alt="" className="w-[50vw] min-h-[200px]" /></li></Link>
+                  </ul>
+                </div>
 
-              <div className='mt-4 grid grid-cols-2 min-h-[200px]'>
-                <LazyLoadImage effect=' ' src={mm1_1} alt="" />
-                <LazyLoadImage effect=' ' src={mm1_2} alt="" />
-              </div>
+                <div>
+                  <h1 className='text-xl px-8 font-bold font1 text-center text-slate-800 mb-6 mt-6'>BEST OF MYNTRA EXCLUSIVE BRANDS</h1>
+                  <ul className='flex overflow-x-scroll '>
+                    <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={a1} alt="" className="w-[50vw] min-h-[200px]" /></li></Link>
+                    <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={a2} alt="" className="w-[50vw] min-h-[200px]" /></li></Link>
+                    <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={a3} alt="" className="w-[50vw] min-h-[200px]" /></li></Link>
+                    <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={a4} alt="" className="w-[50vw] min-h-[200px]" /></li></Link>
+                    <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={a5} alt="" className="w-[50vw] min-h-[200px]" /></li></Link>
+                    <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={a6} alt="" className="w-[50vw] min-h-[200px]" /></li></Link>
+                    <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={a7} alt="" className="w-[50vw] min-h-[200px]" /></li></Link>
+                    <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={a8} alt="" className="w-[50vw] min-h-[200px]" /></li></Link>
+                    <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={a9} alt="" className="w-[50vw] min-h-[200px]" /></li></Link>
+                    <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={a10} alt="" className="w-[50vw] min-h-[200px]" /></li></Link>
+                    <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={a11} alt="" className="w-[50vw] min-h-[200px]" /></li></Link>
+                    <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={a12} alt="" className="w-[50vw] min-h-[200px]" /></li></Link>
+                    <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={a13} alt="" className="w-[50vw] min-h-[200px]" /></li></Link>
+                    <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={a14} alt="" className="w-[50vw] min-h-[200px]" /></li></Link>
+                    <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={a15} alt="" className="w-[50vw] min-h-[200px]" /></li></Link>
+                    <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={a16} alt="" className="w-[50vw] min-h-[200px]" /></li></Link>
 
-              <div>
-                <LazyLoadImage effect=' ' src={mad1} alt="" />
-              </div>
-
-              <div className='mt-4 grid grid-cols-2 min-h-[200px]'>
-                <LazyLoadImage effect=' ' src={mm2_1} alt="" />
-                <LazyLoadImage effect=' ' src={mm2_2} alt="" />
-              </div>
-
-              <div>
-                <h1 className='text-xl px-8 font-bold font1 text-center text-slate-800 mb-6 mt-6'>CATEGORIES TO BAG</h1>
-                <ul className='grid grid-cols-3 '>
-                  <Link to='/products'><li className=''><LazyLoadImage effect=' ' src={c1} alt="" className="min-h-[100px]" /></li></Link>
-                  <Link to='/products'><li className=''><LazyLoadImage effect=' ' src={c2} alt="" className="min-h-[100px]" /></li></Link>
-                  <Link to='/products'><li className=''><LazyLoadImage effect=' ' src={c3} alt="" className="min-h-[100px]" /></li></Link>
-                  <Link to='/products'><li className=''><LazyLoadImage effect=' ' src={c4} alt="" className="min-h-[100px]" /></li></Link>
-                  <Link to='/products'><li className=''><LazyLoadImage effect=' ' src={c5} alt="" className="min-h-[100px]" /></li></Link>
-                  <Link to='/products'><li className=''><LazyLoadImage effect=' ' src={c6} alt="" className="min-h-[100px]" /></li></Link>
-                  <Link to='/products'><li className=''><LazyLoadImage effect=' ' src={c7} alt="" className="min-h-[100px]" /></li></Link>
-                  <Link to='/products'><li className=''><LazyLoadImage effect=' ' src={c8} alt="" className="min-h-[100px]" /></li></Link>
-                  <Link to='/products'><li className=''><LazyLoadImage effect=' ' src={c9} alt="" className="min-h-[100px]" /></li></Link>
-                  <Link to='/products'><li className=''><LazyLoadImage effect=' ' src={c10} alt="" className="min-h-[100px]" /></li></Link>
-                  <Link to='/products'><li className=''><LazyLoadImage effect=' ' src={c11} alt="" className="min-h-[100px]" /></li></Link>
-                  <Link to='/products'><li className=''><LazyLoadImage effect=' ' src={c12} alt="" className="min-h-[100px]" /></li></Link>
-                  <Link to='/products'><li className=''><LazyLoadImage effect=' ' src={c13} alt="" className="min-h-[100px]" /></li></Link>
-                  <Link to='/products'><li className=''><LazyLoadImage effect=' ' src={c14} alt="" className="min-h-[100px]" /></li></Link>
-                  <Link to='/products'><li className=''><LazyLoadImage effect=' ' src={c15} alt="" className="min-h-[100px]" /></li></Link>
-                  <Link to='/products'><li className=''><LazyLoadImage effect=' ' src={c16} alt="" className="min-h-[100px]" /></li></Link>
-                  <Link to='/products'><li className=''><LazyLoadImage effect=' ' src={c17} alt="" className="min-h-[100px]" /></li></Link>
-                  <Link to='/products'><li className=''><LazyLoadImage effect=' ' src={c18} alt="" className="min-h-[100px]" /></li></Link>
-                  <Link to='/products'><li className=''><LazyLoadImage effect=' ' src={c19} alt="" className="min-h-[100px]" /></li></Link>
-                  <Link to='/products'><li className=''><LazyLoadImage effect=' ' src={c20} alt="" className="min-h-[100px]" /></li></Link>
-                  <Link to='/products'><li className=''><LazyLoadImage effect=' ' src={c21} alt="" className="min-h-[100px]" /></li></Link>
-                  <Link to='/products'><li className=''><LazyLoadImage effect=' ' src={c22} alt="" className="min-h-[100px]" /></li></Link>
-                  <Link to='/products'><li className=''><LazyLoadImage effect=' ' src={c23} alt="" className="min-h-[100px]" /></li></Link>
-                  <Link to='/products'><li className=''><LazyLoadImage effect=' ' src={c24} alt="" className="min-h-[100px]" /></li></Link>
-
-                </ul>
-              </div>
-
-              <div>
-                <h1 className='text-xl px-8 font-bold font1 text-center text-slate-800 mb-6 mt-6'>DEALS ON LATEST ARRIVALS</h1>
-                <ul className='grid grid-cols-1 '>
-                  <Link to='/products'><li className=''><LazyLoadImage effect=' ' src={j1} alt="" className="min-h-[100px]" /></li></Link>
-                  <Link to='/products'><li className=''><LazyLoadImage effect=' ' src={j2} alt="" className="min-h-[100px]" /></li></Link>
-                  <Link to='/products'><li className=''><LazyLoadImage effect=' ' src={j3} alt="" className="min-h-[100px]" /></li></Link>
-                  <Link to='/products'><li className=''><LazyLoadImage effect=' ' src={j4} alt="" className="min-h-[100px]" /></li></Link>
+                  </ul>
+                </div>
 
 
-                </ul>
-              </div>
+                <div>
+                  <h1 className='text-xl px-8 font-bold font1 text-center text-slate-800 mb-6 mt-6'>TOP PICKS</h1>
+                  <ul className='flex overflow-x-scroll '>
+                    <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={bb1} alt="" className="w-[50vw] min-h-[200px]" /></li></Link>
+                    <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={bb2} alt="" className="w-[50vw] min-h-[200px]" /></li></Link>
+                    <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={bb3} alt="" className="w-[50vw] min-h-[200px]" /></li></Link>
+                    <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={bb4} alt="" className="w-[50vw] min-h-[200px]" /></li></Link>
+                    <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={bb5} alt="" className="w-[50vw] min-h-[200px]" /></li></Link>
+                    <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={bb6} alt="" className="w-[50vw] min-h-[200px]" /></li></Link>
+                    <Link to='/products'><li className='w-max mr-2'><LazyLoadImage effect=' ' src={bb7} alt="" className="w-[50vw] min-h-[200px]" /></li></Link>
+
+                  </ul>
+                </div>
+
+                <div className='mt-4 grid grid-cols-2 min-h-[200px]'>
+                  <LazyLoadImage effect=' ' src={mm1_1} alt="" />
+                  <LazyLoadImage effect=' ' src={mm1_2} alt="" />
+                </div>
+
+                <div>
+                  <LazyLoadImage effect=' ' src={mad1} alt="" />
+                </div>
+
+                <div className='mt-4 grid grid-cols-2 min-h-[200px]'>
+                  <LazyLoadImage effect=' ' src={mm2_1} alt="" />
+                  <LazyLoadImage effect=' ' src={mm2_2} alt="" />
+                </div>
+
+                <div>
+                  <h1 className='text-xl px-8 font-bold font1 text-center text-slate-800 mb-6 mt-6'>CATEGORIES TO BAG</h1>
+                  <ul className='grid grid-cols-3 '>
+                    <Link to='/products'><li className=''><LazyLoadImage effect=' ' src={c1} alt="" className="min-h-[100px]" /></li></Link>
+                    <Link to='/products'><li className=''><LazyLoadImage effect=' ' src={c2} alt="" className="min-h-[100px]" /></li></Link>
+                    <Link to='/products'><li className=''><LazyLoadImage effect=' ' src={c3} alt="" className="min-h-[100px]" /></li></Link>
+                    <Link to='/products'><li className=''><LazyLoadImage effect=' ' src={c4} alt="" className="min-h-[100px]" /></li></Link>
+                    <Link to='/products'><li className=''><LazyLoadImage effect=' ' src={c5} alt="" className="min-h-[100px]" /></li></Link>
+                    <Link to='/products'><li className=''><LazyLoadImage effect=' ' src={c6} alt="" className="min-h-[100px]" /></li></Link>
+                    <Link to='/products'><li className=''><LazyLoadImage effect=' ' src={c7} alt="" className="min-h-[100px]" /></li></Link>
+                    <Link to='/products'><li className=''><LazyLoadImage effect=' ' src={c8} alt="" className="min-h-[100px]" /></li></Link>
+                    <Link to='/products'><li className=''><LazyLoadImage effect=' ' src={c9} alt="" className="min-h-[100px]" /></li></Link>
+                    <Link to='/products'><li className=''><LazyLoadImage effect=' ' src={c10} alt="" className="min-h-[100px]" /></li></Link>
+                    <Link to='/products'><li className=''><LazyLoadImage effect=' ' src={c11} alt="" className="min-h-[100px]" /></li></Link>
+                    <Link to='/products'><li className=''><LazyLoadImage effect=' ' src={c12} alt="" className="min-h-[100px]" /></li></Link>
+                    <Link to='/products'><li className=''><LazyLoadImage effect=' ' src={c13} alt="" className="min-h-[100px]" /></li></Link>
+                    <Link to='/products'><li className=''><LazyLoadImage effect=' ' src={c14} alt="" className="min-h-[100px]" /></li></Link>
+                    <Link to='/products'><li className=''><LazyLoadImage effect=' ' src={c15} alt="" className="min-h-[100px]" /></li></Link>
+                    <Link to='/products'><li className=''><LazyLoadImage effect=' ' src={c16} alt="" className="min-h-[100px]" /></li></Link>
+                    <Link to='/products'><li className=''><LazyLoadImage effect=' ' src={c17} alt="" className="min-h-[100px]" /></li></Link>
+                    <Link to='/products'><li className=''><LazyLoadImage effect=' ' src={c18} alt="" className="min-h-[100px]" /></li></Link>
+                    <Link to='/products'><li className=''><LazyLoadImage effect=' ' src={c19} alt="" className="min-h-[100px]" /></li></Link>
+                    <Link to='/products'><li className=''><LazyLoadImage effect=' ' src={c20} alt="" className="min-h-[100px]" /></li></Link>
+                    <Link to='/products'><li className=''><LazyLoadImage effect=' ' src={c21} alt="" className="min-h-[100px]" /></li></Link>
+                    <Link to='/products'><li className=''><LazyLoadImage effect=' ' src={c22} alt="" className="min-h-[100px]" /></li></Link>
+                    <Link to='/products'><li className=''><LazyLoadImage effect=' ' src={c23} alt="" className="min-h-[100px]" /></li></Link>
+                    <Link to='/products'><li className=''><LazyLoadImage effect=' ' src={c24} alt="" className="min-h-[100px]" /></li></Link>
+
+                  </ul>
+                </div>
+
+                <div>
+                  <h1 className='text-xl px-8 font-bold font1 text-center text-slate-800 mb-6 mt-6'>DEALS ON LATEST ARRIVALS</h1>
+                  <ul className='grid grid-cols-1 '>
+                    <Link to='/products'><li className=''><LazyLoadImage effect=' ' src={j1} alt="" className="min-h-[100px]" /></li></Link>
+                    <Link to='/products'><li className=''><LazyLoadImage effect=' ' src={j2} alt="" className="min-h-[100px]" /></li></Link>
+                    <Link to='/products'><li className=''><LazyLoadImage effect=' ' src={j3} alt="" className="min-h-[100px]" /></li></Link>
+                    <Link to='/products'><li className=''><LazyLoadImage effect=' ' src={j4} alt="" className="min-h-[100px]" /></li></Link>
 
 
-            </Fragment>
-        }
+                  </ul>
+                </div>
 
-      </Fragment>
+
+              </Fragment>
+          }
+
+        </Fragment>
       </div>
     </div>
   );

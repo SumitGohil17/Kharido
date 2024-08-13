@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router";
+import React, { useEffect , useState } from 'react'
+import { useParams } from 'react-router';
+import { useLogin } from '../context/LoginContext';
 import { NavLink } from "react-router-dom";
 import Slider from "react-slick";
-import { useLogin } from "../context/LoginContext";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+function AllProduct() {
 
-function Men() {
+  const { title } = useParams();
   const [isHovered, setIsHovered] = useState(false);
   const { products } = useLogin();
+  const [product, setProduct] = useState([]);
 
   const sliderSettings = {
     dots: true,
@@ -21,6 +23,22 @@ function Men() {
     autoplay: true,
     autoplaySpeed: 1000,
   };
+
+  useEffect(() => {
+    if(title){
+    fetchbyCategory(title)
+    }
+  }, []);
+
+  const fetchbyCategory = async (title) => {
+    try{
+        let res = await fetch(`https://practice2-rho.vercel.app/api/category?nameType=Women&nameCategory=${title}`)
+        let data = await res.json()
+        setProduct(data);
+    }catch (err) {
+      console.log(err)
+    }
+  }
 
   return (
     <div id="container" className="flex bg-[#dcdcdc] h-[100v] w-full">
@@ -48,7 +66,7 @@ function Men() {
           </h2>
 
           <div className="mt-6 grid grid-cols-2 h-[100vh] gap-x-[20px] gap-y-[20px] sm:grid-cols-3 lg:grid-cols-4 xl:gap-x-3 xs:grid-cols-2 md:grid-cols-3">
-            {products.map((product, index) => (
+            {product.map((product, index) => (
               <div
                 key={index}
                 className=" relative  h-[360px] sm:w-[210px] bg-gray-50  rounded-[20px] hover:shadow-2xl cursor-pointer "
@@ -107,4 +125,4 @@ function Men() {
   )
 }
 
-export default Men
+export default AllProduct

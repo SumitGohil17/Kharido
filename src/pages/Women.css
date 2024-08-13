@@ -1,0 +1,52 @@
+/* 
+  .content {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .header {
+    font-size: 42px;
+  }
+  .img {
+    display: flex;
+    margin: 0 auto;
+    height: 40vh;
+    width: 80%;
+    border-radius: 5%;
+  }
+  .container {
+    margin: 0 auto;
+    width: 100%;
+    height: 80vh;
+    border-color: white;
+  }
+  .title {
+    margin-left: 50px;
+    width: 70%;
+    font-size: 30px;
+    padding: 20px;
+    border-radius: 5px;
+    font-size: 33px;
+  }
+  .description {
+    margin: 20px auto;
+    width: 80%;
+    font-size: 25px;
+    margin: 20px auto;
+  } */
+
+  .slick-prev {
+    left: -52px !important;
+  }
+  .slick-next:before,
+  .slick-prev:before {
+    content: "" !important;
+  }
+  .next-slick-arrow,
+  .prev-slick-arrow {
+    color: #000000;
+    font-size: 45px;
+  }
+
+  .slick-list {
+    overflow: hidden;
+  }
