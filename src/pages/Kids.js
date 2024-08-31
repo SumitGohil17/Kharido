@@ -1,11 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router";
 import CategoryCard from '../components/categoryCard'
-import { clothing, footwear } from '../helper/cardApi'
+import { menClothing } from '../helper/cardApi'
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import './Women.css'
 
 
 const NextArrow = (props) => {
@@ -34,7 +33,7 @@ const PrevArrow = (props) => {
   return (
     <div
       className={className}
-      style={{ ...style, display: 'block', left: '25px', background: 'none' }}
+      style={{ ...style, display: 'block', left: '-25px', background: 'none' }}
       onClick={onClick}
     >
       <svg
@@ -66,8 +65,6 @@ const sliderSettings = {
       settings: {
         slidesToShow: 3,
         slidesToScroll: 1,
-        infinite: true,
-        dots: true
       }
     },
     {
@@ -76,65 +73,57 @@ const sliderSettings = {
         slidesToShow: 2,
         slidesToScroll: 1,
         initialSlide: 2
+
       }
     },
     {
       breakpoint: 480,
       settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1
+        slidesToShow: 2,
+        slidesToScroll: 2
       }
     }
   ]
 };
 
-const Women = () => {
+const Kids = () => {
   const navigate = useNavigate();
 
   const handleCardClick = (name, title) => {
-
     navigate(`/products/${encodeURIComponent(name)}/${encodeURIComponent(title)}`);
   }
 
   return (
     <div id="container" className="ml-[5px] bg-white h-[100vh] w-full overflow-y-scroll hide-scrollbar overflow-x-hidden">
       <div className="mx-[15px]">
-        <h2 className="flex justify-center text-3xl font-bold font1 tracking-widest clothing-heading">
+        <h2 className="flex justify-center text-3xl font-bold font1 tracking-widest text-slate-800 ">
           CLOTHING
         </h2>
-        <div className=" ml-7 flex w-full justify-center items-center">
-          <div className="mt-6 w-full grid col-span-4  grid-cols-5 sm:grid-cols-3 lg:grid-cols-4  xs:grid-cols-2 md:grid-cols-3">
-            <Slider {...sliderSettings} className="flex col-span-4 mr-[40px] justify-center">
-              {clothing.map((category, index) => (
-                <div className="p-[8px]" key={index} onClick={() => handleCardClick('Women', category.title)} >
-                  <CategoryCard
-
-                    image={category.image}
-                    title={category.title}
-                    discount={category.discount}
-
-                  />
-                  {/* <LazyLoadImage effect=' ' src={category.image} alt="" className="min-h-[200px]" /> */}
-                </div>
-              ))}
-            </Slider>
-          </div>
-        </div>
-      </div>
-      <div className="mx-[15px] mt-[15px]">
-        <h2 className="flex justify-center text-3xl font-bold font1 tracking-widest text-slate-800 clothing-heading">
-          FOOTWEAR
-        </h2>
-        <div className="mt-6 ml-5 w-full grid col-span-4 grid-cols-6  sm:grid-cols-3 lg:grid-cols-4  xs:grid-cols-2 md:grid-cols-3 ">
-          <Slider {...sliderSettings} className="flex col-span-4 mr-[40px] justify-center" >
-            {footwear.map((category, index) => (
-              <div className="p-[2px]" key={index} onClick={() => handleCardClick('Women', category.title)}>
+        <div className="mt-6">
+          <Slider {...sliderSettings} className="flex justify-start">
+            {menClothing.map((category, index) => (
+              <div className="p-[8px]" key={index} onClick={() => handleCardClick('Men', category.title)}>
                 <CategoryCard
-
                   image={category.image}
                   title={category.title}
                   discount={category.discount}
-                  buttonText={category.buttonText}
+                />
+              </div>
+            ))}
+          </Slider>
+        </div>
+
+        <h2 className="flex justify-center text-3xl font-bold font1 tracking-widest text-slate-800 mt-10">
+          FOOTWEAR
+        </h2>
+        <div className="mt-6">
+          <Slider {...sliderSettings} className="flex justify-start">
+            {menClothing.map((category, index) => (
+              <div className="p-[8px]" key={index} onClick={() => handleCardClick('Men', category.title)}>
+                <CategoryCard
+                  image={category.image}
+                  title={category.title}
+                  discount={category.discount}
                 />
               </div>
             ))}
@@ -146,4 +135,4 @@ const Women = () => {
   );
 };
 
-export default Women;
+export default Kids;

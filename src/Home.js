@@ -324,7 +324,7 @@ const Home = () => {
           <Login />
         </div>
       )}
-      <div className={` ${showLogin ? 'filter blur-sm pointer-events-none ' : ''}`}>
+      <div className={` ${showLogin ? 'filter blur-sm pointer-events-none ' : 'ml-[10px]'}`}>
         <Fragment>
 
           {

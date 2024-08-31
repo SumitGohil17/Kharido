@@ -7,11 +7,15 @@ import NavBar from './components/NavBar';
 import NavSideMenu from './components/NavSideMenu';
 import { LoginProvider } from './context/LoginContext';
 import { Logout } from './pages/Logout';
-import Productdetail from './pages/Productdetail';
+import Productdetail from './model/Productdetail';
 import { CardProvider } from './context/CartContext';
 import AddToCart from './pages/AddToCart';
 import Women from './pages/Women';
 import AllProduct from './model/AllProduct';
+import Kids from './pages/Kids';
+import Beauty from './pages/Beauty';
+import DressMaterial from './pages/DressMaterial';
+import MaterialDetail from './model/MaterialDetail';
 
 
 
@@ -34,9 +38,13 @@ function App() {
                   <Route path='/Men' element={<Men />} />
                   <Route path='/logout' element={<Logout />} />
                   <Route path='/Men/product/:productId' element={<Productdetail />} />
+                  <Route path= "/material/:dressId" element={<MaterialDetail/>}/>
                   <Route path='/cart' element={<AddToCart />} />
                   <Route path='/Women' element={<Women />} />
-                  <Route path='/products/:title' element={<AllProduct/>} />
+                  <Route path='/Kids' element={<Kids />} />
+                  <Route path='/Beauty' element={<Beauty />} />
+                  <Route path='/dress/:category' element={<DressMaterial/>}/>
+                  <Route path='/products/:name/:title' element={<AllProduct/>} />
                   {/* <Route path='/product/:productId' element={<ProductDetails/>} /> */}
                 </Routes>
               </div>

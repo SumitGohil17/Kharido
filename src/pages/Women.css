@@ -50,3 +50,12 @@
   .slick-list {
     overflow: hidden;
   }
+
+  .clothing-heading {
+    background-image: url('/public/images/textBg.jpg'); /* Replace with the path to your image */
+    background-size: contain;
+    background-clip : text;
+    -webkit-background-clip: text;
+    color: transparent;
+    
+  }

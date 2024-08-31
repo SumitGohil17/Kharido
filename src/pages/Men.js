@@ -1,110 +1,146 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router";
-import { NavLink } from "react-router-dom";
+import CategoryCard from '../components/categoryCard'
+import { menClothing } from '../helper/cardApi'
 import Slider from "react-slick";
-import { useLogin } from "../context/LoginContext";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-function Men() {
-  const [isHovered, setIsHovered] = useState(false);
-  const { products } = useLogin();
 
-  const sliderSettings = {
-    dots: true,
-    infinite: true,
-    fade: true,
-    arrows: false,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    pauseOnHover: false,
-    autoplay: true,
-    autoplaySpeed: 1000,
-  };
+const NextArrow = (props) => {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{ ...style, display: 'block', right: '-25px', background: 'none' }}
+      onClick={onClick}
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        className="w-6 h-6 text-black"
+      >
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+      </svg>
+    </div>
+  );
+};
+
+const PrevArrow = (props) => {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{ ...style, display: 'block', left: '-25px', background: 'none' }}
+      onClick={onClick}
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        className="w-6 h-6 text-black"
+      >
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+      </svg>
+    </div>
+  );
+};
+
+
+const sliderSettings = {
+  dots: false,
+  infinite: false,
+  speed: 500,
+  slidesToShow: 6, // Show 5 items at a time
+  slidesToScroll: 6,
+  rows: 2,
+  nextArrow: <NextArrow />,
+  prevArrow: <PrevArrow />,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 1,
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        initialSlide: 2
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2
+      }
+    }
+  ]
+};
+
+const Men = () => {
+  const navigate = useNavigate();
+
+  const handleCardClick = (name, title) => {
+
+    navigate(`/products/${encodeURIComponent(name)}/${encodeURIComponent(title)}`);
+  }
 
   return (
-    <div id="container" className="flex bg-[#dcdcdc] h-[100v] w-full">
-      <style>
-        {`
-         .slick-dots li {
-            margin-right: -5px; 
-            margin-left: -5px;
-    
-          }
+    <div id="container" className="ml-[5px] bg-white h-[100vh] w-full overflow-y-scroll hide-scrollbar overflow-x-hidden">
+      <div className="mx-[15px]">
+        <h2 className="flex justify-center text-3xl font-bold font1 tracking-widest text-slate-800 ">
+          CLOTHING
+        </h2>
+        <div className=" ml-7 flex w-full justify-center items-center">
+          <div className="mt-6 w-full grid col-span-4  grid-cols-5 sm:grid-cols-3 lg:grid-cols-4  xs:grid-cols-2 md:grid-cols-3">
+            <Slider {...sliderSettings} className="flex col-span-4 mr-[40px] justify-center">
+              {menClothing.map((category, index) => (
+                <div className="p-[8px]" key={index} onClick={() => handleCardClick('Men', category.title)} >
+                  <CategoryCard
+                    image={category.image}
+                    title={category.title}
+                    discount={category.discount}
 
-          .searchicon {
-            background-image:url('./icons8-search.svg');
-            background-repeat: no-repeat;
-            width: 65px;
-            height: 65px;
-          }
-        `}
-      </style>
-
-      <div className="bg-white w-[100%] h-[100vh] sm:ml-[5px] overflow-y-scroll">
-        <div className="mx-[8px]">
-          <h2 className="text-2xl font-bold tracking-tight text-gray-900">
-            Customers also purchased
-          </h2>
-
-          <div className="mt-6 grid grid-cols-2 h-[100vh] gap-x-[20px] gap-y-[20px] sm:grid-cols-3 lg:grid-cols-4 xl:gap-x-3 xs:grid-cols-2 md:grid-cols-3">
-            {products.map((product, index) => (
-              <div
-                key={index}
-                className=" relative  h-[360px] sm:w-[210px] bg-gray-50  rounded-[20px] hover:shadow-2xl cursor-pointer "
-                onMouseEnter={() => setIsHovered(product.product_id)}
-                onMouseLeave={() => setIsHovered(null)}
-              >
-                <NavLink to={`/Men/product/${product.product_id}`}>
-                  
-                  {isHovered === product.product_id ? (
-                    <div className="absolute top-0 left-0 right-0 bg-white">
-                      <Slider {...sliderSettings}>
-                        {product.images.map((image, index) => (
-                          <div key={index}>
-                            <img
-                              src={image}
-                              alt={`Image ${index + 1}`}
-                              className="object-fill h-auto w-full"
-                            />
-                          </div>
-                        ))}
-                      </Slider>
-                    </div>
-                  ) : (
-                    <>
-                      <div className="flex justify-center h-[280px] ">
-                        <img loading="lazy"
-                          src={product.images[0]}
-                          className=" object-fill h-[280px]"
-                        />
-                      </div>
-                    </>
-                  )}
-                  <div class=" absolute  inset-x-0 p-[10px] bottom-0 flex justify-between items-end content-end">
-                    <div>
-                      <h3 class="text-sm text-gray-700">
-                        <a href="#">
-                          <span class="absolute inset-0"></span>
-                          {product.breadcrumbs[2].name}
-                        </a>
-                      </h3>
-                      <p class="mt-1 text-sm text-gray-500">
-                        {product.breadcrumbs[0].name}
-                      </p>
-                    </div>
-                    <p class="text-sm font-medium text-gray-900">
-                    ₹{product.final_price}
-                    </p>
-                  </div>
-                </NavLink>
-              </div>
-            ))}
+                  />
+                  {/* <LazyLoadImage effect=' ' src={category.image} alt="" className="min-h-[200px]" /> */}
+                </div>
+              ))}
+            </Slider>
+            
           </div>
         </div>
       </div>
-    </div>
-  )
-}
+      {/* <div className="mx-[px]">
+        <h2 className="text-2xl font-bold tracking-tight text-gray-900">
+          FootWear
+        </h2>
+        <div className="mt-6 ml-5 w-full grid col-span-4 grid-cols-6  sm:grid-cols-3 lg:grid-cols-4  xs:grid-cols-2 md:grid-cols-3 ">
+          <Slider {...sliderSettings} className="flex col-span-4 mr-[40px] justify-center" >
+            {footwear.map((category, index) => (
+              <div className="p-[2px]" key={index} onClick={() => handleCardClick(category.title)}>
+                <CategoryCard
 
-export default Men
+                  image={category.image}
+                  title={category.title}
+                  discount={category.discount}
+                  buttonText={category.buttonText}
+                />
+              </div>
+            ))}
+          </Slider>
+        </div>
+      </div> */}
+    </div>
+
+  );
+};
+
+export default Men;

@@ -7,7 +7,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 function AllProduct() {
 
-  const { title } = useParams();
+  const { name, title } = useParams();
   const [isHovered, setIsHovered] = useState(false);
   const { products } = useLogin();
   const [product, setProduct] = useState([]);
@@ -25,14 +25,14 @@ function AllProduct() {
   };
 
   useEffect(() => {
-    if(title){
-    fetchbyCategory(title)
+    if(name && title){
+    fetchbyCategory(name , title)
     }
   }, []);
 
-  const fetchbyCategory = async (title) => {
+  const fetchbyCategory = async (name, title) => {
     try{
-        let res = await fetch(`https://practice2-rho.vercel.app/api/category?nameType=Women&nameCategory=${title}`)
+        let res = await fetch(`https://practice2-rho.vercel.app/api/category?nameType=${name}&nameCategory=${title}`)
         let data = await res.json()
         setProduct(data);
     }catch (err) {
@@ -65,11 +65,11 @@ function AllProduct() {
             Customers also purchased
           </h2>
 
-          <div className="mt-6 grid grid-cols-2 h-[100vh] gap-x-[20px] gap-y-[20px] sm:grid-cols-3 lg:grid-cols-4 xl:gap-x-3 xs:grid-cols-2 md:grid-cols-3">
+          <div className="mt-6 grid grid-cols-2 list-none h-[100vh] gap-x-2 sm:gap-x-2 lg:w-[90%] md:px-6 gap-y-2 sm:grid-cols-2 lg:grid-cols-4 xs:grid-cols-2 md:grid-cols-2">
             {product.map((product, index) => (
               <div
                 key={index}
-                className=" relative  h-[360px] sm:w-[210px] bg-gray-50  rounded-[20px] hover:shadow-2xl cursor-pointer "
+                className=" relative  h-[360px] sm:w-[210px] bg-gray-50  hover:shadow-2xl cursor-pointer "
                 onMouseEnter={() => setIsHovered(product.product_id)}
                 onMouseLeave={() => setIsHovered(null)}
               >

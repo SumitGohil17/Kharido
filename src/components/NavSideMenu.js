@@ -30,7 +30,7 @@ function NavSideMenu() {
 
     <div className="sticky right-0 top-0 2xl:w-[100%] xl:w-[100%] lg:w-[100%] mx-auto w-[100%] h-[50px] bg-[#fff] sm:ml-[5px] contenthide z-10 ">
       <div className='flex 2xl:grid xl:grid grid-cols-2 lg:flex h-full w-full mx-6 right-0 '>
-        {/* <div className=" w-[30px] h-[30px] mt-1 items-center cursor-pointer sm:hidden" onClick={toggleMenu}>
+        {/* <div className=" 'w-[30px] h-[30px] mt-1 items-center cursor-pointer sm:hidden'" onClick={toggleMenu}>
           <div className="w-[30px] h-[5px] bg-black rounded-[6px] mb-1"></div>
           <div className="w-[30px] h-[5px] bg-black rounded-[6px] mb-1"></div>
           <div className="w-[30px] h-[5px] bg-black rounded-[6px]"></div>
@@ -45,7 +45,7 @@ function NavSideMenu() {
             </ul>
           </div>
         )} */}
-        <div className="w-[30px] h-[30px] mt-1 items-center cursor-pointer sm:hidden" onClick={toggleMenu}>
+        <div className='w-[30px] h-[30px] mt-1 items-center cursor-pointer sm:hidden' onClick={toggleMenu}>
           <div className={`w-[30px] h-[5px] border border-black rounded-[6px] mb-1 transform transition duration-300 ease ${isMenuOpen ? 'rotate-45  translate-y-2.5' : ''}`}></div>
           <div className={`w-[30px] h-[5px] border border-black rounded-[6px] mb-1 ${isMenuOpen ? ' opacity-0' : ' '}`}></div>
           <div className={`w-[30px] h-[5px] border border-black rounded-[6px] transform transition duration-300 ease ${isMenuOpen ? '-rotate-45  -translate-y-2.5' : ''}`}></div>

@@ -1,17 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { useLogin } from '../context/LoginContext';
+import { useCard } from '../context/CartContext';
 import AddCartToogle from '../components/AddCartToogle';
 import { NavLink } from 'react-router-dom';
 import AddCardBag from '../components/AddCardBag';
+import Cart from '../components/cart';
 
 function Productdetail() {
   let API = "https://practice2-rho.vercel.app/api/id";
 
   const { getSingleProduct, singleProduct } = useLogin();
+  const { AddToCard } = useCard();
   console.log('Single Product:', singleProduct);
   const [qauntity, setQauntity] = useState(1);
 
+  const [isCartVisible, setIsCartVisible] = useState(false);
+  const [reviews, setReviews] = useState([]);
+  const [currentReviews, setCurrentReviews] = useState('')
 
 
   const { productId } = useParams();
@@ -28,6 +34,7 @@ function Productdetail() {
 
   const { product_id, title, product_description, final_price, product_details, images, product_specifications, initial_price, stock } = singleProduct[0];
 
+ 
   const decrease = (e) => {
     e.preventDefault();
     setQauntity(decreaseValue => (decreaseValue > 1 ? decreaseValue - 1 : 1))
@@ -38,9 +45,27 @@ function Productdetail() {
     setQauntity(increaseValue => (increaseValue < stock ? increaseValue + 1 : stock))
   }
 
+  const handleCloseCart = () => {
+    setIsCartVisible(false);
+  };
+
+  const handleAddToCart = (e) => {
+    e.preventDefault();
+    AddToCard(product_id, qauntity, singleProduct)
+    setIsCartVisible(true);
+  };
+
+  const handleReview = (e) => {
+    e.preventDefault();
+    if (currentReviews.trim()) {
+      setReviews([...reviews, currentReviews])
+      setCurrentReviews('')
+    }
+  }
+
   return (
 
-    <div id="container" className="flex bg-[#dcdcdc] w-full overflow-y-scroll">
+    <div id="container" className={`flex bg-[#dcdcdc] h-full sm:h-[100vh] w-full ${isCartVisible ? 'pointer-events-none overflow-y-hidden' : 'overflow-y-scroll'}`}>
       <style>
         {`
          .slick-dots li {
@@ -58,7 +83,8 @@ function Productdetail() {
 
           .masonry-grid {
        column-count: 2; /* Number of columns */
-      column-gap: 1rem; /* Gap between columns */
+      column-gap: 10px;
+      row-gap: 10px; /* Gap between columns */
     }
 
     .masonry-item {
@@ -192,7 +218,7 @@ function Productdetail() {
                     </svg>
                   </div>
                   <p class="sr-only">4 out of 5 stars</p>
-                  <a href="#" class="ml-3 text-sm font-medium text-indigo-600 hover:text-indigo-500">117 reviews</a>
+                  <a href="" class="ml-3 text-sm font-medium text-indigo-600 hover:text-indigo-500">{reviews.length} reviews</a>
                 </div>
               </div>
 
@@ -316,10 +342,14 @@ function Productdetail() {
                   </div>
                 </div>
                 <div className='flex '>
-                  <AddCardBag product={singleProduct} quantity={qauntity} />
+                  {/* <AddCardBag product={singleProduct} quantity={qauntity} /> */}
+                  <button type="submit" onClick={handleAddToCart} class=" px-[10px] flex h-[50px] w-full items-center justify-center rounded-md border border-transparent bg-indigo-600  ml-[10px] text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Add to Cart</button>
                   <button type="submit" class=" px-[10px] flex h-[50px] w-full items-center justify-center rounded-md border border-transparent bg-indigo-600  ml-[10px] text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Buy</button>
 
                 </div>
+                {isCartVisible && (
+                  <Cart close={handleCloseCart} />
+                )}
               </form>
               <div className='mt-10'>
                 <h3 class="text-sm font-medium text-gray-900">Description</h3>
@@ -351,6 +381,24 @@ function Productdetail() {
                   </div>
                 )}
 
+              </div>
+
+              <div className='mt-[10px]'>
+                <h2 className='mt-[5px] '>Reviews</h2>
+                <form onSubmit={handleReview} className='flex'>
+                  <textarea className=' border-2 border-black w-[90%] mr-2' type="text"
+                    value={currentReviews}
+                    onChange={(e) => setCurrentReviews(e.target.value)}
+                    placeholder="write your review" />
+                  <button className='w-[80px] rounded bg-blue-500' type='submit'>Submit</button>
+                </form>
+                <div className='mt-[15px]' class="reviews">
+                  {reviews.map((review, index) => (
+                    <ul key={index}>
+                      <li className='p-[10px]'>{review}</li>
+                    </ul>
+                  ))}
+                </div>
               </div>
             </div>
 
