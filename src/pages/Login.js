@@ -60,6 +60,7 @@ function Login() {
                     password : ""
                 })
                 setShowLogin(false);
+                window.location.reload();
                 
             } else {
                 alert("login fails");
