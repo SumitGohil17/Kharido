@@ -15,7 +15,7 @@ function NavSideMenu() {
 
   const handleLogout = () => {
     Cookies.remove('token');
-    setIslog(false);
+    
     window.location.reload();
   };
 
