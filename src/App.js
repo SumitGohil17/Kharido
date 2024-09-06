@@ -18,9 +18,6 @@ import DressMaterial from './pages/DressMaterial';
 import MaterialDetail from './model/MaterialDetail';
 
 
-
-
-
 function App() {
   return (
     <LoginProvider>

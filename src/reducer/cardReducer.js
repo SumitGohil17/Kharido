@@ -11,6 +11,7 @@ const cardReducer = (state, action) => {
       description: product[0].product_description,
       name: product[0].title,
       price: product[0].final_price,
+      totalprice: product[0].final_price * quantity,
     }
 
     return {
