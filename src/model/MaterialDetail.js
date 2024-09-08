@@ -53,6 +53,7 @@ function MaterialDetail() {
 
   const handleAddToCart = async (e) => {
     e.preventDefault();
+    try{
     const response = await fetch('https://kharidoo-backend.vercel.app/api/card/addcard',{
       method : 'POST',
       headers: {
@@ -77,6 +78,9 @@ function MaterialDetail() {
     }
     // AddToCard(product_id, qauntity, singleProduct)
     setIsCartVisible(true);
+  }catch(error) {
+    console.log(error);
+  }
   };
 
   const handleReview = (e) => {
