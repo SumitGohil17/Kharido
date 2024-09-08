@@ -285,7 +285,7 @@ const Home = () => {
     margin: '0 4px 0 4px',
     zIndex: 8
   };
-  const { showLogin } = useLogin();
+  // const { showLogin } = useLogin();
   // #CFCECD
   function indicator(onClickHandler, isSelected, index, label) {
     if (isSelected) {
@@ -318,13 +318,13 @@ const Home = () => {
     document.documentElement.scrollTo = 0;
   }, []);
   return (
-    <div className={`bg-white w-[100%] h-[100vh] sm:ml-[5px] ${showLogin ? 'overflow-hidden' : 'overflow-y-scroll'}`}>
-      {showLogin && (
+    <div className='bg-white w-[100%] h-[100vh] sm:ml-[5px] overflow-y-scroll'>
+      {/* {showLogin && (
         <div className='flex z-1 justify-center items-center'>
           <Login />
         </div>
-      )}
-      <div className={` ${showLogin ? 'filter blur-sm pointer-events-none ' : 'ml-[10px]'}`}>
+      )} */}
+      <div className='ml-[10px]'>
         <Fragment>
 
           {

@@ -10,7 +10,7 @@ import Cart from '../components/cart';
 function MaterialDetail() {
   let API = "https://practice2-rho.vercel.app/api/dressid";
 
-  const { getSingleProduct, singleProduct } = useLogin();
+  const { getSingleProduct, singleProduct, isLogged } = useLogin();
   const { AddToCard } = useCard();
   console.log('Single Product:', singleProduct);
   const [qauntity, setQauntity] = useState(1);
@@ -51,9 +51,31 @@ function MaterialDetail() {
     setIsCartVisible(false);
   };
 
-  const handleAddToCart = (e) => {
+  const handleAddToCart = async (e) => {
     e.preventDefault();
-    AddToCard(product_id, qauntity, singleProduct)
+    const response = await fetch('https://kharidoo-backend.vercel.app/api/card/addcard',{
+      method : 'POST',
+      headers: {
+        'Authorization': `Bearer ${isLogged}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        product_id: product_id,
+        quantity: qauntity,
+        title: singleProduct[0].title,
+        final_price: singleProduct[0].final_price,
+        description: singleProduct[0].description,
+        image: singleProduct[0].images[0],
+        stock: singleProduct[0].stock
+    })
+    
+  });
+    const data = await response.json();
+    if(response.ok) {
+      alert('Product Added to Cart');
+      console.log('Product Added:', data);
+    }
+    // AddToCard(product_id, qauntity, singleProduct)
     setIsCartVisible(true);
   };
 

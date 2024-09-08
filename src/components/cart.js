@@ -1,12 +1,33 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { useCard } from '../context/CartContext'
 import AddCartToogle from './AddCartToogle';
 import { useLogin } from '../context/LoginContext';
 
 function Cart({ close }) {
-    const { cart, removeItem, setIncrease, setDeacrease } = useCard();
-    const { isLog } = useLogin();
+    // const { cart, removeItem, setIncrease, setDeacrease } = useCard();
+
+    const {cart , setCartData} = useState([]);
+    const { isLog, isLogged} = useLogin();
     const totalSum = cart.reduce((acc, product) => acc + (product.totalprice), 0);
+
+    useEffect(() => {
+        const fetchCart = async () => {
+          const response = await fetch(`https://kharidoo-backend.vercel.app/api/card/getCard` , {
+            method : 'GET',
+            headers : {
+              Authorization : `Bearer ${isLogged}`
+            }
+          });
+          if (response.ok) {
+            const cartData = await response.json();
+            setCartData(cartData);
+          } else {
+            console.error('Failed to fetch cart data');
+          }
+        };
+    
+        fetchCart();
+      }, []);
     return (
         <div class="relative z-10" aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
             {/* <!--
@@ -36,6 +57,24 @@ function Cart({ close }) {
                         --> */}
                         <div class="pointer-events-auto w-screen max-w-md">
                             {isLog ? (
+                                <div className='class="flex h-full flex-col overflow-y-scroll bg-white shadow-xl"'>
+                                <div class="flex-1 overflow-y-auto px-4 py-6 sm:px-6">
+                                    <div class="flex items-start justify-between">
+                                        <h2 class="text-lg font-medium text-gray-900" id="slide-over-title">Shopping cart</h2>
+                                        <div class="ml-3 flex h-7 items-center">
+                                            <button type="button" onClick={close} class="relative -m-2 p-2 text-gray-400 hover:text-gray-500">
+                                                <span class="absolute -inset-0.5"></span>
+                                                <span class="sr-only">Close panel</span>
+                                                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <h1 className="flex items-center justify-center  text-2xl">Please Login to see your cart</h1>
+                                </div>
+                            </div>
+                            ) : (
                                 <div class="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
                                     <div class="flex-1 overflow-y-auto px-4 py-6 sm:px-6">
                                         <div class="flex items-start justify-between">
@@ -60,7 +99,7 @@ function Cart({ close }) {
 
                                                             <li key={index} class="flex py-6">
                                                                 <div class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
-                                                                    <img src={product.image} class="h-full w-full object-cover object-center" />
+                                                                    <img src={product.productImage} class="h-full w-full object-cover object-center" />
                                                                 </div>
 
                                                                 <div class="ml-4 flex flex-1 flex-col">
@@ -73,15 +112,14 @@ function Cart({ close }) {
                                                                         </div>
                                                                         <p class="mt-1 text-sm text-gray-500">Salmon</p>
                                                                         <AddCartToogle
-                                                                            increase={(e) => setIncrease(e, product.id)}
-                                                                            decrease={() => setDeacrease(product.id)}
+                                                                            
                                                                             quantity={product.quantity} />
                                                                     </div>
                                                                     <div class="flex flex-1 items-end justify-between text-sm">
                                                                         <p class="text-gray-500">Qty {product.quantity}</p>
 
                                                                         <div class="flex">
-                                                                            <button type="button" onClick={() => removeItem(product.id)} class="font-medium text-indigo-600 hover:text-indigo-500">Remove</button>
+                                                                            <button type="button" class="font-medium text-indigo-600 hover:text-indigo-500">Remove</button>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -115,24 +153,6 @@ function Cart({ close }) {
                                                 </button>
                                             </p>
                                         </div>
-                                    </div>
-                                </div>
-                            ) : (
-                                <div className='class="flex h-full flex-col overflow-y-scroll bg-white shadow-xl"'>
-                                    <div class="flex-1 overflow-y-auto px-4 py-6 sm:px-6">
-                                        <div class="flex items-start justify-between">
-                                            <h2 class="text-lg font-medium text-gray-900" id="slide-over-title">Shopping cart</h2>
-                                            <div class="ml-3 flex h-7 items-center">
-                                                <button type="button" onClick={close} class="relative -m-2 p-2 text-gray-400 hover:text-gray-500">
-                                                    <span class="absolute -inset-0.5"></span>
-                                                    <span class="sr-only">Close panel</span>
-                                                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                                                    </svg>
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <h1 className="flex items-center justify-center  text-2xl">Please Login to see your cart</h1>
                                     </div>
                                 </div>
                             )}
