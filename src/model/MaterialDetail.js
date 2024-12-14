@@ -12,6 +12,7 @@ import { Marker } from "react-leaflet/Marker";
 import { Popup } from "react-leaflet/Popup";
 import "leaflet/dist/leaflet.css";
 import L from 'leaflet';
+import Buy from '../services/Buy';
 import Cookies from 'js-cookie';
 import {
   Accordion,
@@ -20,6 +21,7 @@ import {
   AccordionTrigger,
 } from "../components/ui/accordion"
 import Reviews from '../components/Reviews';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs"
 import { TailorTabs } from '../components/TailorTab';
 
 
@@ -28,12 +30,18 @@ function MaterialDetail() {
   let API = `${process.env.REACT_APP_PRODUCT_API}/api/dressid`;
 
   const { getSingleProduct, singleProduct, isLogged } = useLogin();
+  const { AddToCard } = useCard();
+  const [cart, setCart] = useState([]);
   console.log('Single Product:', singleProduct);
   const [qauntity, setQauntity] = useState(1);
   const [isLog, setIsLogged] = useState(Cookies.get('token'));
+
   const [isCartVisible, setIsCartVisible] = useState(false);
   const [reviews, setReviews] = useState([]);
   const [currentReviews, setCurrentReviews] = useState('')
+  const [showTailorButton, setShowTailorButton] = useState(false);
+  const mapRef = useRef(null);
+  // const hideTimeoutRef = useRef(null);
   const [isIframeVisible, setIsIframeVisible] = useState(false);
   const [iframeSrc, setIframeSrc] = useState('');
   const [mapData, setMapData] = useState([]);
@@ -330,7 +338,6 @@ function MaterialDetail() {
               </div>
 
               <form class="mt-10">
-                {/* <!-- Sizes --> */}
                 <div class="mt-10">
                   <div class="flex items-center justify-between">
                     <h3 class="text-sm font-medium text-gray-900">Size</h3>
@@ -339,7 +346,7 @@ function MaterialDetail() {
 
                   <fieldset aria-label="Choose a size" class="mt-4">
                     <div class="grid grid-cols-4 gap-4 sm:grid-cols-8 lg:grid-cols-4">
-                      {/* <!-- Active: "ring-2 ring-indigo-500" --> */}
+                
                       <label class="group relative flex cursor-not-allowed items-center justify-center rounded-md border bg-gray-50 px-4 py-3 text-sm font-medium uppercase text-gray-200 hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6">
                         <input type="radio" name="size-choice" value="XXS" disabled class="sr-only" />
                         <span>XXS</span>
@@ -475,8 +482,8 @@ function MaterialDetail() {
         </div>
       </div>
       {isIframeVisible && (
-        <div className="iframe-container fixed inset-0 flex items-center justify-center mt-[40px] z-50 p-4">
-          <div className="flex flex-col sm:flex-row rounded-lg w-full sm:w-[70%] h-[90vh] sm:h-[500px] bg-white">
+        <div className="iframe-container fixed inset-0 flex items-center justify-center mt-[40px] z-50">
+          <div className="flex flex-col sm:flex-row rounded-lg w-[95%] sm:w-[70%] h-[90vh] sm:h-[500px] bg-white">
             {/* Left side - Map */}
             <div className='w-full sm:w-1/2 h-[300px] sm:h-full'>
               <div className="h-full">
@@ -511,7 +518,7 @@ function MaterialDetail() {
             {/* Right side - Tailor Selection & Booking */}
             <div className="w-full sm:w-1/2 p-4 overflow-y-auto">
               <div className="flex justify-between items-center mb-4">
-                <h2 className="text-lg sm:text-xl font-bold">Nearby Tailors</h2>
+                <h2 className="text-xl font-bold">Nearby Tailors</h2>
                 <button
                   onClick={() => setIsIframeVisible(false)}
                   className="text-gray-500 hover:text-gray-700"
@@ -523,11 +530,12 @@ function MaterialDetail() {
                 </button>
               </div>
 
-              <div className="space-y-4 h-[200px] mb-6 overflow-y-scroll">
+              {/* Tailor List */}
+              <div className="space-y-4 h-[200px] mb-6 overflow-y-auto">
                 {markers.map((marker, index) => (
-                  <div key={index} className="border rounded-lg p-2 sm:p-3 hover:shadow-md">
-                    <div className="flex items-start justify-between">
-                      <div className="flex gap-2">
+                  <div key={index} className="border rounded-lg p-3 hover:shadow-md">
+                    <div className="flex flex-col sm:flex-row items-start justify-between">
+                      <div className="flex gap-2 w-full sm:w-auto mb-2 sm:mb-0">
                         <input
                           type="checkbox"
                           className="mt-1.5 h-4 w-4 rounded border-gray-300 text-[#c8a165] focus:ring-[#c8a165]"
@@ -538,17 +546,17 @@ function MaterialDetail() {
                             }
                           }}
                         />
-                        <div>
-                          <h3 className="font-semibold text-sm sm:text-base">{marker.name}</h3>
-                          <p className="text-xs sm:text-sm text-gray-600">{marker.address}</p>
+                        <div className="flex-1">
+                          <h3 className="font-semibold">{marker.name}</h3>
+                          <p className="text-sm text-gray-600">{marker.address}</p>
                           <div className="flex items-center mt-1">
                             <span className="text-yellow-400">{'⭐'.repeat(Math.floor(marker.rating))}</span>
-                            <span className="text-xs sm:text-sm text-gray-600 ml-1">({marker.rating})</span>
+                            <span className="text-sm text-gray-600 ml-1">({marker.rating})</span>
                           </div>
-                          <p className="text-xs sm:text-sm mt-1">{marker.phone}</p>
+                          <p className="text-sm mt-1">{marker.phone}</p>
                         </div>
                       </div>
-                      <button className="bg-[#c8a165] text-white px-2 sm:px-3 py-1 rounded-md text-xs sm:text-sm hover:bg-[#b08c55]">
+                      <button className="w-full sm:w-auto bg-[#c8a165] text-white px-3 py-1 rounded-md text-sm hover:bg-[#b08c55]">
                         Book
                       </button>
                     </div>
@@ -558,15 +566,15 @@ function MaterialDetail() {
 
               {/* Measurement Form */}
               <div className="border-t pt-4">
-                <div className='flex w-full justify-between items-center'>
-                  <h3 className="text-base sm:text-lg font-semibold mb-4">Measurement Details</h3>
-                  <Accordion type="single" collapsible>
+                <div className='flex flex-col sm:flex-row w-full justify-between items-start sm:items-center'>
+                  <h3 className="text-lg font-semibold mb-4">Measurement Details</h3>
+                  <Accordion type="single" collapsible className="w-full sm:w-auto">
                     <AccordionItem value="step1">
                       <AccordionTrigger>Step's</AccordionTrigger>
                       <AccordionContent>
                         <div className="flex flex-col items-center">
-                          <img src="/images/measurement.jpg" alt="Bust measurement guide" className="w-48 sm:w-64 h-48 sm:h-64 object-contain mb-2" />
-                          <p className="text-xs sm:text-sm text-gray-600">Follow the above step to measurement of your body with help of tape.</p>
+                          <img src="/images/measurement.jpg" alt="Bust measurement guide" className="w-64 h-64 object-contain mb-2" />
+                          <p className="text-sm text-gray-600">Follow the above step to measurement of your body with help of tape.</p>
                         </div>
                       </AccordionContent>
                     </AccordionItem>
@@ -576,12 +584,13 @@ function MaterialDetail() {
                   <TailorTabs amount={final_price} selected={selectedTailors} />
                 </div>
 
+                {/* Measurement Steps */}
                 <div className="mt-6 border-t pt-4">
                   <Accordion type="single" collapsible>
                     <AccordionItem value="step1">
                       <AccordionTrigger>How to Take Measurements:</AccordionTrigger>
                       <AccordionContent>
-                        <ol className="list-decimal list-inside space-y-2 text-xs sm:text-sm text-gray-700">
+                        <ol className="list-decimal list-inside space-y-2 text-sm text-gray-700">
                           <li>Use a flexible measuring tape</li>
                           <li>Wear fitted clothing while measuring</li>
                           <li>Keep the tape snug but not tight</li>
@@ -590,7 +599,7 @@ function MaterialDetail() {
                           <li>For waist: Measure at natural waistline</li>
                           <li>For hips: Measure around fullest part</li>
                         </ol>
-                        <p className="mt-3 text-xs sm:text-sm text-gray-500">For accurate measurements, consider getting help from someone else.</p>
+                        <p className="mt-3 text-sm text-gray-500">For accurate measurements, consider getting help from someone else.</p>
                       </AccordionContent>
                     </AccordionItem>
                   </Accordion>
