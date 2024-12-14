@@ -58,25 +58,11 @@ function MaterialDetail() {
 
   const fetchNearbyLocations = async (latlng) => {
     const { lat: latitude, lng: longitude } = latlng;
-    const response = await fetch(`https://maps.gomaps.pro/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&name=tailors&radius=500&key=${process.env.REACT_APP_MAP_API}`,
-      {
-        headers: {
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*'
-        }
-      }
-    );
+    const response = await fetch(`https://maps.gomaps.pro/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&name=tailors&radius=500&key=${process.env.REACT_APP_MAP_API}`);
     const data = await response.json();
     if (data.results) {
       const newMarkers = await Promise.all(data.results.map(async (location) => {
-        const detailsResponse = await fetch(`https://maps.gomaps.pro/maps/api/place/details/json?place_id=${location.place_id}&key=${process.env.REACT_APP_MAP_API}`,
-          {
-            headers: {
-              'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': '*'
-            }
-          }
-        );
+        const detailsResponse = await fetch(`https://maps.gomaps.pro/maps/api/place/details/json?place_id=${location.place_id}&key=${process.env.REACT_APP_MAP_API}`);
         const detailsData = await detailsResponse.json();
         return {
           id: location.place_id,
@@ -223,14 +209,7 @@ function MaterialDetail() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(async (position) => {
         const { latitude, longitude } = position.coords; // Get user's current position
-        const response = await fetch(`https://maps.gomaps.pro/maps/api/place/nearbysearch/json?location=${latitude}, ${longitude}&name=tailor&radius=500&key=${process.env.REACT_APP_MAP_API}`,
-          {
-            headers: {
-              'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': '*'
-            }
-          }
-        )
+        const response = await fetch(`https://maps.gomaps.pro/maps/api/place/nearbysearch/json?location=${latitude}, ${longitude}&name=tailor&radius=500&key=${process.env.REACT_APP_MAP_API}`)
         const data = await response.json();
         await fetchNearbyLocations({ lat: latitude, lng: longitude }); // Fetch nearby tailors
         setMapData(data.results);
