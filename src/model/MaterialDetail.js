@@ -58,11 +58,25 @@ function MaterialDetail() {
 
   const fetchNearbyLocations = async (latlng) => {
     const { lat: latitude, lng: longitude } = latlng;
-    const response = await fetch(`https://maps.gomaps.pro/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&name=tailors&radius=500&key=${process.env.REACT_APP_MAP_API}`);
+    const response = await fetch(`https://maps.gomaps.pro/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&name=tailors&radius=500&key=${process.env.REACT_APP_MAP_API}`,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*'
+        }
+      }
+    );
     const data = await response.json();
     if (data.results) {
       const newMarkers = await Promise.all(data.results.map(async (location) => {
-        const detailsResponse = await fetch(`https://maps.gomaps.pro/maps/api/place/details/json?place_id=${location.place_id}&key=${process.env.REACT_APP_MAP_API}`);
+        const detailsResponse = await fetch(`https://maps.gomaps.pro/maps/api/place/details/json?place_id=${location.place_id}&key=${process.env.REACT_APP_MAP_API}`,
+          {
+            headers: {
+              'Content-Type': 'application/json',
+              'Access-Control-Allow-Origin': '*'
+            }
+          }
+        );
         const detailsData = await detailsResponse.json();
         return {
           id: location.place_id,
@@ -209,7 +223,14 @@ function MaterialDetail() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(async (position) => {
         const { latitude, longitude } = position.coords; // Get user's current position
-        const response = await fetch(`https://maps.gomaps.pro/maps/api/place/nearbysearch/json?location=${latitude}, ${longitude}&name=restaurants&radius=500&key=${process.env.REACT_APP_MAP_API}`)
+        const response = await fetch(`https://maps.gomaps.pro/maps/api/place/nearbysearch/json?location=${latitude}, ${longitude}&name=tailor&radius=500&key=${process.env.REACT_APP_MAP_API}`,
+          {
+            headers: {
+              'Content-Type': 'application/json',
+              'Access-Control-Allow-Origin': '*'
+            }
+          }
+        )
         const data = await response.json();
         await fetchNearbyLocations({ lat: latitude, lng: longitude }); // Fetch nearby tailors
         setMapData(data.results);
@@ -346,7 +367,7 @@ function MaterialDetail() {
 
                   <fieldset aria-label="Choose a size" class="mt-4">
                     <div class="grid grid-cols-4 gap-4 sm:grid-cols-8 lg:grid-cols-4">
-                
+
                       <label class="group relative flex cursor-not-allowed items-center justify-center rounded-md border bg-gray-50 px-4 py-3 text-sm font-medium uppercase text-gray-200 hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6">
                         <input type="radio" name="size-choice" value="XXS" disabled class="sr-only" />
                         <span>XXS</span>
