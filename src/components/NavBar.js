@@ -5,10 +5,7 @@ import { NavLink } from 'react-router-dom';
 
 function NavBar() {
 
-  const navigate = useNavigate();
   return (
-
-
     <div id="NavBar" className="!w-[210px] bg-white hidden sm:flex sm:w-[20%]">
 
       <div className="flex flex-wrap flex-col ml-5 place-items-start content-between w-[200px] ">

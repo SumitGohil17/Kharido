@@ -94,7 +94,7 @@ const Kids = () => {
   }
 
   return (
-    <div id="container" className="ml-[5px] bg-white h-[100vh] w-full overflow-y-scroll hide-scrollbar overflow-x-hidden">
+    <div id="container" className="ml-[5px] bg-[#faf7f2] h-[100vh] w-full overflow-y-scroll hide-scrollbar overflow-x-hidden">
       <div className="mx-[15px]">
         <h2 className="flex justify-center text-3xl font-bold font1 tracking-widest text-slate-800 ">
           CLOTHING

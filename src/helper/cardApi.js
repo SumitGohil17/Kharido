@@ -1,4 +1,3 @@
-import bb1 from '../img/b1.webp'
 export const clothing = [
     { image: 'https://assets.myntassets.com/assets/images/16524740/2021/12/29/17ab2ac8-2e60-422d-9d20-2527415932361640754214931-STRAPPY-SET-IN-ORANGE-WITH-ORGANZA-DUPATTA-5961640754214349-2.jpg', title: 'Dresses', discount: '40-80% OFF', buttonText: 'Shop Now' },
     { image: 'https://assets.ajio.com/medias/sys_master/root/20240104/O6EV/659607e0ddf7791519011fe3/-473Wx593H-466933093-red-MODEL.jpg', title: 'Sarees', discount: '50-70% OFF', buttonText: 'Shop Now' },
@@ -58,4 +57,11 @@ export const menClothing = [
     { image: '/images/beauty_makeup.jpg', title: 'Track Pants', discount: 'UP TO 80% OFF', buttonText: 'Shop Now' }
 ]
 
+
+export const clothingHome = [
+    { image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcKvUwCI73jWpLJ-uWgukQkiizBIfeVa5k_g&s', title: 'Tshirts', discount: '40-80% OFF', buttonText: 'Shop Now' , name: "Men"},
+    { image: 'https://i.pinimg.com/474x/19/cb/80/19cb808b9a9c48fbe2d0ed05b7f52142.jpg', title: 'Tshirts', discount: '50-70% OFF', buttonText: 'Shop Now', name: "Men" },
+    { image: 'https://thumbs.dreamstime.com/b/young-women-wearing-t-shirt-jeans-stays-near-wooden-door-195976664.jpg', title: 'Tshirts', discount: '50-70% OFF', buttonText: 'Shop Now', name: "Women" },
+    { image: 'https://i.pinimg.com/474x/19/cb/80/19cb808b9a9c48fbe2d0ed05b7f52142.jpg', title: 'Tshirts', discount: 'UP TO 70% OFF', buttonText: 'Shop Now', name: "Men"},
+]
 

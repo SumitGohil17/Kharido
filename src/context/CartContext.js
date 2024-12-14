@@ -1,5 +1,5 @@
 import { type } from "@testing-library/user-event/dist/cjs/utility/index.js";
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useReducer, useState } from "react";
 import reducer from '../reducer/cardReducer'
 
 const CardContext = createContext();
@@ -7,6 +7,10 @@ const CardContext = createContext();
 export const useCard = () => useContext(CardContext);
 
 export const CardProvider = ({ children }) => {
+
+    const [cartData, setCartData] = useState([]);
+
+    
 
     const initialState = {
 
@@ -36,7 +40,7 @@ export const CardProvider = ({ children }) => {
         dispatch({ type: "REMOVE_ITEM", payload: id })
     }
     return (
-        <CardContext.Provider value={{ ...state , AddToCard , removeItem , setIncrease , setDeacrease}}>
+        <CardContext.Provider value={{ ...state , AddToCard , removeItem , setIncrease , setDeacrease , cartData, setCartData}}>
             {children}
         </CardContext.Provider>
     )

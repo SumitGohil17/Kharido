@@ -1,7 +1,7 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 
-const API_URL = 'https://kharidoo-backend.vercel.app';
+const API_URL = `${process.env.REACT_APP_BACKEND_API}`;
 
 export const register =  async (username , password) => {
     return axios.post(`${API_URL}/register` , {username, password});
@@ -21,4 +21,4 @@ export const login = async (username , password) => {
 
 export const getProtectedData = async () => {
     return axios.get(`${API_URL}/protected-route`, { withCredentials: true });
-}; 
+};

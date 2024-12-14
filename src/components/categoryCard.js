@@ -1,5 +1,4 @@
 import React from 'react';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
 const categoryCard = ({ image, title, discount }) => {
   return (
     <div className=" min-h-[200px]  flex flex-col place-items-center rounded " style={{

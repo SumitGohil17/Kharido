@@ -2,7 +2,6 @@ import './App.css';
 import Home from './Home';
 import Men from './pages/Men';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import NavBar from './components/NavBar';
 import NavSideMenu from './components/NavSideMenu';
 import { LoginProvider, useLogin } from './context/LoginContext';
 import { Logout } from './pages/Logout';
@@ -21,13 +20,13 @@ import MaterialDetail from './model/MaterialDetail';
 function AppContent() {
   const { showLogin } = useLogin();
   return (
-    <div className="App flex bg-[#dcdcdc] overflow-x-hidden hide-scrollbar">
+    <div className="App bg-[#dcdcdc] overflow-x-hidden hide-scrollbar">
       <Router>
-        <NavBar />
+        {/* <NavBar /> */}
         <div className={`w-full h-full `}>
           <NavSideMenu />
           {showLogin && (
-            <div className='flex z-1 justify-center items-center'>
+            <div className='absolute z-50 justify-center items-center'>
               <Login />
             </div>
           )}
@@ -46,8 +45,10 @@ function AppContent() {
               <Route path='/products/:name/:title' element={<AllProduct />} />
               {/* <Route path='/product/:productId' element={<ProductDetails/>} /> */}
             </Routes>
+            
           </div>
         </div>
+
       </Router>
     </div>
   );

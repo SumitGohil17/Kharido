@@ -1,23 +1,38 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useParams } from 'react-router';
 import { useLogin } from '../context/LoginContext';
 import { useCard } from '../context/CartContext';
+import Cookies from 'js-cookie';
 import AddCartToogle from '../components/AddCartToogle';
 import { NavLink } from 'react-router-dom';
 import AddCardBag from '../components/AddCardBag';
+import axios from 'axios';
 import Cart from '../components/cart';
+import PaymentButton from '../components/PaymentButton';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "../components/ui/accordion"
+import Reviews from '../components/Reviews';
 
 function Productdetail() {
-  let API = "https://practice2-rho.vercel.app/api/id";
+  let API = `${process.env.REACT_APP_PRODUCT_API}/api/id`;
 
   const { getSingleProduct, singleProduct } = useLogin();
   const { AddToCard } = useCard();
   console.log('Single Product:', singleProduct);
   const [qauntity, setQauntity] = useState(1);
-
+  const [isLog, setIsLogged] = useState(Cookies.get('token'));
   const [isCartVisible, setIsCartVisible] = useState(false);
   const [reviews, setReviews] = useState([]);
   const [currentReviews, setCurrentReviews] = useState('')
+  const [showTailorButton, setShowTailorButton] = useState(false);
+  const hideTimeoutRef = useRef(null);
+  const [isIframeVisible, setIsIframeVisible] = useState(false);
+  const [iframeSrc, setIframeSrc] = useState('');
+  const iframeRef = useRef(null);
 
 
   const { productId } = useParams();
@@ -34,7 +49,7 @@ function Productdetail() {
 
   const { product_id, title, product_description, final_price, product_details, images, product_specifications, initial_price, stock } = singleProduct[0];
 
- 
+
   const decrease = (e) => {
     e.preventDefault();
     setQauntity(decreaseValue => (decreaseValue > 1 ? decreaseValue - 1 : 1))
@@ -49,10 +64,29 @@ function Productdetail() {
     setIsCartVisible(false);
   };
 
-  const handleAddToCart = (e) => {
+  const handleAddToCart = async (e) => {
     e.preventDefault();
-    AddToCard(product_id, qauntity, singleProduct)
-    setIsCartVisible(true);
+    try {
+      const response = await axios.post(`${process.env.REACT_APP_BACKEND_API}/api/card/addCard`, {
+        product_id: product_id,
+        quantity: qauntity,
+        title: title,
+        final_price: final_price,
+        description: product_description,
+        image: images[0],
+      }, {
+        headers: {
+          Authorization: `${isLog}`
+        }
+      })
+      if (response.status === 200) {
+        alert('Product Added to Cart');
+      }
+      // AddToCard(product_id, qauntity, singleProduct)
+      setIsCartVisible(true);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleReview = (e) => {
@@ -62,6 +96,56 @@ function Productdetail() {
       setCurrentReviews('')
     }
   }
+
+  const handleMouseEnter = () => {
+    setShowTailorButton(true);
+    if (hideTimeoutRef.current) {
+      clearTimeout(hideTimeoutRef.current);
+    }
+
+  };
+
+  const handleMouseLeave = () => {
+    hideTimeoutRef.current = setTimeout(() => {
+      setShowTailorButton(false);
+    }, 4000);
+  };
+
+  const handleMouseEnterTailor = () => {
+    if (hideTimeoutRef.current) {
+      clearTimeout(hideTimeoutRef.current);
+    }
+  };
+
+  const handleMouseLeaveTailor = () => {
+    setShowTailorButton(false);
+  };
+
+  const handleOpenTailor = async (e) => {
+    e.preventDefault();
+    const garmentPhoto = images[0]; // Assuming images[0] is the desired photo
+    const TRY_ON = process.env.REACT_APP_TRY_ON;
+    setIframeSrc(TRY_ON);
+    setIsIframeVisible(true);
+  };
+
+  // Function to send the image URL to the iframe
+  const sendImageToIframe = (garmentPhoto) => {
+    const iframe = iframeRef.current;
+
+    if (iframe && iframe.contentWindow) {
+      iframe.contentWindow.postMessage({ type: 'setGarment', url: garmentPhoto }, '*');
+    } else {
+      console.error('Iframe not accessible');
+    }
+  };
+
+  // Handle iframe load event
+  const handleIframeLoad = () => {
+    const garmentPhoto = images[0]; // Assuming images[0] is the desired photo URL
+    sendImageToIframe(garmentPhoto);
+  };
+  console.log(process.env.REACT_APP_TRY_ON);
 
   return (
 
@@ -106,7 +190,7 @@ function Productdetail() {
         `}
       </style>
 
-      <div className="bg-white w-[100%] sm:ml-[5px] overflow-y-scroll scrollable-content">
+      <div className="bg-[#faf7f2] w-[100%] overflow-y-scroll scrollable-content">
 
         {/* <div className=" grid grid-cols-2 fixed top-0 w-[100%] h-[50px] bg-[#fff]  z-1">
           <div className="flex w-14 my-[10px] bg-[#EEEEEE] rounded-[5px]">
@@ -177,7 +261,7 @@ function Productdetail() {
 
 
           <div className='sm:flex w-full h-full overflow-hidden overflow-y-scroll scrollable-content'>
-            <div className=" grid grid-cols-2 masonry-grid px-[10px] sm:px-0 sm:mx-[30px] justify-center w-full sm:w-[50%] ">
+            <div className=" grid grid-cols-2 masonry-grid px-[10px] sm:px-0 sm:mr-[30px] justify-center w-full h-full sm:w-[60%] ">
               {images && images.map((image, index) => (
                 <div key={index} className="masonry-item">
                   <img className="h-auto max-w-full rounded-lg" src={image} alt={`Product image ${index + 1}`} />
@@ -191,9 +275,12 @@ function Productdetail() {
               </div> */}
 
             {/* <!-- Options --> */}
-            <div class="mt-4 px-[10px] sm:p-0 w-full sm:w-[50%]  lg:mt-0">
+            <div class="mt-4 px-[10px] sm:p-0 w-full sm:w-[40%]  lg:mt-0">
               <h2 class="sr-only">Product information</h2>
-              <p class="text-3xl tracking-tight text-gray-900 "><span><s className='decoration-slate-400 mr-[4px]'>₹{initial_price ? initial_price.toLocaleString() : 'N/A'}</s></span>₹{final_price ? final_price.toLocaleString() : 'N/A'}</p>
+              <h2 className='font-bold text-[24px]'>{title ? title.toUpperCase() : ''}</h2>
+              <h1 className='text-[#535665] opacity-[0.8] text-[20px]'>{product_description}</h1>
+              <hr className='my-[10px]' />
+              <p class="text-3xl tracking-tight text-gray-900 mt-[15px] text-[24px]">₹{final_price ? final_price.toLocaleString() : 'N/A'}<span><s className='decoration-[#282c3f] ml-[4px] text-[20px] text-[#696e79]'>₹{initial_price ? initial_price.toLocaleString() : 'N/A'}</s></span></p>
 
               {/* <!-- Reviews --> */}
               <div class="mt-6">
@@ -341,63 +428,70 @@ function Productdetail() {
                     <p class="text-base text-gray-600">Stock Available {stock}</p>
                   </div>
                 </div>
-                <div className='flex '>
+                <div className='flex w-full'>
                   {/* <AddCardBag product={singleProduct} quantity={qauntity} /> */}
-                  <button type="submit" onClick={handleAddToCart} class=" px-[10px] flex h-[50px] w-full items-center justify-center rounded-md border border-transparent bg-indigo-600  ml-[10px] text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Add to Cart</button>
-                  <button type="submit" class=" px-[10px] flex h-[50px] w-full items-center justify-center rounded-md border border-transparent bg-indigo-600  ml-[10px] text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Buy</button>
+                  <button type="submit" onClick={handleAddToCart} class=" px-[10px] flex h-[50px] w-full items-center justify-center rounded-md border border-transparent bg-[#c8a165] hover:bg-white hover:border-2 hover:border-[#c8a165] hover:text-black transition duration-200 ease-in-out  ml-[10px] text-base font-medium text-white focus:ring-offset-2">Add to Cart</button>
 
+                  <div className='button-div relative w-full mr-[5px]'>
+                    <PaymentButton amount={final_price} />
+                    <button onClick={handleOpenTailor} className={`absolute bottom-[60px] ml-[10px] left-0 w-full px-[10px] h-[50px] items-center justify-center rounded-md border-2 border-[#c8a165] bg-white text-base font-medium text-black`}>Try On</button>
+                  </div>
                 </div>
                 {isCartVisible && (
                   <Cart close={handleCloseCart} />
                 )}
               </form>
-              <div className='mt-10'>
-                <h3 class="text-sm font-medium text-gray-900">Description</h3>
-
-                <div class="space-y-6 mt-[10px]">
-                  <p class="text-base ">{product_description}</p>
-                </div>
-              </div>
-
-              <div class="mt-10">
-                <h3 class="text-sm font-medium text-gray-900">Highlights</h3>
-
-                <div class="mt-4">
-                  <ul role="list" class="list-disc space-y-2 pl-4 text-sm" >
-                    {product_specifications && product_specifications.slice(0, 6).map((spec, index) => (
-                      <li class="text-gray-400" key={index}><span class="text-gray-600">{spec.specification_name} : {spec.specification_value}</span></li>
-                    ))}
-                  </ul>
+              <div className='mt-[10px] p-[10px] border-2 rounded-xl border-[#c8a165] border-opacity-25'>
+                <div className=''>
+                  <Accordion>
+                    <AccordionItem value="item-1">
+                      <AccordionTrigger>Description</AccordionTrigger>
+                      <AccordionContent>
+                        <p class="text-base px-3">{product_description}</p>
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
                 </div>
 
+                <div class="">
 
-              </div>
+                  <Accordion type="single" collapsible className="w-full">
+                    <AccordionItem value="item-1">
+                      <AccordionTrigger>Highlights</AccordionTrigger>
+                      <AccordionContent>
+                        <ul role="list" class="list-disc space-y-2 pl-4 text-sm" >
+                          {product_specifications && product_specifications.map((spec, index) => (
+                            <li class="text-[#535665] text-[12px] list-none" key={index}>{spec.specification_name} <br /> <span class="text-black text-[16px]">{spec.specification_value}</span></li>
+                          ))}
+                        </ul>
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                </div>
 
-              <div class="mt-10">
-                <h2 class="text-sm font-medium text-gray-900">Details</h2>
-                {product_details && product_details.description && (
-                  <div class="mt-4 space-y-6 ">
-                    <p class="text-sm line-clamp-6 text-gray-600">{product_details.description}</p>
-                  </div>
-                )}
-
-              </div>
-
-              <div className='mt-[10px]'>
-                <h2 className='mt-[5px] '>Reviews</h2>
-                <form onSubmit={handleReview} className='flex'>
-                  <textarea className=' border-2 border-black w-[90%] mr-2' type="text"
-                    value={currentReviews}
-                    onChange={(e) => setCurrentReviews(e.target.value)}
-                    placeholder="write your review" />
-                  <button className='w-[80px] rounded bg-blue-500' type='submit'>Submit</button>
-                </form>
-                <div className='mt-[15px]' class="reviews">
-                  {reviews.map((review, index) => (
-                    <ul key={index}>
-                      <li className='p-[10px]'>{review}</li>
-                    </ul>
-                  ))}
+                <div class="">
+                  <Accordion type="single" collapsible className="w-full">
+                    <AccordionItem value="item-1">
+                      <AccordionTrigger>Details</AccordionTrigger>
+                      <AccordionContent>
+                        {product_details && product_details.description && (
+                          <div class="mt-4 space-y-6 ">
+                            <p class="text-sm line-clamp-6 text-gray-600">{product_details.description}</p>
+                          </div>
+                        )}
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                </div>
+                <div className=''>
+                  <Accordion type="single" collapsible className="w-full">
+                    <AccordionItem value="item-1">
+                      <AccordionTrigger>Reviews</AccordionTrigger>
+                      <AccordionContent>
+                        <Reviews product_id={product_id} />
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
                 </div>
               </div>
             </div>
@@ -405,6 +499,28 @@ function Productdetail() {
           </div>
         </div>
       </div>
+      {isIframeVisible && (
+        <div className="iframe-container fixed inset-0 flex items-center justify-center mt-[40px] z-1">
+          <button
+            onClick={() => setIsIframeVisible(false)}
+            className="absolute top-[50px] right-[140px] bg-white text-black rounded-full p-2 z-2"
+          >
+            X
+          </button>
+          <iframe
+            ref={iframeRef}
+            src={iframeSrc}
+            title="Virtual Try-On"
+            width="80%" // Adjust width as needed
+            height="80%" // Adjust height as needed
+            frameBorder="0"
+            allowFullScreen
+            className="rounded-lg shadow-lg bg-white"
+            onLoad={handleIframeLoad}
+          />
+
+        </div>
+      )}
 
     </div>
 
