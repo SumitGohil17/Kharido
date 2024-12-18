@@ -1,14 +1,43 @@
 import React from "react";
 import { useNavigate } from "react-router";
-import CategoryCard from '../components/categoryCard'
-import { menClothing } from '../helper/cardApi'
-import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import CategoryToBag from "../components/CategoryToBag";
-import SaleOffer from "../components/SaleOffer";
 import { Card, CardContent } from "../components/ui/Cards"
 import SalesWomen from "../components/SalesWomen";
+
+const categoriesForWomen = [
+  {
+    name: "Shirts",
+    image: "https://www.swaroopfashion.com/wp-content/uploads/2021/08/Women-Blue-Embroidered-Cotton-Shirt.jpg",
+    gradient: "from-pink-100 to-pink-300",
+  },
+  {
+    name: "Tshirts", 
+    image: "https://images.bestsellerclothing.in/data/only/24-sep-2024/900750801_g0.jpg?width=380&height=500&mode=fill&fill=blur&format=auto",
+    gradient: "from-purple-100 to-purple-300",
+  },
+  {
+    name: "Jeans",
+    image: "https://offduty.in/cdn/shop/files/IMG_9910_1080x.heic?v=1718019207", 
+    gradient: "from-rose-100 to-rose-300",
+  },
+  {
+    name: "Sweatshirts",
+    image: "https://assets.ajio.com/medias/sys_master/root/20240313/Yi9o/65f1920316fd2c6e6a54fcf4/-473Wx593H-469500833-beige-MODEL.jpg",
+    gradient: "from-fuchsia-100 to-fuchsia-300",
+  },
+  // {
+  //   name: "Track Pants",
+  //   image: "/placeholder.svg",
+  //   gradient: "from-purple-300 to-purple-400",
+  // },
+  {
+    name: "Kurta Sets",
+    image: "https://www.jiomart.com/images/product/original/rvn5qwbc9i/sancia-women-georgette-kurta-palazzo-set-for-women-girls-ethnic-wear-for-women-indian-dress-for-women-kurta-set-with-dupatta-floral-embroidered-kurta-grey-m-product-images-rvn5qwbc9i-0-202311071229.jpg",
+    gradient: "from-violet-100 to-violet-300",
+  },
+];
 
 
 const offers = [
@@ -102,9 +131,9 @@ const PrevArrow = (props) => {
 const Men = () => {
   const navigate = useNavigate();
   const categories = [
-    { name: 'Clothing', image: 'https://media.istockphoto.com/id/1404654875/photo/various-vintage-jackets-on-clothing-rack-in-second-hand-store.jpg?s=612x612&w=0&k=20&c=hxOxh89pkKR1vy9JHcnaXIw7SB73dvuz0cWrxpGsczs=', items: 1500 },
-    { name: 'Footwear', image: 'https://www.luxurylifestylemag.co.uk/wp-content/uploads/2023/08/bigstock-Brown-Mens-Shoes-Penny-Loafers-387900496.jpg', items: 800 },
-    { name: 'Accessories', image: 'https://img.freepik.com/premium-photo/stylish-mens-accessories-collection-with-modern-00641-03_1148322-5168.jpg', items: 1200 },
+    { name: 'Clothing', image: 'https://www.safeguardstorage.co.nz/wp-content/uploads/2024/03/Copy-of-Copy-of-ContainerCo-Images-1-1080x630.png', items: 1500 },
+    { name: 'Footwear', image: 'https://www.shoetree.io/cdn/shop/products/PFJV0120660_Gold_1.jpg?v=1640943266&width=533', items: 800 },
+    { name: 'Accessories', image: 'https://shopbloomingdaily.com/cdn/shop/products/trending-fall-accessories-gold-jewelry-for-women-accessories-418442.jpg?v=1693284817', items: 1200 },
   ]
 
   const handleCardClick = (name, title) => {
@@ -130,7 +159,6 @@ const Men = () => {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6">
                       <div>
                         <h3 className="text-2xl font-bold text-white mb-2">{category.name}</h3>
-                        <p className="text-white/80">{category.items} items</p>
                       </div>
                     </div>
                   </div>
@@ -139,7 +167,7 @@ const Men = () => {
             ))}
           </div>
         </section>
-        <CategoryToBag handleCLick={handleCardClick} />
+        <CategoryToBag handleCLick={handleCardClick} categories={categoriesForWomen} type={"Women"}/>
       </div>
     </div>
 

@@ -60,8 +60,8 @@ export const menClothing = [
 
 export const clothingHome = [
     { image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcKvUwCI73jWpLJ-uWgukQkiizBIfeVa5k_g&s', title: 'Tshirts', discount: '40-80% OFF', buttonText: 'Shop Now' , name: "Men"},
-    { image: 'https://i.pinimg.com/474x/19/cb/80/19cb808b9a9c48fbe2d0ed05b7f52142.jpg', title: 'Tshirts', discount: '50-70% OFF', buttonText: 'Shop Now', name: "Men" },
-    { image: 'https://thumbs.dreamstime.com/b/young-women-wearing-t-shirt-jeans-stays-near-wooden-door-195976664.jpg', title: 'Tshirts', discount: '50-70% OFF', buttonText: 'Shop Now', name: "Women" },
-    { image: 'https://i.pinimg.com/474x/19/cb/80/19cb808b9a9c48fbe2d0ed05b7f52142.jpg', title: 'Tshirts', discount: 'UP TO 70% OFF', buttonText: 'Shop Now', name: "Men"},
+    { image: 'https://assets.ajio.com/medias/sys_master/root/20240607/jdXa/6662b8e205ac7d77bba71ea3/-1117Wx1400H-465756713-brown-MODEL.jpg', title: 'Shorts', discount: '50-70% OFF', buttonText: 'Shop Now', name: "Men" },
+    { image: 'https://assets.ajio.com/medias/sys_master/root/20230228/sl1C/63fe4621aeb26924e39a093f/-473Wx593H-465843754-multi-MODEL.jpg', title: 'Bangle', discount: '50-70% OFF', buttonText: 'Shop Now', name: "Women" },
+    { image: 'https://teakwoodleathers.com/cdn/shop/files/T_SH_SR_02_TN_1080x.jpg?v=1707722220', title: 'Sandals', discount: 'UP TO 70% OFF', buttonText: 'Shop Now', name: "Men"},
 ]
 

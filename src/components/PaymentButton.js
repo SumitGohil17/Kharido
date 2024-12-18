@@ -1,13 +1,15 @@
 import axios from 'axios'
 import React from 'react'
+import { useLogin } from '../context/LoginContext'
 
 function PaymentButton({ amount }) {
+    const { user } = useLogin();
 
     const handlePayment = async (e) => {
         e.preventDefault();
         try {
             const orderResponse = await axios.post(`${process.env.REACT_APP_BACKEND_API}/api/payment/create-order`, { amount: amount });
-            const { orderId } = orderResponse.data;
+            const { orederId } = orderResponse.data.orederId;
 
             const options = {
                 key: 'rzp_test_AyMdIWw0Bommab',
@@ -16,34 +18,34 @@ function PaymentButton({ amount }) {
                 name: "Kharidoo",
                 description: "Payment for your services",
 
-                orderId: orderId,
+                orderId: orederId,
                 handler: async (response) => {
                     const paymentData = {
-                        orderId,
+                        orederId,
                         razorpay_payment_id: response.razorpay_payment_id,
                         razorpay_order_id: response.razorpay_order_id,
                         razorpay_signature: response.razorpay_signature,
                     };
 
-                    const result = await axios.post(`${process.env.REACT_APP_BACKEND_API}/api/payment/verify-payment`, paymentData);
+                    const result = await axios.post(`${process.env.REACT_APP_BACKEND_API}/api/payment/verify-payment`);
                     if (result.data.success) {
                         alert('Payment successful!');
                     } else {
                         alert('Payment verification failed. Please try again.');
                     }
-                    
+
                 },
                 prefill: {
-                    name: "Customer Name",
-                    email: "customer.email@example.com",
-                    contact: "9999999999",
+                    name: user?.username || "Customer Name",
+                    email: user?.email || "customer.email@example.com",
+                    contact: user?.phone || "9999999999",
                 },
                 notes: {
                     address: "Customer address",
-                  },
-                  theme: {
+                },
+                theme: {
                     color: "#F37254",
-                  },
+                },
 
             };
 

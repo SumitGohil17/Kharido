@@ -94,7 +94,7 @@ export default function SalesWomen({ handleCardClick, name, offers }) {
     };
 
     return (
-        <div className="relative w-full overflow-hidden bg-gray-100">
+        <div className="relative w-full overflow-hidden bg-[#faf7f2]">
             <h2 className="text-5xl font-extrabold py-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-600">
                 Exclusive Offers
             </h2>

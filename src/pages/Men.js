@@ -6,53 +6,86 @@ import CategoryToBag from "../components/CategoryToBag";
 import { Card, CardContent } from "../components/ui/Cards"
 import SalesWomen from "../components/SalesWomen";
 
+const categoriesofMen = [
+  {
+    name: "Shirts",
+    image: "https://getketchadmin.getketch.com/product/8905745177197/660/HLSH013833_1.jpg",
+    gradient: "from-blue-100 to-blue-200",
+  },
+  {
+    name: "Tshirts",
+    image: "https://img.damensch.com/products/johnny_polo_wisdom_wine_(5).jpg?fm=webp&h=500",
+    gradient: "from-orange-100 to-pink-200",
+  },
+  {
+    name: "Jeans",
+    image: "https://rukminim2.flixcart.com/image/850/1000/xif0q/jean/r/q/m/13-14-years-kttboysjeans51-kotty-original-imagnrd2rhs77ffx.jpeg?q=20&crop=false",
+    gradient: "from-pink-200 to-purple-200",
+  },
+  {
+    name: "Sweatshirts",
+    image: "https://www.beyoung.in/api/cache/catalog/products/new_winter_bb_2023/solid_pastel_pink_men_sweatshirts_base_07_11_2023_700x933.jpg",
+    gradient: "from-pink-200 to-purple-300",
+  },
+  // {
+  //   name: "Track Pants",
+  //   image: "/placeholder.svg",
+  //   gradient: "from-purple-300 to-purple-400",
+  // },
+  {
+    name: "Kurta Sets",
+    image: "https://staticm247.kalkifashion.com/media/catalog/product/p/i/pink_silk_kurta_set_in_resham_work_with_dupatta_for_men-sg228758_4_.jpg",
+    gradient: "from-pink-100 to-pink-200",
+  },
+];
+
 const offers = [
   {
-      id: 1,
-      title: "Summer Blowout",
-      discount: "60% OFF",
-      query: "Sunglasses",
-      category: "Beachwear & Sunglasses",
-      endTime: new Date(Date.now() + 2 * 24 * 60 * 60 * 1000), // 2 days from now
-      backgroundColor: "bg-gradient-to-br from-yellow-400 to-orange-500",
-      image: "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/11392334/2024/3/22/3c8fa7e4-019c-440d-8e98-f3c46df658831711099500532-Voyage-Women-Oval-Sunglasses-A3046MG3183-4541711099500250-7.jpg",
+    id: 1,
+    title: "Summer Blowout",
+    discount: "60% OFF", 
+    query: "Sunglasses",
+    category: "Beachwear & Sunglasses",
+    endTime: new Date(Date.now() + 2 * 24 * 60 * 60 * 1000), 
+    backgroundColor: "bg-gradient-to-br from-amber-300 to-rose-500",
+    image: "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/14582818/2024/6/8/cd7e4a85-961a-4e2c-a00e-df29bc7bd1c51717819948972-Voyage-Unisex-Black-Lens-Oval-Sunglasses-with-UV-Protected-L-2.jpg",
   },
   {
-      id: 2,
-      title: "Sneaker Madness",
-      discount: "40% OFF",
-      query: "Casual Shoes",
-      category: "Athletic & Casual Shoes",
-      endTime: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000), // 3 days from now
-      backgroundColor: "bg-gradient-to-br from-purple-400 to-pink-600",
-      image: "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/27922272/2024/5/2/20773746-6e10-46be-8ec3-becea012a6c81714630910123-Campus-Women-Textured-Lace-Up-Memory-Foam-Mesh-Sneakers-9941-11.jpg",
+    id: 2,
+    title: "Sneaker Madness",
+    discount: "40% OFF",
+    query: "Casual Shoes",
+    category: "Athletic & Casual Shoes", 
+    endTime: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000), 
+    backgroundColor: "bg-gradient-to-br from-fuchsia-500 to-cyan-500",
+    image: "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/11097160/2021/9/2/fcd672b3-9b7d-4bc2-974a-4d588a83b88c1630579627596HIGHLANDERMenWhiteSneakers1.jpg",
   },
   {
-      id: 3,
-      title: "Luxe Accessories",
-      discount: "Buy 2 Get 1",
-      query: "Accessories",
-      category: "Jewelry & Watches",
-      endTime: new Date(Date.now() + 1 * 24 * 60 * 60 * 1000), // 1 day from now
-      backgroundColor: "bg-gradient-to-br from-blue-400 to-indigo-600",
-      image: "https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/2024/SEPTEMBER/14/A0DrqBEH_68f8a11655fd46bc9398b66e6d0bc6e8.jpg",
+    id: 3,
+    title: "Luxe Accessories",
+    discount: "Buy 2 Get 1",
+    query: "Accessories",
+    category: "Jewelry & Watches",
+    endTime: new Date(Date.now() + 1 * 24 * 60 * 60 * 1000), 
+    backgroundColor: "bg-gradient-to-br from-emerald-400 to-violet-600",
+    image: "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/29839933/2024/5/29/4316ad76-2dda-4d8e-94a3-764929dec78b1716967777514AccessoryGiftSet1.jpg",
   },
   {
-      id: 4,
-      title: "Denim Fest",
-      discount: "50% OFF",
-      query: "Jackets",
-      category: "Jeans & Jackets",
-      endTime: new Date(Date.now() + 4 * 24 * 60 * 60 * 1000), // 4 days from now
-      backgroundColor: "bg-gradient-to-br from-teal-400 to-emerald-600",
-      image: "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/20303354/2022/10/7/fd6d1cf7-d460-43f7-838b-a1dd4ed7d9d11665125008983BoStreetWomenGreyCheckedLonglineTailoredJacket1.jpg",
+    id: 4,
+    title: "Denim Fest",
+    discount: "50% OFF",
+    query: "Jackets",
+    category: "Jeans & Jackets",
+    endTime: new Date(Date.now() + 4 * 24 * 60 * 60 * 1000), 
+    backgroundColor: "bg-gradient-to-br from-pink-500 to-yellow-500",
+    image: "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/2024/SEPTEMBER/19/cfK3eg1s_6c0ce2024c974d42b0c725ac5e49ac01.jpg",
   },
 ]
 
 const NextArrow = (props) => {
   const { className, style, onClick } = props;
 
-  
+
   return (
     <div
       className={className}
@@ -108,7 +141,7 @@ const Men = () => {
   return (
     <div id="container" className="ml-[5px] bg-[#faf7f2] h-[100vh] w-full overflow-y-scroll hide-scrollbar overflow-x-hidden">
       <div className="">
-        <SalesWomen handleCardClick={handleCardClick} name={'Men'} offers={offers}/>
+        <SalesWomen handleCardClick={handleCardClick} name={'Men'} offers={offers} />
 
         <section className="container py-16">
           <h2 className="text-3xl font-bold mb-8 text-center">Shop by Category</h2>
@@ -125,7 +158,6 @@ const Men = () => {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6">
                       <div>
                         <h3 className="text-2xl font-bold text-white mb-2">{category.name}</h3>
-                        <p className="text-white/80">{category.items} items</p>
                       </div>
                     </div>
                   </div>
@@ -134,7 +166,7 @@ const Men = () => {
             ))}
           </div>
         </section>
-        <CategoryToBag handleCLick={handleCardClick}/>
+        <CategoryToBag handleCLick={handleCardClick} categories={categoriesofMen} type={"Men"}/>
       </div>
     </div>
 

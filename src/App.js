@@ -22,7 +22,6 @@ function AppContent() {
   return (
     <div className="App bg-[#dcdcdc] overflow-x-hidden hide-scrollbar">
       <Router>
-        {/* <NavBar /> */}
         <div className={`w-full h-full `}>
           <NavSideMenu />
           {showLogin && (

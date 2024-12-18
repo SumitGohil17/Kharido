@@ -4,16 +4,20 @@ import Login from '../pages/Login';
 import Cookies from 'js-cookie';
 import { useLogin } from '../context/LoginContext';
 import { NavLink } from 'react-router-dom';
-import Cart, { CartLengthContext } from './cart';
+import Cart from './cart';
+import axios from 'axios';
 import { ShoppingCart, User, Search, ChevronDown, Star, Heart, Truck, RotateCcw } from 'lucide-react';
 import SideDrawer from './SideDrawer';
+import { useEffect } from 'react';
 
 function NavSideMenu() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showLoginPage, setLoginPage] = useState(false);
+  const [isLogg, setIsLogg] = useState(Cookies.get('token'));
   const [isCartVisible, setIsCartVisible] = useState(false);
-  const { isLog, user, setIslog, setLogin, showLogin, isLoggedIn, username, setShowLogin } = useLogin();
+  const { isLog, user, showLogin, setShowLogin } = useLogin();
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [cart, setCartData] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [showMobileSearch, setShowMobileSearch] = useState(false);
@@ -33,6 +37,31 @@ function NavSideMenu() {
 
   const toggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen);
+  };
+
+  useEffect(() => {
+    fetchCart();
+  }, [isLogg]); // Only run when isLogg changes
+
+  const fetchCart = async () => {
+    try {
+      if (!isLogg) return; // Don't fetch if not logged in
+      
+      const response = await axios.get(`${process.env.REACT_APP_BACKEND_API}/api/card/getCard`, {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `${isLogg}`
+        }
+      });
+      if (response.status === 200) {
+        const data = response.data.cartItems;
+        setCartData(data);
+      } else {
+        console.error('Failed to fetch cart data');
+      }
+    } catch (error) {
+      console.error('Error fetching cart:', error);
+    }
   };
 
   const handleSearch = async (e) => {
@@ -257,7 +286,7 @@ function NavSideMenu() {
               <div className="relative">
                 <div onClick={() => setIsCartVisible(true)} className="cursor-pointer">
                   <ShoppingCart className="h-5 w-5 text-gray-700" />
-                  <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">2</span>
+                  <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">{cart.length}</span>
                 </div>
                 {isCartVisible && <Cart close={() => setIsCartVisible(false)} />}
               </div>

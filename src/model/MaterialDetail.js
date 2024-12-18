@@ -106,7 +106,7 @@ function MaterialDetail() {
   }
 
   const customIcon = L.icon({
-    iconUrl: '/images/pin.png', // Replace with your icon URL
+    iconUrl: '/images/pin.png',
     iconSize: [25, 41], // Size of the icon
     iconAnchor: [12, 41], // Point of the icon which will correspond to marker's location
     popupAnchor: [1, -34], // Point from which the popup should open relative to the iconAnchor
@@ -144,6 +144,20 @@ function MaterialDetail() {
   const handleAddToCart = async (e) => {
     e.preventDefault();
     try {
+      
+      const cartResponse = await axios.get(`${process.env.REACT_APP_BACKEND_API}/api/card/getCard`, {
+        headers: {
+          Authorization: `${isLog}`
+        }
+      });
+      
+      const existingProduct = cartResponse.data.cartItems.find(item => item.product_id === product_id);
+      
+      if (existingProduct) {
+        alert('Product already exists in cart!');
+        return;
+      }
+
       const response = await axios.post(`${process.env.REACT_APP_BACKEND_API}/api/card/addCard`, {
         product_id: product_id,
         quantity: qauntity,
@@ -159,7 +173,6 @@ function MaterialDetail() {
       if (response.status === 200) {
         alert('Product Added to Cart');
       }
-      // AddToCard(product_id, qauntity, singleProduct)
       setIsCartVisible(true);
     } catch (error) {
       console.log(error);
@@ -208,12 +221,12 @@ function MaterialDetail() {
 
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(async (position) => {
-        const { latitude, longitude } = position.coords; // Get user's current position
+        const { latitude, longitude } = position.coords; 
         const response = await fetch(`https://maps.gomaps.pro/maps/api/place/nearbysearch/json?location=${latitude}, ${longitude}&name=tailor&radius=500&key=${process.env.REACT_APP_MAP_API}`)
         const data = await response.json();
-        await fetchNearbyLocations({ lat: latitude, lng: longitude }); // Fetch nearby tailors
+        await fetchNearbyLocations({ lat: latitude, lng: longitude }); 
         setMapData(data.results);
-        setIsIframeVisible(true); // Show the iframe/modal after fetching
+        setIsIframeVisible(true); 
       }, (error) => {
         console.error('Error getting current position:', error);
       });
@@ -401,17 +414,24 @@ function MaterialDetail() {
                     </div>
                   </fieldset>
                 </div>
-                <div className='flex mt-10'>
-                  <button onClick={decrease} className=' mr-[5px]'>-</button>
-                  <h4 className='text-gray-600'>{qauntity}</h4>
-                  <button onClick={increase} className='ml-[5px]'>+</button>
+                <div className="flex items-center justify-start mt-10 space-x-4">
+                  <button 
+                    onClick={decrease}
+                    className="w-8 h-8 flex items-center justify-center rounded-lg bg-[#c8a165] hover:bg-[#b08c55] text-white font-medium text-lg transition duration-200"
+                  >
+                    -
+                  </button>
+                  <h4 className="text-gray-800 text-lg font-medium min-w-[30px] text-center">
+                    {qauntity}
+                  </h4>
+                  <button
+                    onClick={increase} 
+                    className="w-8 h-8 flex items-center justify-center rounded-lg bg-[#c8a165] hover:bg-[#b08c55] text-white font-medium text-lg transition duration-200"
+                  >
+                    +
+                  </button>
                 </div>
-                <div className='mt-10'>
-                  <div class="space-y-6 mt-[10px]">
-                    <p class="text-base text-gray-600">Stock Available {stock}</p>
-                  </div>
-                </div>
-                <div className='flex w-full'>
+                <div className='flex w-full mt-[20px]'>
                   {/* <AddCardBag product={singleProduct} quantity={qauntity} /> */}
                   <button type="submit" onClick={handleAddToCart} class=" px-[10px] flex h-[50px] w-full items-center justify-center rounded-md border border-transparent bg-[#c8a165] hover:bg-white hover:border-2 hover:border-[#c8a165] hover:text-black transition duration-200 ease-in-out  ml-[10px] text-base font-medium text-white focus:ring-offset-2">Add to Cart</button>
 
@@ -581,7 +601,7 @@ function MaterialDetail() {
                   </Accordion>
                 </div>
                 <div className="mb-4">
-                  <TailorTabs amount={final_price} selected={selectedTailors} />
+                  <TailorTabs amount={final_price} selected={selectedTailors} product_id={product_id} title={title}  images={images[0]} />
                 </div>
 
                 {/* Measurement Steps */}

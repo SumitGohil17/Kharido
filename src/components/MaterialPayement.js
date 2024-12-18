@@ -1,13 +1,53 @@
 import axios from 'axios'
-import React from 'react'
+import Cookies from 'js-cookie';
+import React, { useState } from 'react'
 import { Button } from './ui/button';
 
-function MaterialPayemnet({ amount }) {
+function MaterialPayemnet({ amount, selected, measurementDetails,setMeasurementDetails, title, images, product_id }) {
+
+    const [isLogg, setIsLogg] = useState(Cookies.get('token'));
 
     const handlePayment = async (e) => {
         e.preventDefault();
+
+
         const totalamount = parseInt(amount) + 400;
         try {
+            try {
+                const data = {
+                    shopName: selected.name,
+                    shopAddress: selected.address,
+                    shopMobile: selected.phone,
+                    measurements: {
+                        waist: parseInt(measurementDetails.waist),
+                        bust: parseInt(measurementDetails.bust),
+                        hip: parseInt(measurementDetails.hips)
+                    },
+                    productId: product_id,
+                    productName: title,
+                    productImage: images,
+                    price: amount
+                }
+                const response = await axios.post(`${process.env.REACT_APP_BACKEND_API}/api/dress/addDress`, data, {
+                    headers: {
+                        Authorization: `${isLogg}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+                if (response.data.success) {
+                    alert("Order placed successfully");
+                    setMeasurementDetails({
+                        waist: '',
+                        bust: '',
+                        hips: '',
+                    });
+                } 
+            } catch (error) {
+                console.error('Error placing order:', error);
+                alert('Error placing order: ' + error.message);
+            }
+
+
             const orderResponse = await axios.post(`${process.env.REACT_APP_BACKEND_API}/api/payment/create-order`, { amount: totalamount });
             const { orderId } = orderResponse.data;
 
@@ -17,7 +57,6 @@ function MaterialPayemnet({ amount }) {
                 currency: "INR",
                 name: "Kharidoo",
                 description: `Material Cost: ₹${parseInt(amount)} + Stitching Charges: ₹400`,
-
                 orderId: orderId,
                 handler: async (response) => {
                     const paymentData = {
