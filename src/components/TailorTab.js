@@ -87,8 +87,11 @@ export function TailorTabs({ amount, selected, title, images, product_id }) {
                     mobNo: '',
                     date: '',
                 })
+            } else {
+                alert(response.data.message)
             }
         } catch (e) {
+            alert("please provide all fields")
             console.log(e);
 
         }
@@ -103,6 +106,9 @@ export function TailorTabs({ amount, selected, title, images, product_id }) {
             <TabsContent value="Measurement" >
                 <Card>
                     <CardContent className="space-y-2">
+                        <div className="text-sm text-gray-500 mb-4">
+                            Note: Tailoring charges of ₹400 will be added to the final amount
+                        </div>
                         <div className="space-y-1">
                             <Label htmlFor="name">Bust</Label>
                             <Input type="text"
@@ -110,7 +116,7 @@ export function TailorTabs({ amount, selected, title, images, product_id }) {
                                 name="bust"
                                 value={measurementDetails.bust}
                                 onChange={handleMeasurementChange}
-                                placeholder="Enter Burst" />
+                                placeholder="Enter Burst in Inch" />
                         </div>
                         <div className="space-y-1">
                             <Label htmlFor="username">Waist</Label>
@@ -118,7 +124,8 @@ export function TailorTabs({ amount, selected, title, images, product_id }) {
                                 id="waist"
                                 name="waist"
                                 value={measurementDetails.waist}
-                                onChange={handleMeasurementChange} />
+                                onChange={handleMeasurementChange}
+                                placeholder="Enter waist in Inch" />
                         </div>
                         <div className="space-y-1">
                             <Label htmlFor="waist">Hips</Label>
@@ -126,7 +133,8 @@ export function TailorTabs({ amount, selected, title, images, product_id }) {
                                 id="hips"
                                 name="hips"
                                 value={measurementDetails.hips}
-                                onChange={handleMeasurementChange} />
+                                onChange={handleMeasurementChange}
+                                placeholder="Enter hips in Inch" />
                         </div>
                     </CardContent>
                     <CardFooter>

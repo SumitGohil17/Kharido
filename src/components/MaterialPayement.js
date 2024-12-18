@@ -41,10 +41,13 @@ function MaterialPayemnet({ amount, selected, measurementDetails,setMeasurementD
                         bust: '',
                         hips: '',
                     });
-                } 
+                } else {
+                    alert(response.data.message)
+                }
             } catch (error) {
                 console.error('Error placing order:', error);
-                alert('Error placing order: ' + error.message);
+                // alert('Error placing order: ' + error.message);
+                alert("please provide all fields")
             }
 
 
